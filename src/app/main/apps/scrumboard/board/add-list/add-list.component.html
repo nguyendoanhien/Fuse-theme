@@ -1,0 +1,23 @@
+<div class="list new-list mat-elevation-z1">
+
+    <button *ngIf="!formActive" mat-button class="new-list-form-button" (click)="openForm()">
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="red">add</mat-icon>
+            <span>Add a list</span>
+        </div>
+    </button>
+
+    <form *ngIf="formActive" class="new-list-form" [formGroup]="form" (submit)="onFormSubmit()"
+          fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+
+        <input formControlName="name" #nameInput fxFlex placeholder="Write a list Name">
+
+        <button mat-icon-button fxFlex="0 1 auto">
+            <mat-icon>check</mat-icon>
+        </button>
+        <button mat-icon-button fxFlex="0 1 auto" (click)="closeForm()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </form>
+</div>
+

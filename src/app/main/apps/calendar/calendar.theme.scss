@@ -1,0 +1,192 @@
+@mixin calendar-theme($theme) {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $accent: map-get($theme, accent);
+    $is-dark: map-get($theme, is-dark);
+
+    // Month view
+    .cal-month-view {
+
+        .cal-day-badge {
+            background: map-get($accent, default);
+            color: map-get($accent, default-contrast);
+        }
+
+        .cal-cell-row {
+
+            &.cal-header {
+                background: none !important;
+
+                .cal-cell {
+                    background: none !important;
+                }
+            }
+        }
+
+        .cal-days {
+            border-color: map-get($foreground, divider);
+
+            .cal-cell-row {
+                border-color: map-get($foreground, divider);
+
+                &:hover {
+                    background: map-get($background, hover);
+                }
+
+                .cal-day-cell {
+
+                    &:not(:last-child) {
+                        border-color: map-get($foreground, divider);
+                    }
+
+                    &.cal-has-events {
+
+                        &.cal-open {
+                            background: map-get($background, hover);
+                        }
+                    }
+
+                    &.cal-weekend {
+
+                        .cal-day-number {
+                            color: map-get($accent, default);
+                        }
+                    }
+
+                    &:hover {
+                        background: map-get($background, hover);
+                    }
+                }
+            }
+        }
+
+        .cal-open-day-events {
+            @if ($is-dark) {
+                background: map-get($background, app-bar);
+            } @else {
+                background: map-get($accent, default);
+            }
+
+            > div {
+                background: map-get($background, card);
+
+                .cal-event-title {
+                    color: map-get($foreground, text);
+                }
+            }
+        }
+    }
+
+    // Week view
+    .cal-week-view {
+
+        .cal-event {
+
+            mwl-calendar-event-actions {
+
+                .cal-event-actions {
+
+                    .cal-event-action {
+
+                        i {
+                            color: rgba(0, 0, 0, 0.54);
+                        }
+                    }
+                }
+            }
+        }
+
+        .cal-day-headers {
+            border-color: map-get($foreground, divider);
+
+            .cal-drag-over {
+                background: map-get($background, hover);
+            }
+
+            .cal-header {
+
+                &.cal-weekend {
+
+                    span {
+                        color: map-get($accent, default);
+                    }
+                }
+
+                &.cal-today {
+                    background: map-get($background, hover);
+                }
+
+                &:hover {
+                    background: map-get($background, hover);
+                }
+
+                &:not(:last-child) {
+                    border-color: map-get($foreground, divider);
+                }
+            }
+        }
+    }
+
+    // Day view
+    .cal-day-view {
+
+        .cal-hour-rows {
+            border-color: map-get($foreground, divider);
+        }
+
+        .cal-drag-over {
+
+            .cal-hour-segment {
+                background: map-get($background, hover);
+            }
+        }
+
+        .cal-event {
+
+            mwl-calendar-event-actions {
+
+                .cal-event-actions {
+
+                    .cal-event-action {
+
+                        i {
+                            color: rgba(0, 0, 0, 0.54);
+                        }
+                    }
+                }
+            }
+        }
+
+        .cal-hour {
+
+            .cal-hour-segment {
+
+                &:hover {
+                    background: map-get($background, hover);
+                }
+            }
+
+            &:nth-child(odd) {
+                background: map-get($background, hover);
+            }
+
+            &:not(:last-child) {
+
+                .cal-hour-segment {
+                    border-color: map-get($foreground, divider);
+                }
+            }
+
+            &:last-child {
+
+                :not(:last-child) {
+
+                    .cal-hour-segment {
+                        border-color: map-get($foreground, divider);
+                    }
+                }
+            }
+        }
+    }
+}

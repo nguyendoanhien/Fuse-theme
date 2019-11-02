@@ -1,0 +1,32 @@
+scrumboard-board-add-list {
+
+    .new-list {
+        border-radius: 2px;
+
+        .new-list-form-button {
+            text-transform: none;
+            font-size: 15px;
+            padding: 0 16px;
+            height: 64px;
+            margin: 0;
+            width: 100%;
+
+            mat-icon {
+                border-radius: 50%;
+                height: 40px;
+                width: 40px;
+                line-height: 40px;
+                margin-right: 16px;
+            }
+        }
+
+        .new-list-form {
+            padding: 16px;
+            height: 64px;
+
+            > input {
+                height: 100%;
+            }
+        }
+    }
+}

@@ -1,0 +1,37 @@
+@mixin lock-theme($theme) {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $is-dark: map-get($theme, is-dark);
+
+    lock {
+
+        #lock {
+
+            #lock-form-wrapper {
+
+                #lock-form {
+                    @if ($is-dark) {
+                        background: mat-color($fuse-navy, 600);
+                    } @else {
+                        background: map-get($background, card);
+                    }
+
+                    .lock-form-header {
+
+                        .avatar-container {
+
+                            mat-icon {
+                                color: mat-color($mat-red, 500);
+                            }
+                        }
+
+                        .subtitle {
+                            color: map-get($foreground, secondary-text);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

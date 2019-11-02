@@ -1,0 +1,35 @@
+scrumboard-board-add-card {
+
+    .add-card-button {
+        position: relative;
+        height: 48px;
+        min-height: 48px;
+        padding: 0 16px;
+        text-align: left;
+        text-transform: none;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 2px;
+
+        mat-icon {
+            margin-right: 8px;
+        }
+    }
+
+    .add-card-form-wrapper {
+
+        .add-card-form {
+            z-index: 999;
+            display: block;
+            position: relative;
+            padding: 8px;
+
+            mat-form-field {
+                width: 100%;
+                margin: 0;
+                padding: 12px 8px;
+            }
+        }
+    }
+}

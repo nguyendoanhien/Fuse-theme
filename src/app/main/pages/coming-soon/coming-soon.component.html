@@ -1,0 +1,52 @@
+<div id="coming-soon" fxLayout="column">
+
+    <div id="coming-soon-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+        <div id="coming-soon-form" [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">
+
+            <div class="top">
+
+                <div class="logo">
+                    <img src="assets/images/logos/fuse.svg">
+                </div>
+
+                <div class="title">Hey! Thank you for checking out our app.</div>
+                <div class="subtitle">It’s not quite ready yet, but we are working hard and it will be ready in
+                    approximately:
+                </div>
+
+                <fuse-countdown eventDate="2019-07-28"></fuse-countdown>
+
+            </div>
+
+            <form name="comingSoonForm" [formGroup]="comingSoonForm" novalidate>
+
+                <div class="message">
+                    If you would like to be notified when the app is ready, you can subscribe to our e-mail list.
+                </div>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email">
+                    <mat-icon matSuffix class="secondary-text">mail</mat-icon>
+                    <mat-error *ngIf="comingSoonForm.get('email').hasError('required')">
+                        Email is required
+                    </mat-error>
+                    <mat-error *ngIf="!comingSoonForm.get('email').hasError('required') &&
+                                       comingSoonForm.get('email').hasError('email')">
+                        Please enter a valid email address
+                    </mat-error>
+                </mat-form-field>
+
+                <button mat-raised-button color="accent" class="subscribe-button" aria-label="SUBSCRIBE"
+                        [disabled]="comingSoonForm.invalid">
+                    SUBSCRIBE
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

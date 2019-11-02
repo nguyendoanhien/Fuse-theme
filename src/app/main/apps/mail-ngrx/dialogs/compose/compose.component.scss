@@ -1,0 +1,39 @@
+.mail-ngrx-compose-dialog {
+
+    .mat-dialog-container {
+        padding: 0;
+        width: 720px;
+
+        .compose-form {
+
+            .mat-form-field {
+                width: 100%;
+            }
+
+            .attachment-list {
+                font-size: 13px;
+
+                .attachment {
+                    border: 1px solid;
+                    border-radius: 20px;
+                    padding-left: 16px;
+                    margin-top: 8px;
+
+                    .filename {
+                        font-weight: 600;
+                    }
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .dialog-content-wrapper {
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
+    }
+}

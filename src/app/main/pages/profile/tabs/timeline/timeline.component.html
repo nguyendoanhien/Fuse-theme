@@ -1,0 +1,164 @@
+<div id="timeline" class="p-24" fxLayout="row wrap">
+
+    <div class="timeline-content" fxLayout="column" fxFlex="100" fxFlex.gt-sm="55" fxFlex.gt-md="65">
+
+        <div class="profile-box add-post">
+
+            <div class="form" fxFlex>
+
+                <textarea placeholder="Write something.."></textarea>
+
+                <footer fxLayout="row" fxLayoutAlign="space-between center">
+
+                    <div fxLayout="row" fxLayoutAlign="start center">
+
+                        <button mat-icon-button aria-label="Add photo" matTooltip="Add Photo">
+                            <mat-icon>photo</mat-icon>
+                        </button>
+
+                        <button mat-icon-button aria-label="Mention somebody" matTooltip="Mention somebody">
+                            <mat-icon>person</mat-icon>
+                        </button>
+
+                        <button mat-icon-button aria-label="Add location" matTooltip="Add location">
+                            <mat-icon>location_on</mat-icon>
+                        </button>
+
+                    </div>
+
+                    <button mat-raised-button color="accent" class="post-button" aria-label="POST">POST</button>
+
+                </footer>
+
+            </div>
+
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="timeline-item" *ngFor="let post of timeline.posts">
+
+            <header fxLayout="row" fxLayoutAlign="space-between start">
+                <div class="user" fxLayout="row" fxLayoutAlign="start center">
+                    <img class="avatar" [src]="post.user.avatar">
+
+                    <div fxLayout="column">
+                        <div class="title">
+                            <span class="username">{{post.user.name}}</span>
+                            <span *ngIf="post.type === 'post'">posted on your timeline</span>
+                            <span *ngIf="post.type === 'something'">shared something with you</span>
+                            <span *ngIf="post.type === 'video'">shared a video with you</span>
+                            <span *ngIf="post.type === 'article'">shared an article with you</span>
+                        </div>
+                        <div class="time">{{post.time}}</div>
+                    </div>
+                </div>
+
+                <button mat-icon-button aria-label="More">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+            </header>
+
+            <div class="content">
+                <div *ngIf="post.message" class="message">
+                    {{post.message}}
+                </div>
+
+                <div *ngIf="post.media" class="media">
+                    <img *ngIf="post.media.type === 'image'" [src]="post.media.preview">
+                    <div *ngIf="post.media.type === 'video'" [innerHtml]="post.media.embed"></div>
+                </div>
+
+                <div *ngIf="post.article" fxLayout="column" class="article">
+                    <div class="media">
+                        <img [src]="post.article.media.preview">
+                    </div>
+                    <div class="title">{{post.article.title}}</div>
+                    <div class="subtitle">{{post.article.subtitle}}</div>
+                    <div class="excerpt">{{post.article.excerpt}}</div>
+                </div>
+
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <button mat-button class="like-button">
+                        <span fxLayout="row" fxLayoutAlign="start center">
+                            <mat-icon class="s-16">favorite</mat-icon>
+                            <span>Like</span>&nbsp;<span>({{post.like}})</span>
+                        </span>
+                    </button>
+                    <button mat-button class="share-button">
+                        <span fxLayout="row" fxLayoutAlign="start center">
+                            <mat-icon class="s-16">share</mat-icon>
+                            <span>Share</span>&nbsp;<span>({{post.share}})</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <footer class="" fxLayout="column" fxLayoutAlign="start start">
+                <div *ngIf="post.comments" class="comment-count" fxLayout="row" fxLayoutAlign="start center">
+                    {{post.comments.length}} comments
+                    <mat-icon class="s-16">keyboard_arrow_down</mat-icon>
+                </div>
+
+                <div class="comment" fxLayout="row" fxFlexFill *ngFor="let comment of post.comments">
+                    <img [src]="comment.user.avatar" class="avatar"/>
+
+                    <div fxLayout="column" fxFlex>
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                            <span class="username">{{comment.user.name}}</span>
+                            <span class="time">{{comment.time}}</span>
+                        </div>
+                        <div class="message">
+                            {{comment.message}}
+                        </div>
+                        <div class="actions" fxLayout="row" fxLayoutAlign="space-between center">
+                            <a href="#" class="reply-button">Reply</a>
+                            <mat-icon fxFlex class="report-button s-16">flag</mat-icon>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reply" fxLayout="row" fxFlexFill>
+                    <img src="assets/images/avatars/profile.jpg" class="avatar"/>
+
+                    <form fxFlex>
+                        <textarea placeholder="Add a comment..."></textarea>
+                        <button mat-raised-button color="accent" class="post-comment-button" aria-label="Post Comment">
+                            Post Comment
+                        </button>
+                    </form>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <div class="timeline-sidebar" fxLayout="column" fxFlex="100" fxFlex.gt-sm="45" fxFlex.gt-md="35">
+
+        <div class="profile-box latest-activity" fxLayout="column">
+
+            <header class="accent" fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="title">Latest Activity</div>
+                <div class="more secondary-text">See All</div>
+            </header>
+
+            <div class="content" fxLayout="row wrap">
+                <div class="activities">
+                    <div class="activity" fxLayout="row" fxLayoutAlign="start start"
+                         *ngFor="let activity of timeline.activities">
+                        <img [src]="activity.user.avatar" class="avatar" alt="{{activity.user.name}}"/>
+
+                        <div fxLayout="column">
+                            <div>
+                                <span class="username">{{activity.user.name}}</span>
+                                <span class="message"> {{activity.message}}</span>
+                            </div>
+                            <span class="time secondary-text">{{activity.time}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

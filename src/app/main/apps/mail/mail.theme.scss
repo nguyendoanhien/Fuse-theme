@@ -1,0 +1,158 @@
+@mixin mail-theme($theme) {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $accent: map-get($theme, accent);
+    $is-dark: map-get($theme, is-dark);
+
+    // Mail
+    mail {
+
+        .center {
+
+            .header {
+
+                .search-wrapper {
+                    background: map-get($background, card);
+
+                    .sidebar-toggle {
+                        border-right-color: map-get($foreground, divider);
+                    }
+
+                    .search {
+
+                        input {
+                            background: map-get($background, card);
+                            color: map-get($foreground, text);
+                        }
+                    }
+                }
+            }
+
+            .content-card {
+
+                .toolbar {
+
+                    .toolbar-separator {
+                        background: map-get($foreground, divider);
+                    }
+                }
+            }
+        }
+    }
+
+    // Mail list
+    mail-list {
+        border-right-color: map-get($foreground, divider);
+    }
+
+    // Mail list item
+    mail-list-item {
+        border-bottom-color: map-get($foreground, divider);
+
+        &.unread {
+
+            .info {
+
+                .row-2 {
+                    color: map-get($foreground, text);
+                }
+            }
+        }
+
+        &.current-mail {
+            background: map-get($background, hover);
+        }
+
+        &.selected {
+            @if ($is-dark) {
+                background: map-get($background, background);
+            } @else {
+                background: map-get($accent, 50);
+            }
+
+            .info {
+
+                .row-2 {
+
+                    .labels {
+                        @if ($is-dark) {
+                            background: map-get($background, background);
+                        } @else {
+                            background: map-get($accent, 50);
+                        }
+                    }
+                }
+            }
+        }
+
+        .info {
+
+            .row-2 {
+                color: map-get($foreground, secondary-text);
+
+                .labels {
+
+                    .label {
+                        background-color: rgba(0, 0, 0, 0.08);
+                    }
+                }
+            }
+        }
+    }
+
+    // Mail details
+    mail-details {
+
+        .mail-header {
+            border-bottom-color: map-get($foreground, divider);
+
+            .label {
+                background-color: rgba(0, 0, 0, 0.08);
+            }
+        }
+
+        .mail-content {
+
+            .to {
+                color: map-get($foreground, secondary-text);
+            }
+
+            .info {
+
+                .avatar {
+                    background: map-get($accent, default);
+                }
+
+                .details {
+
+                    .detail {
+                        color: map-get($foreground, secondary-text);
+                    }
+                }
+            }
+        }
+
+        .mail-attachments {
+            border-top-color: map-get($foreground, divider);
+        }
+    }
+
+    // Compose dialog
+    .mail-compose-dialog {
+
+        .mat-dialog-container {
+
+            .compose-form {
+
+                .attachment-list {
+
+                    .attachment {
+                        background-color: map-get($background, card);
+                        border-color: map-get($foreground, divider);
+                    }
+                }
+            }
+        }
+    }
+}

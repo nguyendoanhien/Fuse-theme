@@ -1,0 +1,51 @@
+<div id="countdown" class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="column" fxLayoutAlign="center start">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="secondary-text s-18">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Documentation</span>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Components</span>
+            </div>
+            <div class="h2 mt-16">Countdown</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p>
+            <code>fuse-countdown</code> is a custom built Fuse component allows you to create a countdowns.
+        </p>
+
+        <div class="section-title">Sample</div>
+        <p fxLayout="row" fxLayoutAlign="start start">
+            <fuse-countdown eventDate="2019-07-28"></fuse-countdown>
+        </p>
+
+        <div class="section-title">Usage</div>
+        <p class="py-8">
+            <fuse-highlight lang="html">
+                <textarea #source>
+                    <fuse-countdown eventDate="2019-07-28"></fuse-countdown>
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <div class="section-title">Inputs</div>
+        <p class="py-8" fxLayout="row" fxLayoutAlign="start center">
+            <code class="mr-16">eventDate</code>
+            <span>
+                The date of the event. Since fuse-countdown uses moment.js to parse the dates, any moment.js
+                compatible date string can be used.
+            </span>
+        </p>
+
+    </div>
+
+</div>
+

@@ -1,0 +1,139 @@
+<div *ngIf="!mail" fxLayout="column" fxLayoutAlign="center center" fxFlex>
+    <mat-icon class="s-128 mb-16 select-message-icon hint-text">
+        email
+    </mat-icon>
+    <span class="select-message-text hint-text">
+        <span>{{ 'MAIL.SELECT_A_MESSAGE_TO_READ' | translate }}</span>
+    </span>
+</div>
+
+<div *ngIf="mail">
+
+    <div class="mail-header" fxLayout="row" fxLayoutAlign="space-between center">
+
+        <div>
+            <div class="subject">{{mail.subject}}</div>
+
+            <div class="labels mt-8" fxLayout="row wrap">
+                <div class="label" *ngFor="let labelId of mail.labels"
+                     fxLayout="row" fxLayoutAlign="start center">
+                    <div class="label-color" [ngStyle]="{'background-color': (labels$ | async) | getById:labelId:'color'}"></div>
+                    <div class="label-title">{{(labels$ | async) | getById:labelId:'title'}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions" fxLayout="row" fxLayoutAlign="start center">
+            <button mat-icon-button (click)="toggleStar($event)" aria-label="Toggle star">
+                <mat-icon class="amber-fg" *ngIf="mail.starred">star</mat-icon>
+                <mat-icon class="secondary-text" *ngIf="!mail.starred">star_border</mat-icon>
+            </button>
+
+            <button mat-icon-button (click)="toggleImportant($event)" aria-label="Toggle important">
+                <mat-icon class="red-fg" *ngIf="mail.important">label</mat-icon>
+                <mat-icon class="secondary-text" *ngIf="!mail.important">label_outline</mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <div class="mail-content">
+
+        <div class="info" fxLayout="row" fxLayoutAlign="space-between start">
+
+            <div fxFlex fxLayout="column" fxLayoutAlign="start start">
+
+                <div fxLayout="row" fxLayoutAlign="start start">
+
+                    <div>
+                        <img *ngIf="mail.from.avatar" alt="{{mail.from.name}}"
+                             src="{{mail.from.avatar}}" class="avatar"/>
+
+                        <div *ngIf="!mail.from.avatar" class="avatar" ms-random-class="vm.colors">
+                            {{mail.from.name[0]}}
+                        </div>
+                    </div>
+
+                    <div fxLayout="column" fxLayoutAlign="start start">
+
+                        <div class="name">
+                            {{mail.from.name}}
+                        </div>
+
+                        <div class="to" fxLayout="row" fxLayoutAlign="start center">
+                            <div class="to-text">to</div>
+                            <div>{{mail.to[0].name}}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="toggle-details" (click)="showDetails = !showDetails">
+                    <span *ngIf="!showDetails">Show Details</span>
+                    <span *ngIf="showDetails">Hide Details</span>
+                </a>
+
+                <div *ngIf="showDetails" class="details" fxLayout="row" fxLayoutAlign="start start">
+
+                    <div fxLayout="column">
+                        <span class="title">From:</span>
+                        <span class="title">To:</span>
+                        <span class="title">Date:</span>
+                    </div>
+
+                    <div fxLayout="column">
+                        <span class="detail">{{mail.from.email}}</span>
+                        <span class="detail">{{mail.to[0].email}}</span>
+                        <span class="detail">{{mail.time}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More" (click)="$event.stopPropagation()">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+
+            <mat-menu #moreMenu="matMenu">
+                <button mat-menu-item aria-label="Reply">
+                    <mat-icon>reply</mat-icon>
+                    <span>Reply</span>
+                </button>
+
+                <button mat-menu-item aria-label="Forward">
+                    <mat-icon>forward</mat-icon>
+                    <span>Forward</span>
+                </button>
+
+                <button mat-menu-item aria-label="Print">
+                    <mat-icon>print</mat-icon>
+                    <span>Print</span>
+                </button>
+            </mat-menu>
+        </div>
+
+        <div [innerHTML]="mail.message"></div>
+
+    </div>
+
+    <div *ngIf="mail.attachments" class="mail-attachments">
+
+        <div class="title">
+            <span>Attachments</span>
+            ({{mail.attachments.length}})
+        </div>
+
+        <div class="attachment-list" fxLayout="row wrap">
+
+            <div class="attachment" fxLayout="column"
+                 *ngFor="let attachment of mail.attachments">
+
+                <img class="preview" src="{{attachment.preview}}">
+
+                <div fxLayout="column">
+                    <a href="#" onclick="event.preventDefault()">View</a>
+                    <a href="#" onclick="event.preventDefault()">Download</a>
+                    <div class="size">({{attachment.size}})</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+@import "src/@fuse/scss/fuse";
+
+file-list {
+    width: 100%;
+
+    .mat-table {
+        background: transparent;
+        box-shadow: none;
+
+        .mat-row {
+            position: relative;
+            cursor: pointer;
+            min-height: 64px;
+        }
+    }
+}

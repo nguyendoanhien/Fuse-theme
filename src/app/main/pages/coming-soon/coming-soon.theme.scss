@@ -1,0 +1,38 @@
+@mixin coming-soon-theme($theme) {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $is-dark: map-get($theme, is-dark);
+
+    coming-soon {
+
+        #coming-soon {
+
+            #coming-soon-form-wrapper {
+
+                #coming-soon-form {
+                    @if ($is-dark) {
+                        background: mat-color($fuse-navy, 600);
+                    } @else {
+                        background: map-get($background, card);
+                    }
+
+                    .top {
+
+                        .subtitle {
+                            color: map-get($foreground, secondary-text);
+                        }
+                    }
+
+                    form {
+                        @if ($is-dark) {
+                            background: rgba(0, 0, 0, 0.12);
+                        } @else {
+                            background: rgba(0, 0, 0, 0.06);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

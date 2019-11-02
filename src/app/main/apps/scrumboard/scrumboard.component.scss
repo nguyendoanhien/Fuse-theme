@@ -1,0 +1,54 @@
+@import "src/@fuse/scss/fuse";
+
+scrumboard {
+    min-height: 100%;
+
+    #boards {
+        width: 100%;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+
+        .header {
+
+            h1 {
+                font-size: 40px;
+                font-weight: 300;
+            }
+        }
+
+        .board-list {
+            padding: 32px 0;
+            max-height: none !important;
+
+            .board-list-item {
+                min-width: 210px;
+                min-height: 210px;
+                width: 210px;
+                height: 210px;
+                padding: 24px 0;
+                margin: 16px;
+                border-radius: 8px;
+                background: rgba(0, 0, 0, 0.12);
+                transition: box-shadow 150ms ease-in;
+                cursor: pointer;
+
+                &:hover:not(.add-new-board) {
+                    @include mat-elevation(8);
+                }
+
+                .board-name {
+                    padding: 16px 32px 0 32px;
+                    font-weight: 300;
+                    font-size: 16px;
+                    text-align: center;
+                }
+
+                &.add-new-board {
+                    background: rgba(0, 0, 0, 0.06);
+                    border: 2px dashed rgba(255, 255, 255, 0.37);
+                }
+            }
+        }
+    }
+}
+

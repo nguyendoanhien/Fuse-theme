@@ -1,0 +1,72 @@
+<div class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24" fxLayout="column" fxLayoutAlign="center start">
+
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="secondary-text s-18">home</mat-icon>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Documentation</span>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Directives</span>
+        </div>
+
+        <div class="h2 mt-16">fuseMatSidenav</div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p>
+            <code>fuseMatSidenav</code> is a helper directive that enhances the Angular Material's sidenav. It modifies
+            the sidenav so it will function like the Angular Material 1.x sidenav. It also has a service which you can
+            register a sidenav in order to access and control its status from anywhere.
+        </p>
+
+        <div class="section-title">Usage</div>
+        <p class="py-8">
+            <fuse-highlight lang="html">
+                <textarea #source>
+                    <mat-sidenav position="start" opened="true" mode="side"
+                                 fuseMatSidenavHelper="chat-left-sidenav" mat-is-locked-open="gt-md">
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <div class="section-title">Inputs</div>
+        <p class="py-8" fxLayout="row" fxLayoutAlign="start center">
+            <code class="mr-16">fuseMatSidenavHelper</code>
+            <span>
+                A unique name for the sidenav.
+            </span>
+        </p>
+        <p class="py-8" fxLayout="row" fxLayoutAlign="start center">
+            <code class="mr-16">mat-is-locked-open</code>
+            <span>
+                Adds a locked open functionality just like Angular Material 1.x sidenav. Works with the media step
+                aliases of the FlexLayout library.
+            </span>
+        </p>
+
+        <div class="section-title">Accessing to the sidebav methods from anywhere</div>
+        <p class="py-8">
+            <fuse-highlight lang="ts">
+                <textarea #source>
+                    constructor(
+                        private _fuseMatSidenavHelperService: FuseMatSidenavHelperService,
+                    ) {}
+
+                    toggleSidenav()
+                    {
+                        this._fuseMatSidenavHelperService.getSidenav('chat-left-sidenav').toggle();
+                    }
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

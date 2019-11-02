@@ -1,0 +1,59 @@
+<div id="countdown" class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24 h-160" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row"
+         fxLayoutAlign.gt-xs="space-between center">
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="column" fxLayoutAlign.gt-xs="center start">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="secondary-text s-18">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Documentation</span>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">3rd Party Components</span>
+            </div>
+            <div class="h2 mt-16">Google Maps</div>
+        </div>
+
+        <a mat-raised-button class="reference-button mt-16 mt-sm-0"
+           href="https://angular-maps.com"
+           target="_blank">
+            <mat-icon class="mr-8">link</mat-icon>
+            <span>Reference</span>
+        </a>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+        <p>
+            <code>agm-map</code> is a angular component library for Google Maps.
+        </p>
+
+        <div class="section-title">Sample</div>
+        <p fxLayout="row" fxLayoutAlign="start start">
+            <agm-map [latitude]="lat" [longitude]="lng">
+                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+            </agm-map>
+        </p>
+
+        <div class="section-title">Usage</div>
+        <p class="py-8">
+            <fuse-highlight lang="html">
+                <textarea #source>
+                    <agm-map [latitude]="lat" [longitude]="lng">
+                        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                    </agm-map>
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <div class="section-title">Inputs</div>
+        <p class="py-8">
+            Checkout the component api docs for detail:
+            <a href="https://angular-maps.com/api-docs/agm-core/components/AgmMap.html" target="_blank">AgmMap Api</a>
+        </p>
+
+    </div>
+
+</div>
+

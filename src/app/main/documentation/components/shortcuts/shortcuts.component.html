@@ -1,0 +1,45 @@
+<div id="shortcuts" class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="column" fxLayoutAlign="center start">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="secondary-text s-18">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Documentation</span>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Components</span>
+            </div>
+            <div class="h2 mt-16">Shortcuts</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p>
+            <code>fuse-shortcuts</code> is a custom built Fuse component allows you to create and save shortcuts from
+            the navigation model.
+        </p>
+
+        <div class="section-title">Usage</div>
+        <p class="py-8">
+            <fuse-highlight lang="html">
+                <textarea #source>
+                    <fuse-shortcuts></fuse-shortcuts>
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <div class="section-title">Model</div>
+        <p class="py-8">
+            <code>&lt;fuse-shortcuts&gt;&lt;/fuse-shortcuts&gt;</code> uses the same service with navigation
+            component to populate the shortcuts. It can search the navigation items as well as pin and unpin them as
+            shortcuts. It uses browser cookies to store the shortcuts.
+        </p>
+
+    </div>
+
+</div>
+

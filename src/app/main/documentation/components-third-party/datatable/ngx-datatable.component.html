@@ -1,0 +1,73 @@
+<div id="ngx-datatable" class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24 h-160" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row"
+         fxLayoutAlign.gt-xs="space-between center">
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="column" fxLayoutAlign.gt-xs="center start">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="secondary-text s-18">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Documentation</span>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Datatables</span>
+            </div>
+            <div class="h2 mt-16">ngx-datatable</div>
+        </div>
+
+        <a mat-raised-button class="reference-button mt-16 mt-sm-0"
+           href="https://github.com/swimlane/ngx-datatable"
+           target="_blank">
+            <mat-icon class="mr-8">link</mat-icon>
+            <span>Reference</span>
+        </a>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p class="mb-32">
+            <b>ngx-datatable</b> is a Angular component for presenting large and complex data.
+            It has all the features you would expect from any other table but in a light package with no external
+            dependencies. The table was designed to be extremely flexible and light; it doesn't make any assumptions
+            about your data or how you: filter, sort or page it.
+        </p>
+
+        <ngx-datatable
+            class="material"
+            [rows]="rows"
+            [loadingIndicator]="loadingIndicator"
+            [columnMode]="'force'"
+            [headerHeight]="48"
+            [footerHeight]="56"
+            [rowHeight]="'auto'"
+            [scrollbarH]="true"
+            [reorderable]="reorderable"
+            [selectionType]="'checkbox'"
+            [limit]="10">
+
+            <ngx-datatable-column [width]="48"
+                                  [canAutoResize]="false"
+                                  [sortable]="false">
+                <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+                             let-selectFn="selectFn">
+                    <mat-checkbox [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"></mat-checkbox>
+                </ng-template>
+
+                <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
+                             let-onCheckboxChangeFn="onCheckboxChangeFn">
+                    <mat-checkbox [checked]="isSelected" (change)="onCheckboxChangeFn($event)"></mat-checkbox>
+                </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Name" prop="name"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Last Name" prop="lastName"></ngx-datatable-column>
+
+            <ngx-datatable-column name="Company" prop="company"></ngx-datatable-column>
+        </ngx-datatable>
+
+    </div>
+
+</div>
+

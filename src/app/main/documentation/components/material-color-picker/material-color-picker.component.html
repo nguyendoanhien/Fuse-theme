@@ -1,0 +1,69 @@
+<div id="material-color-picker" class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="column" fxLayoutAlign="center start">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="secondary-text s-18">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Documentation</span>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Components</span>
+            </div>
+            <div class="h2 mt-16">Material Color Picker</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p>
+            <code>fuse-material-color-picker</code> is a custom built Fuse component allows you to add a color picker
+            that allows to choose one of the many Material spec. colors.
+        </p>
+
+        <div class="section-title">Sample</div>
+        <p fxLayout="row" fxLayoutAlign="start start">
+            <fuse-material-color-picker></fuse-material-color-picker>
+        </p>
+
+        <div class="section-title">Usage</div>
+        <p class="py-8">
+            <fuse-highlight lang="html">
+                <textarea #source>
+                    <fuse-material-color-picker [(selectedClass)]="colorClass"
+                                                (onColorChanged)="onColorChanged()">
+                    </fuse-material-color-picker>
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <div class="section-title">Two-way bindings</div>
+        <p class="py-8" fxLayout="row" fxLayoutAlign="start center">
+            <code class="mr-16">selectedClass</code>
+            <span>
+                The name of the Fuse color class to select, e.g. <code>red-500</code>
+            </span>
+        </p>
+        <p class="py-8 pt-4" fxLayout="row" fxLayoutAlign="start center">
+            <code class="mr-16">selectedBg</code>
+            <span>
+                The hex code of the color to be selected. It will be only selected if the hex code of the color
+                matches one of the material colors.
+            </span>
+        </p>
+
+        <div class="section-title">Outputs</div>
+        <p class="py-8" fxLayout="row" fxLayoutAlign="start center">
+            <code class="mr-16">onColorChanged</code>
+            <span>
+                Event that triggered when a color selected. Returns an object that holds palette, hue, class name,
+                background and foreground colors.
+            </span>
+        </p>
+
+    </div>
+
+</div>
+

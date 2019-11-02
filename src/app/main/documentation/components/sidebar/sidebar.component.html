@@ -1,0 +1,107 @@
+<div id="sidebar" class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="column" fxLayoutAlign="center start">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="secondary-text s-18">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Documentation</span>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Components</span>
+            </div>
+            <div class="h2 mt-16">Sidebar</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p>
+            <code>fuse-sidebar</code> is a custom built Fuse component allows you to create a sidebar. Currently it's
+            only used as the main navigation sidebar but in the future it will allow multiple usages.
+        </p>
+
+        <div class="section-title">Usage</div>
+        <p class="py-8">
+            <fuse-highlight lang="html">
+                <textarea #source>
+                    <fuse-sidebar name="navbar" [folded]="someSetting.isFolded" lockedOpen="gt-md"></fuse-sidebar>
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <div class="my-48">
+            <h3><code>[name]</code></h3>
+            <p class="py-8">
+                <b>name</b> attribute allows you to set a unique name to the sidebar. It's required for sidebar to
+                work correctly, as every sidebar being registered to the sidebar service.
+            </p>
+        </div>
+
+        <div class="my-48">
+            <h3><code>[folded]</code></h3>
+            <p class="py-8">
+                Controls the folded status of the sidebar.
+            </p>
+        </div>
+
+        <div class="my-48">
+            <h3><code>[foldedWidth]</code></h3>
+            <p class="py-8">
+                Controls the width of the sidebar when it's folded.
+            </p>
+        </div>
+
+        <div class="my-48">
+            <h3><code>[position]</code></h3>
+            <p class="py-8">
+                Controls the position of the sidebar when it's hidden. This doesn't affect on the locked-open placement
+                of the sidebar, it only controls which side the sidebar is going to slide in when it's completely
+                hidden.
+            </p>
+        </div>
+
+        <div class="my-48">
+            <h3><code>[lockedOpen]</code></h3>
+            <p class="py-8">
+                Accepts Angular Material breakpoint aliases ('gt-md', 'lg' etc.) and locks open the sidebar if the
+                alias matches the current breakpoint, similar to how Angular Material 1.x sidenav works.
+            </p>
+        </div>
+
+        <div class="my-48">
+            <h3><code>(onFoldedChanged)</code></h3>
+            <p class="py-8">
+                <b>onFoldedChanged</b> event will be triggered when the sidebar folded or unfolded permanently.
+            </p>
+        </div>
+
+        <div class="my-48">
+            <h3><code>(onOpenedChanged)</code></h3>
+            <p class="py-8">
+                <b>onOpenedChanged</b> event will be triggered when the sidebar opened or closed.
+            </p>
+        </div>
+
+        <div class="section-title">Sidebar Service</div>
+        <p class="py-8">
+            The sidebar service allows you to control the Sidebar's states from anywhere. To access the sidebar,
+            you need to use the name attribute:
+        </p>
+        <p class="py-8">
+            <fuse-highlight lang="ts">
+                <textarea #source>
+                    toggleSidebar(): void
+                    {
+                        this._fuseSidebarService.getSidebar('my-left-sidebar').toggleOpen();
+                    }
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+    </div>
+
+</div>
+

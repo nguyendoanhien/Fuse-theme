@@ -1,0 +1,20 @@
+@mixin ui-cards-theme($theme) {
+
+    $foreground: map-get($theme, foreground);
+
+    docs-components-cards {
+
+        .content {
+
+            &.source {
+
+                .cards {
+
+                    .card {
+                        border-bottom-color: map-get($foreground, divider);
+                    }
+                }
+            }
+        }
+    }
+}

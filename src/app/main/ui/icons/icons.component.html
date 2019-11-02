@@ -1,0 +1,59 @@
+<div id="helper-classes" class="page-layout simple tabbed" fxLayout="column">
+
+    <!-- HEADER -->
+    <div class="header accent p-24 h-160" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row"
+         fxLayoutAlign.gt-xs="space-between center">
+
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="column" fxLayoutAlign.gt-xs="center start">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="secondary-text s-18">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">User Interface</span>
+            </div>
+            <div class="h1 mt-16">Icons</div>
+        </div>
+
+        <a mat-raised-button class="reference-button mt-16 mt-sm-0" href="https://material.angular.io"
+           target="_blank">
+            <mat-icon class="mr-8">link</mat-icon>
+            <span>Reference</span>
+        </a>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <mat-spinner *ngIf="loading" color="accent"></mat-spinner>
+        </div>
+
+        <div *ngIf="!loading">
+
+            <div fxLayout="column">
+
+                <div class="m-32">
+                    <mat-form-field class="w-100-p">
+                        <input matInput placeholder="Search an icon..." (input)="filterIcons($event)">
+                    </mat-form-field>
+                </div>
+
+                <div fxLayout="row wrap">
+
+                    <div class="icon-holder m-16" fxLayout="column" fxLayoutAlign="center center"
+                         *ngFor="let icon of filteredIcons">
+                        <mat-icon class="secondary-text s-48">{{icon.ligature}}</mat-icon>
+                        <div class="icon-name secondary-text mt-8">{{icon.ligature}}</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

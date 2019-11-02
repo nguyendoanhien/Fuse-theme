@@ -1,0 +1,97 @@
+<div id="academy-course" class="page-layout simple left-sidebar inner-scroll">
+
+    <!-- SIDEBAR -->
+    <fuse-sidebar class="sidebar" name="academy-course-left-sidebar-1" position="left" lockedOpen="gt-md">
+
+        <!-- SIDEBAR CONTENT -->
+        <div class="content" fusePerfectScrollbar>
+
+            <div class="steps">
+
+                <div class="step"
+                     *ngFor="let step of course.steps; let i = index; let last = last; let first = first"
+                     (click)="gotoStep(i)"
+                     [ngClass]="{'current': currentStep === i, 'completed': currentStep > i, 'last': last, 'first': first}">
+                    <div class="index">
+                        <span>{{i + 1}}</span>
+                    </div>
+                    <div class="title">{{step.title}}</div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- / SIDEBAR CONTENT -->
+
+    </fuse-sidebar>
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent p-24" fxLayout="row" fxLayoutAlign="start center">
+
+            <button mat-icon-button class="sidebar-toggle mr-16" fxHide.gt-md
+                    (click)="toggleSidebar('academy-course-left-sidebar-1')">
+                <mat-icon>menu</mat-icon>
+            </button>
+
+            <button mat-icon-button class="mr-16" [routerLink]="'/apps/academy/courses'">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+
+            <div>
+                <h2>{{course.title}}</h2>
+            </div>
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT -->
+        <div id="course-content" class="content">
+
+            <ng-container *ngFor="let step of course.steps; let i = index;">
+
+                <div class="course-step" fusePerfectScrollbar
+                     *ngIf="currentStep === i"
+                     [@slideIn]="animationDirection">
+
+                    <div id="course-step-content" class="course-step-content" [innerHTML]="step.content"></div>
+
+                </div>
+
+            </ng-container>
+
+        </div>
+        <!-- / CONTENT -->
+
+        <div class="step-navigation">
+
+            <button mat-fab class="previous mat-accent fuse-white-fg"
+                    (click)="gotoPreviousStep()"
+                    [disabled]="currentStep === 0"
+                    [fxHide]="currentStep === 0">
+                <mat-icon>chevron_left</mat-icon>
+            </button>
+
+            <button mat-fab class="next mat-accent fuse-white-fg"
+                    (click)="gotoNextStep()"
+                    [disabled]="currentStep === course.totalSteps - 1"
+                    [fxHide]="currentStep === course.totalSteps - 1">
+                <mat-icon>chevron_right</mat-icon>
+            </button>
+
+            <button mat-fab class="done green-600"
+                    routerLink="/apps/academy/courses"
+                    [disabled]="currentStep !== course.totalSteps - 1"
+                    [fxShow]="currentStep === course.totalSteps - 1">
+                <mat-icon>check</mat-icon>
+            </button>
+
+        </div>
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

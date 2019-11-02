@@ -1,0 +1,131 @@
+@import "src/@fuse/scss/fuse";
+
+scrumboard-board {
+
+    mat-sidenav-container {
+        width: 100%;
+        height: 100%;
+
+        mat-sidenav {
+            width: 320px !important;
+            min-width: 320px !important;
+            max-width: 320px !important;
+        }
+
+        #board {
+            display: flex;
+            flex-direction: column !important;
+            height: 100%;
+
+            > .header {
+                position: relative;
+                min-height: 96px;
+                background-image: none;
+                z-index: 49;
+
+                .header-content {
+
+                    .header-boards-button {
+                        margin: 0;
+                    }
+
+                    .header-board-name {
+                        font-size: 16px;
+
+                        .board-subscribe {
+                            margin-right: 8px;
+                        }
+
+                        .editable-buttons {
+
+                            mat-icon {
+                                color: #FFFFFF !important;
+                            }
+                        }
+                    }
+
+                    .right-side {
+
+                        > .mat-button:last-child {
+                            margin-right: 0;
+                        }
+                    }
+
+                }
+            }
+
+            #board-selector {
+                position: absolute;
+                top: 96px;
+                right: 0;
+                left: 0;
+                height: 192px;
+                z-index: 48;
+                padding: 24px;
+                opacity: 1;
+
+                .board-list-item {
+                    width: 128px;
+                    height: 192px;
+                    padding: 16px;
+                    cursor: pointer;
+                    position: relative;
+
+                    .board-name {
+                        text-align: center;
+                        padding: 16px 0;
+                    }
+
+                    .selected-icon {
+                        position: absolute;
+                        top: 0;
+                        left: 50%;
+                        width: 32px;
+                        height: 32px;
+                        margin-left: -16px;
+                        border-radius: 50%;
+                        text-align: center;
+                        color: white;
+
+                        i {
+                            line-height: 32px !important;
+                        }
+                    }
+
+                    &.add-new-board {
+                        opacity: 0.6;
+                    }
+                }
+            }
+
+            .board-content-wrapper {
+                position: relative;
+
+                .board-content {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    height: 100%;
+                    overflow-y: hidden;
+                    overflow-x: auto;
+                    -webkit-overflow-scrolling: touch;
+
+                    .list-sortable-placeholder {
+                        background: rgba(0, 0, 0, 0.06);
+                        margin-right: 24px;
+                    }
+
+                    .new-list-wrapper {
+                        width: 344px;
+                        min-width: 344px;
+                        max-width: 344px;
+                        padding-right: 24px;
+                    }
+
+                }
+            }
+        }
+    }
+}

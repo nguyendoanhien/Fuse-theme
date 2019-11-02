@@ -1,0 +1,48 @@
+@import 'src/@fuse/scss/fuse';
+
+todo-details {
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    .todo-header {
+        padding: 24px;
+        border-bottom: 1px solid;
+
+        .actions {
+            min-width: 88px;
+        }
+    }
+
+    .todo-content {
+        padding: 24px;
+
+        .title {
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .tag {
+            font-size: 11px;
+            border-radius: 2px;
+            margin: 8px 4px 0 0;
+            padding: 3px 8px;
+
+            .tag-color {
+                width: 8px;
+                height: 8px;
+                margin-right: 8px;
+                border-radius: 50%;
+            }
+        }
+
+        .dates {
+
+            .mat-form-field {
+                width: auto !important;
+            }
+        }
+    }
+}

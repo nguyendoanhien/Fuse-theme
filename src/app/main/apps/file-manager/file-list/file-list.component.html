@@ -1,0 +1,59 @@
+<mat-table #table [dataSource]="dataSource" [@animateStagger]="{value:'50'}">
+
+    <!-- Type Column -->
+    <ng-container matColumnDef="icon">
+        <mat-header-cell *matHeaderCellDef fxFlex="64px"></mat-header-cell>
+        <mat-cell *matCellDef="let row" fxFlex="64px">
+            <mat-icon class="type-icon" [ngClass]="row.type"></mat-icon>
+        </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
+    </ng-container>
+
+    <!-- Type Column -->
+    <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>Type</mat-header-cell>
+        <mat-cell *matCellDef="let row" fxHide fxShow.gt-md> {{row.type}}</mat-cell>
+    </ng-container>
+
+    <!-- Owner Column -->
+    <ng-container matColumnDef="owner">
+        <mat-header-cell *matHeaderCellDef fxHide.xs>Owner</mat-header-cell>
+        <mat-cell *matCellDef="let row" fxHide.xs> {{row.owner}}</mat-cell>
+    </ng-container>
+
+    <!-- Size Column -->
+    <ng-container matColumnDef="size">
+        <mat-header-cell *matHeaderCellDef fxHide.xs>Size</mat-header-cell>
+        <mat-cell *matCellDef="let row" fxHide.xs>{{row.size === '' ? '-': row.size}}</mat-cell>
+    </ng-container>
+
+    <!-- Modified Column -->
+    <ng-container matColumnDef="modified">
+        <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-md>Modified</mat-header-cell>
+        <mat-cell *matCellDef="let row" fxHide fxShow.gt-md>{{row.modified}}</mat-cell>
+    </ng-container>
+
+    <!-- Detail Button Column -->
+    <ng-container matColumnDef="detail-button">
+        <mat-header-cell *matHeaderCellDef fxFlex="48px" fxHide.gt-md></mat-header-cell>
+        <mat-cell *matCellDef="let row" fxFlex="48px" fxHide.gt-md>
+            <button mat-icon-button class="sidebar-toggle" fxHide.gt-md
+                    (click)="toggleSidebar('file-manager-details-sidebar')">
+                <mat-icon class="secondary-text">info</mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"
+             (click)="onSelect(row)"
+             [ngClass]="{'selected' : row == selected}"
+             matRipple [@animate]="{value:'*',params:{y:'100%'}}"
+    >
+    </mat-row>
+</mat-table>

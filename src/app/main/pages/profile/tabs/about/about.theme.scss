@@ -1,0 +1,59 @@
+@mixin profile-about-theme($theme) {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
+
+    profile-about {
+
+        #about {
+
+            .about-content {
+
+                .work {
+
+                    .job {
+
+                        .date {
+                            color: map-get($foreground, secondary-text);
+                        }
+                    }
+                }
+            }
+
+            .about-sidebar {
+
+                .groups {
+
+                    .content {
+
+                        .group {
+
+                            .logo {
+                                background-color: map-get($primary, default);
+                                color: map-get($primary, default-contrast);
+                            }
+
+                            .category,
+                            .members {
+                                color: map-get($foreground, secondary-text);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .profile-box {
+
+            .content {
+                background-color: map-get($background, card);
+            }
+
+            footer {
+                border-top-color: map-get($foreground, divider);
+                background-color: rgba(0, 0, 0, 0.06);
+            }
+        }
+    }
+}

@@ -1,0 +1,143 @@
+<div class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24" fxLayout="column" fxLayoutAlign="center start">
+
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="secondary-text s-18">home</mat-icon>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Documentation</span>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Working with Fuse</span>
+        </div>
+
+        <div class="h2 mt-16">Production</div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <!-- BUILD -->
+        <div class="section-title">Build</div>
+
+        <p>
+            The following command builds the application into an output directory
+        </p>
+
+        <div>
+            <fuse-highlight lang="bash" class="source-code" fxFlex="100%">
+                <textarea #source hidden="hidden">
+                    ng build
+                </textarea>
+            </fuse-highlight>
+        </div>
+
+        <p>
+            The build artifacts will be stored in the <b>/dist</b> directory. All commands that build or serve your
+            project, will delete the output directory.
+        </p>
+
+        <div class="section-title">Bundling & Tree-Shaking (AoT)</div>
+
+        <p>
+            To build your app with AoT (Ahead of Time) compiler, use the following command:
+        </p>
+        <div>
+            <fuse-highlight lang="bash" class="source-code" fxFlex="100%">
+                <textarea #source hidden="hidden">
+                    ng build --prod
+                </textarea>
+            </fuse-highlight>
+        </div>
+        <p>
+            or if you want to serve with AoT, use the following:
+        </p>
+        <div>
+            <fuse-highlight lang="bash" class="source-code" fxFlex="100%">
+                <textarea #source hidden="hidden">
+                    ng serve --prod
+                </textarea>
+            </fuse-highlight>
+        </div>
+        <p>
+            This will make use of <b>uglifying</b> and <b>tree-shaking</b> functionality while serving the app from
+            the memory.
+        </p>
+
+        <div class="section-title">Alternative AoT compiler</div>
+
+        <p>
+            If you happen to stumble upon an error while running the
+        </p>
+        <div>
+            <fuse-highlight lang="bash" class="source-code" fxFlex="100%">
+                <textarea #source hidden="hidden">
+                    ng build --prod
+                </textarea>
+            </fuse-highlight>
+        </div>
+        <p>
+            command, there is an alternative one that you can use. The following command will run the <b>ng build
+            --prod</b> command with an increased memory size so your app can be built:
+        </p>
+        <div>
+            <fuse-highlight lang="bash" class="source-code" fxFlex="100%">
+                <textarea #source hidden="hidden">
+                    npm run build-prod
+                </textarea>
+            </fuse-highlight>
+        </div>
+        <!-- / BUILD -->
+
+        <!--  TESTS -->
+        <div class="section-title">Running unit tests</div>
+
+        <div class="mt-24">
+            <fuse-highlight lang="bash" class="source-code" fxFlex="100%">
+                <textarea #source hidden="hidden">
+                    ng test
+                </textarea>
+            </fuse-highlight>
+        </div>
+        <p>
+            Tests will execute after a build is executed via
+            <a href="http://karma-runner.github.io/0.13/index.html" target="_blank">Karma</a>, and it will automatically
+            watch your files for changes.
+        </p>
+        <p>
+            You can run tests a single time via
+            <span class="text-boxed">--watch=false</span>
+            or
+            <span class="text-boxed">--single-run</span>
+        </p>
+        <!-- / TESTS -->
+
+        <!--  E2E TESTS -->
+        <div class="section-title">Running end-to-end tests</div>
+        <div class="mt-24">
+            <fuse-highlight lang="bash" class="source-code" fxFlex="100%">
+                <textarea #source hidden="hidden">
+                    ng e2e
+                </textarea>
+            </fuse-highlight>
+        </div>
+        <p>
+            Before running the tests make sure you are serving the app via
+            <span class="text-boxed">ng serve.</span>
+
+            End-to-end tests are run via <a href="https://angular.github.io/protractor/"
+                                            target="_blank">Protractor.</a>
+        </p>
+        <!-- / E2E TESTS -->
+
+        <p class="mt-32">
+            For more information about angular-cli commands, check the <a href="https://github.com/angular/angular-cli"
+                                                                          target="_blank">angular-cli</a>.
+        </p>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

@@ -1,0 +1,48 @@
+@import "src/@fuse/scss/fuse";
+
+maintenance {
+
+    #maintenance {
+        width: 100%;
+        background: url('/assets/images/backgrounds/dark-material-bg.jpg') no-repeat;
+        background-size: cover;
+
+        #maintenance-form-wrapper {
+            flex: 1 0 auto;
+            padding: 32px;
+
+            @include media-breakpoint('xs') {
+                padding: 16px;
+            }
+
+            #maintenance-form {
+                max-width: 384px;
+                padding: 48px;
+                text-align: center;
+                @include mat-elevation(16);
+
+                @include media-breakpoint('xs') {
+                    padding: 24px;
+                    width: 100%;
+                }
+
+                .logo {
+                    width: 128px;
+                    margin: 32px auto;
+                }
+
+                .title {
+                    font-size: 28px;
+                    margin-top: 16px;
+                }
+
+                .subtitle {
+                    margin: 16px 0;
+                    max-width: 300px;
+                    color: rgba(0, 0, 0, 0.54);
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}

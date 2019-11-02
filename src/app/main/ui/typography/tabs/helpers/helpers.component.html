@@ -1,0 +1,231 @@
+<div id="typography-helpers" class="p-24">
+
+    <div class="mat-title">Font Weight</div>
+
+    <div class="mat-card mat-elevation-z4 p-24" fxLayout="column">
+
+        <div fxLayout="column" fxLayout.gt-md="row">
+
+            <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+                <div class="mat-caption mb-16">From 100 to 900</div>
+                <span class="font-weight-100">font-weight: 100</span>
+                <span>...</span>
+                <span class="font-weight-900">font-weight: 900</span>
+            </div>
+
+            <fuse-highlight lang="html" class="source-code" fxLayout="column" fxLayoutAlign="center"
+                            fxFlex="50">
+                <textarea #source hidden="hidden">
+                    <span class="font-weight-100">100 font weight</span>
+                    ...
+                    <span class="font-weight-900">900 font weight</span>
+                </textarea>
+            </fuse-highlight>
+
+        </div>
+
+    </div>
+
+    <div class="mat-title mt-64">Font Size</div>
+
+    <div class="mat-card mat-elevation-z4 p-24" fxLayout="column">
+
+        <div fxLayout="column" fxLayout.gt-md="row">
+
+            <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+                <div class="mat-caption mb-16">Multiplies of 2, max: 120</div>
+                <span class="font-size-20">font-size: 20</span>
+            </div>
+
+            <fuse-highlight lang="html" class="source-code" fxLayout="column" fxLayoutAlign="center"
+                            fxFlex="50">
+                <textarea #source hidden="hidden">
+                    <span class="font-size-20">font-size: 20</span>
+                </textarea>
+            </fuse-highlight>
+
+        </div>
+
+    </div>
+
+    <div class="mat-title mt-64">Line Height</div>
+
+    <div class="mat-card mat-elevation-z4 p-24" fxLayout="column">
+
+        <div fxLayout="column" fxLayout.gt-md="row">
+
+            <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+                <div class="mat-caption mb-16">Multiplies of 2, max: 120</div>
+                <span>line-height: 2</span>
+                <span>...</span>
+                <span>line-height: 120</span>
+            </div>
+
+            <fuse-highlight lang="html" class="source-code" fxLayout="column" fxLayoutAlign="center"
+                            fxFlex="50">
+                <textarea #source hidden="hidden">
+                    <span class="line-height-2">2px line height</span>
+                    ...
+                    <span class="line-height-120">120px line height</span>
+                </textarea>
+            </fuse-highlight>
+
+        </div>
+
+    </div>
+
+    <div class="mat-title mt-64">Other helpers</div>
+
+    <div class="mat-card mat-elevation-z4 p-24" fxLayout="column">
+
+        <div fxLayout="column" fxLayout.gt-md="row">
+
+            <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+                <div class="text-left">Left aligned text</div>
+            </div>
+
+            <fuse-highlight lang="html" class="source-code" fxLayout="column" fxLayoutAlign="center"
+                            fxFlex="50">
+                <textarea #source hidden="hidden">
+                    <div class="text-left">Left aligned text</div>
+                </textarea>
+            </fuse-highlight>
+
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-md="row">
+
+            <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+                <div class="text-center">Center aligned text</div>
+            </div>
+
+            <fuse-highlight lang="html" class="source-code" fxLayout="column" fxLayoutAlign="center"
+                            fxFlex="50">
+                <textarea #source hidden="hidden">
+                    <div class="text-center">Center aligned text</div>
+                </textarea>
+            </fuse-highlight>
+
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-md="row">
+
+            <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+                <div class="text-right">Right aligned text</div>
+            </div>
+
+            <fuse-highlight lang="html" class="source-code" fxLayout="column" fxLayoutAlign="center"
+                            fxFlex="50">
+                <textarea #source hidden="hidden">
+                    <div class="text-right">Right aligned text</div>
+                </textarea>
+            </fuse-highlight>
+
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-md="row">
+
+            <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+                <p>
+                    <span class="text-boxed">Boxed text</span>
+                </p>
+            </div>
+
+            <fuse-highlight lang="html" class="source-code" fxLayout="column" fxLayoutAlign="center"
+                            fxFlex="50">
+                <textarea #source hidden="hidden">
+                    <p>
+                        <span class="text-boxed">Boxed text</span>
+                    </p>
+                </textarea>
+            </fuse-highlight>
+
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-md="row">
+
+            <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+                <p>
+                    <span class="text-strike">Strike-through text</span>
+                </p>
+            </div>
+
+            <fuse-highlight lang="html" class="source-code" fxLayout="column" fxLayoutAlign="center"
+                            fxFlex="50">
+                <textarea #source hidden="hidden">
+                    <p>
+                        <span class="text-strike">Strike-through text</span>
+                    </p>
+                </textarea>
+            </fuse-highlight>
+
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-md="row">
+
+            <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+                <div class="text-italic">Italic text</div>
+            </div>
+
+            <fuse-highlight lang="html" class="source-code" fxLayout="column" fxLayoutAlign="center"
+                            fxFlex="50">
+                <textarea #source hidden="hidden">
+                    <div class="text-italic">Italic text</div>
+                </textarea>
+            </fuse-highlight>
+
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-md="row">
+
+            <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+                <div class="text-semibold">Semi-bold text</div>
+            </div>
+
+            <fuse-highlight lang="html" class="source-code" fxLayout="column" fxLayoutAlign="center"
+                            fxFlex="50">
+                <textarea #source hidden="hidden">
+                    <div class="text-semibold">Semi-bold text</div>
+                </textarea>
+            </fuse-highlight>
+
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-md="row">
+
+            <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+                <div class="text-bold">Bold text</div>
+            </div>
+
+            <fuse-highlight lang="html" class="source-code" fxLayout="column" fxLayoutAlign="center"
+                            fxFlex="50">
+                <textarea #source hidden="hidden">
+                    <div class="text-bold">Bold text</div>
+                </textarea>
+            </fuse-highlight>
+
+        </div>
+
+        <div fxLayout="column" fxLayout.gt-md="row">
+
+            <div class="preview" fxLayout="column" fxLayoutAlign="center" fxFlex="50">
+                <span class="text-truncate">This is a truncated text. It will be truncated if it's too long. Vivamus
+                    convallis dui porta massa.
+                </span>
+            </div>
+
+            <fuse-highlight lang="html" class="source-code" fxLayout="column" fxLayoutAlign="center"
+                            fxFlex="50">
+                <textarea #source hidden="hidden">
+                    <span class="text-truncate">
+                        This is a truncated text. It will be truncated if it's too long. Vivamus convallis dui porta
+                        massa.
+                    </span>
+                </textarea>
+            </fuse-highlight>
+
+        </div>
+
+    </div>
+
+</div>

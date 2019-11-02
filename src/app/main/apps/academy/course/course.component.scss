@@ -1,0 +1,175 @@
+@import "src/@fuse/scss/fuse";
+
+#academy-course {
+
+    .sidebar {
+
+        .steps {
+            padding: 16px 0;
+
+            .step {
+                position: relative;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 16px;
+                cursor: pointer;
+
+                &.current {
+
+                    .index {
+
+                        span {
+                            border: 2px solid;
+                        }
+                    }
+
+                    .title {
+                        font-weight: bold;
+                    }
+                }
+
+                &.completed {
+
+                    .index {
+
+                        span {
+                            border: 2px solid;
+                        }
+                    }
+                }
+
+                &.first {
+
+                    .index {
+
+                        &:before {
+                            display: none;
+                        }
+                    }
+                }
+
+                &.last {
+
+                    .index {
+
+                        &:after {
+                            display: none;
+                        }
+                    }
+                }
+
+                .index {
+                    display: flex;
+                    margin-right: 12px;
+
+                    &:before,
+                    &:after {
+                        position: absolute;
+                        display: block;
+                        content: ' ';
+                        border-left: 1px solid;
+                        width: 1px;
+                        height: 50%;
+                        left: 29px;
+                        z-index: 8;
+                    }
+
+                    &:before {
+                        top: 0;
+                    }
+
+                    &:after {
+                        bottom: 0;
+                    }
+
+                    span {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        position: relative;
+                        width: 28px;
+                        min-width: 28px;
+                        max-width: 28px;
+                        height: 28px;
+                        border-radius: 100%;
+                        border: 2px solid;
+                        font-weight: bold;
+                        font-size: 12px;
+                        z-index: 10;
+                    }
+                }
+
+                .title {
+                    display: flex;
+                }
+            }
+        }
+    }
+
+    .center {
+        position: relative;
+        overflow: hidden;
+
+        .header {
+            height: 72px;
+            min-height: 72px;
+            max-height: 72px;
+        }
+
+        .content {
+            position: relative;
+            display: flex;
+
+            .course-step {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                padding: 48px;
+                overflow: auto;
+                -webkit-overflow-scrolling: touch;
+
+                &.ng-animating {
+                    overflow: hidden;
+                }
+
+                @media (max-width: 720px) {
+                    padding: 0 0 120px 0;
+                }
+
+                .course-step-content {
+                    padding: 24px;
+                    max-width: 720px;
+                    margin: 0 auto;
+                    width: 100%;
+                    border-radius: 8px;
+                    @include mat-elevation(1);
+                }
+            }
+        }
+
+        .step-navigation {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            bottom: 32px;
+            max-width: 944px;
+            padding: 0 24px;
+            width: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+
+            .previous {
+                margin-right: auto;
+            }
+
+            .next,
+            .done {
+                margin-left: auto;
+            }
+        }
+    }
+}

@@ -1,0 +1,35 @@
+<!-- BOARDS -->
+<div id="boards" class="fuse-navy" fxLayout="column" fxLayoutAlign="start center" fxFlex fusePerfectScrollbar>
+
+    <div class="header pt-44 pt-md-88" fxLayout="row" fxLayoutAlign="center center" fxFlex="0 0 auto"
+         [@animate]="{value:'*',params:{delay:'100ms'}}">
+        <h1>Scrumboard App</h1>
+    </div>
+
+    <!-- BOARD LIST -->
+    <div class="board-list" fxFlex="0 0 auto" fxLayout="row wrap" fxLayoutAlign="center center"
+         [@animateStagger]="{value:'50'}">
+
+        <!-- BOARD -->
+        <div class="board-list-item" *ngFor="let board of boards"
+             [routerLink]="'/apps/scrumboard/boards/'+board.id+'/'+board.uri"
+             fxLayout="column" fxLayoutAlign="center center"
+             [@animate]="{value:'*',params:{y:'100%'}}">
+            <mat-icon class="s-56">assessment</mat-icon>
+            <div class="board-name">{{board.name}}</div>
+        </div>
+        <!-- / BOARD -->
+
+        <!-- NEW BOARD BUTTON -->
+        <div class="board-list-item add-new-board" fxLayout="column" fxLayoutAlign="center center"
+             (click)="newBoard()"
+             [@animate]="{value:'*',params:{y:'100%'}}">
+            <mat-icon class="s-56">add_circle</mat-icon>
+            <div class="board-name">Add new board</div>
+        </div>
+        <!-- / NEW BOARD BUTTON -->
+
+    </div>
+    <!-- / BOARD LIST -->
+</div>
+<!-- / BOARDS -->

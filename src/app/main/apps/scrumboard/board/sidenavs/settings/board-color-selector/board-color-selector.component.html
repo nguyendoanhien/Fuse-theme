@@ -1,0 +1,15 @@
+<mat-list class="colors">
+    <!-- COLORS -->
+    <mat-list-item class="color m-8 mat-elevation-z1"
+                   [ngClass]="color.key"
+                   *ngFor="let color of (colors | keys)"
+                   (click)="setColor(color.key)"
+                   matRipple>
+        <p fxFlex>{{color.key}}</p>
+        <mat-icon class="s-16" *ngIf="color.key === board.settings.color">check</mat-icon>
+        <button mat-icon-button *ngIf="color.key === board.settings.color" (click)="$event.stopPropagation();setColor('')">
+            <mat-icon class="s-16">delete</mat-icon>
+        </button>
+    </mat-list-item>
+    <!-- / COLORS -->
+</mat-list>

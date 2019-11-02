@@ -1,0 +1,17 @@
+<div fxFlex="1 0 auto" *ngIf="!formActive" class="list-header-name" (click)="openForm()">
+    {{list.name}}
+</div>
+
+<form [formGroup]="form" (ngSubmit)="onFormSubmit()"
+      class="list-header-name-form" fxLayout="row" fxFlex="1 0 auto"
+      *ngIf="formActive">
+
+    <input formControlName="name" #nameInput fxFlex placeholder="Write a list Name">
+
+    <button mat-icon-button fxFlex="0 1 auto">
+        <mat-icon>check</mat-icon>
+    </button>
+    <button mat-icon-button fxFlex="0 1 auto" (click)="closeForm()" type="button">
+        <mat-icon>close</mat-icon>
+    </button>
+</form>

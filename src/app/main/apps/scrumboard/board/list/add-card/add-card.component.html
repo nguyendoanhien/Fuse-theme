@@ -1,0 +1,28 @@
+<div *ngIf="!formActive" class="add-card-button"
+     (click)="openForm()"
+     fxLayout="row" fxLayoutAlign="start center">
+    <mat-icon class="s-20">add</mat-icon>
+    <div>Add a card</div>
+</div>
+
+<div *ngIf="formActive" class="add-card-form-wrapper">
+
+    <form [formGroup]="form" (submit)="onFormSubmit()" class="add-card-form" fxLayout="column">
+
+        <mat-form-field fxFlex floatLabel="never">
+            <input #nameInput matInput formControlName="name" placeholder="Card title" autocomplete="off" required>
+        </mat-form-field>
+
+        <div class="pl-8" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <button mat-raised-button class="add-button mat-accent" aria-label="add"
+                    [disabled]="form.invalid">
+                <span>Add</span>
+            </button>
+
+            <button mat-icon-button (click)="closeForm()" class="cancel-button" aria-label="cancel">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+    </form>
+</div>

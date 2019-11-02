@@ -1,0 +1,55 @@
+<div id="splash-screen" class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="column" fxLayoutAlign="center start">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="secondary-text s-18">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Documentation</span>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Services</span>
+            </div>
+            <div class="h2 mt-16">Fuse Splash Screen</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p>
+            <code>Splash screen</code> is a custom Fuse service that allows to have a control on the splash screen.
+        </p>
+
+        <div class="section-title">Usage</div>
+        <p class="py-8">
+
+            <fuse-highlight lang="typescript">
+                <textarea #source>
+
+                    export class SomeComponent implements OnInit
+                    {
+                        constructor(
+                            private _fuseSplashScreenService: FuseSplashScreenService
+                        ) {}
+
+                        ngOnInit()
+                        {
+                            this._fuseSplashScreenService.show();
+
+                            setTimeout(() => {
+                                this._fuseSplashScreenService.hide();
+                            }, 3000);
+                        }
+                    }
+
+                </textarea>
+            </fuse-highlight>
+
+        </p>
+
+    </div>
+
+</div>
+

@@ -1,0 +1,52 @@
+<div fxLayout="row" fxLayoutAlign="start center">
+
+    <mat-checkbox [(ngModel)]="selected" (ngModelChange)="onSelectedChange()"
+                  (click)="$event.stopPropagation();"></mat-checkbox>
+
+    <div class="info" fxFlex FlexLayout="column">
+
+        <div class="row-1" fxLayout="row" fxLayoutAlign="start center">
+
+            <div class="name" fxLayout="row" fxLayoutAlign="start center" fxFlex>
+                <img class="avatar" *ngIf="mail.from?.avatar" alt="{{mail.from?.name}}" src="{{mail.from?.avatar}}"/>
+                <div class="avatar accent" *ngIf="!mail.from?.avatar">{{mail.from?.name[0]}}</div>
+                <span class="text-truncate" *ngIf="mail?.from">{{mail.from?.name}}</span>
+                <mat-icon class="s-16 ml-8" *ngIf="mail.hasAttachments">attachment</mat-icon>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <div class="time">{{mail.time}}</div>
+
+            </div>
+
+        </div>
+
+        <div class="row-2" fxLayout="row" fxLayoutAlign="start center">
+
+            <div fxLayout="column" fxLayoutAlign="start start">
+
+                <div class="subject text-truncate">
+                    {{mail.subject}}
+                </div>
+
+                <div class="message text-truncate" *ngIf="mail?.message">
+                    {{mail.message | htmlToPlaintext | slice:0:180}}{{mail.message.length > 180 ? '...' : ''}}
+                </div>
+
+                <div class="labels" fxLayout="row wrap" fxHide fxShow.gt-sm>
+                    <div class="label" *ngFor="let labelId of mail.labels"
+                         fxLayout="row" fxLayoutAlign="start center">
+                        <div class="label-color"
+                             [ngStyle]="{'background-color': labels | getById:labelId:'color'}"></div>
+                        <div class="label-title">{{labels | getById:labelId:'title'}}</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,55 @@
+@import "src/@fuse/scss/fuse";
+
+cards {
+
+    .content {
+
+        .cards {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: flex-start;
+
+            .card {
+                display: flex;
+                align-items: flex-start;
+                padding: 24px 24px 48px 24px;
+                margin-bottom: 96px;
+
+                .card-preview {
+                    display: flex;
+                    min-width: 320px;
+                }
+
+                .card-source {
+                    display: none;
+                }
+            }
+        }
+
+        &.source {
+
+            .cards {
+                flex-direction: column;
+
+                .card {
+                    width: 100%;
+                    margin-bottom: 24px;
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+                    .card-source {
+                        background: #263238;
+                        display: flex !important;
+                        flex: 1;
+                        max-height: 400px;
+                        min-width: 400px;
+                        margin-left: 24px;
+                        overflow: auto;
+                        -webkit-overflow-scrolling: touch;
+                    }
+                }
+            }
+        }
+    }
+}

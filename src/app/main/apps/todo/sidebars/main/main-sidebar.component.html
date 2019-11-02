@@ -1,0 +1,71 @@
+<!-- SIDEBAR HEADER -->
+<div fxLayout="column" fxLayoutAlign="space-between start"
+     class="header accent p-24 pb-4">
+    <div class="logo" fxFlex fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon class="logo-icon s-32" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+            check_box
+        </mat-icon>
+        <span class="logo-text" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">To-Do</span>
+    </div>
+
+    <div class="account" fxLayout="column" [@animate]="{value:'*',params:{delay:'300ms'}}">
+        <div class="title">John Doe</div>
+        <mat-form-field floatLabel="never">
+            <mat-select class="account-selection" placeholder="Todo Selection"
+                        [ngModel]="selectedAccount">
+                <mat-option *ngFor="let account of (accounts | keys)" [value]="account.key">
+                    {{account.value}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+</div>
+<!-- / SIDEBAR HEADER -->
+
+<!-- SIDEBAR CONTENT -->
+<div class="content" fusePerfectScrollbar [@animate]="{value:'*',params:{y:'50px'}}">
+
+    <div class="p-24">
+        <button mat-raised-button
+                class="mat-accent add-todo-button w-100-p"
+                (click)="newTodo()"
+                aria-label="ADD TASK">
+            ADD TASK
+        </button>
+    </div>
+
+    <div class="nav material2">
+
+        <div class="nav-item">
+            <a class="nav-link" matRipple [routerLink]="'/apps/todo/all'"
+               [routerLinkActive]="['active', 'accent']">
+                <mat-icon class="nav-link-icon">view_headline</mat-icon>
+                <span>All</span>
+            </a>
+        </div>
+
+        <div class="nav-subheader">FILTERS</div>
+
+        <div class="nav-item" *ngFor="let filter of filters">
+            <a class="nav-link" matRipple [routerLink]="'/apps/todo/filter/' + filter.handle"
+               [routerLinkActive]="['active', 'accent']">
+                <mat-icon class="nav-link-icon" *ngIf="filter.icon">{{filter.icon}}</mat-icon>
+                <span>{{filter.title}}</span>
+            </a>
+        </div>
+
+        <div class="nav-subheader">TAGS</div>
+
+        <div class="nav-item" *ngFor="let tag of tags">
+            <a class="nav-link" matRipple [routerLink]="'/apps/todo/tag/' + tag.handle"
+               [routerLinkActive]="['active', 'accent']">
+                <mat-icon class="nav-link-icon" [ngStyle]="{'color':tag.color}">label</mat-icon>
+                <span>{{tag.title}}</span>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+<!-- / SIDEBAR CONTENT -->

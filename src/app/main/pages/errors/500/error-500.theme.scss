@@ -1,0 +1,21 @@
+@mixin error-500-theme($theme) {
+
+    $foreground: map-get($theme, foreground);
+
+    error-404 {
+
+        #error-404 {
+
+            .content {
+
+                .message {
+                    color: map-get($foreground, secondary-text);
+                }
+
+                .sub-message {
+                    color: map-get($foreground, secondary-text);
+                }
+            }
+        }
+    }
+}

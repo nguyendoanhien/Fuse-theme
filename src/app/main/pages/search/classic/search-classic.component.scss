@@ -1,0 +1,78 @@
+@import "src/@fuse/scss/fuse";
+
+search-classic {
+
+    .header {
+
+        @include media-breakpoint('xs') {
+            padding: 16px;
+        }
+
+        .search-wrapper {
+            border-radius: 24px;
+            max-width: 640px;
+            overflow: hidden;
+            @include mat-elevation(1);
+
+            .search {
+                width: 100%;
+                height: 48px;
+                line-height: 48px;
+                padding: 0 18px;
+
+                input {
+                    height: 48px;
+                    min-height: 48px;
+                    max-height: 48px;
+                    padding: 0 16px;
+                    border: none;
+                    outline: none;
+                }
+            }
+        }
+    }
+
+    .content {
+
+        .result-info {
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+        }
+
+        .results {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 512px;
+
+            .result-item {
+                margin-top: 32px;
+                max-width: 512px;
+
+                .title {
+                    font-size: 17px;
+                    font-weight: 600;
+                    cursor: pointer;
+                }
+
+                .url {
+                    margin-bottom: 4px;
+                }
+
+                .excerpt {
+                    display: block;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                &:last-child {
+                    padding-bottom: 32px;
+                }
+            }
+        }
+
+        .simple-pagination {
+            margin: 32px 0;
+        }
+    }
+}

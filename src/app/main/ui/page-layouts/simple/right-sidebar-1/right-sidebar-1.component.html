@@ -1,0 +1,40 @@
+<div class="page-layout simple right-sidebar">
+
+    <!-- SIDEBAR -->
+    <fuse-sidebar class="sidebar" name="simple-right-sidebar-1" position="right" lockedOpen="gt-md">
+
+        <!-- SIDEBAR CONTENT -->
+        <div class="content p-24">
+            <fuse-demo-sidebar></fuse-demo-sidebar>
+        </div>
+        <!-- / SIDEBAR CONTENT -->
+
+    </fuse-sidebar>
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent p-24" fxLayout="row" fxLayoutAlign="start center">
+
+            <button mat-icon-button class="sidebar-toggle mr-8" fxHide.gt-md
+                    (click)="toggleSidebar('simple-right-sidebar-1')">
+                <mat-icon>menu</mat-icon>
+            </button>
+
+            <h2 class="m-0">Right sidebar with content scroll</h2>
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT -->
+        <div class="content p-24">
+            <fuse-demo-content></fuse-demo-content>
+        </div>
+        <!-- / CONTENT -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

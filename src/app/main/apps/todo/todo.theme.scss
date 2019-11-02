@@ -1,0 +1,97 @@
+@mixin todo-theme($theme) {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $accent: map-get($theme, accent);
+    $is-dark: map-get($theme, is-dark);
+
+    // Todo
+    todo {
+
+        .center {
+
+            .header {
+
+                .search-wrapper {
+                    background: map-get($background, card);
+
+                    .sidebar-toggle {
+                        border-right-color: map-get($foreground, divider);
+                    }
+
+                    .search {
+
+                        input {
+                            background: map-get($background, card);
+                            color: map-get($foreground, text);
+                        }
+                    }
+                }
+            }
+
+            .content-card {
+
+                .toolbar {
+
+                    .toolbar-separator {
+                        background: map-get($foreground, divider);
+                    }
+                }
+            }
+        }
+    }
+
+    // Todo list
+    todo-list {
+        border-right-color: map-get($foreground, divider);
+    }
+
+    // Todo list item
+    todo-list-item {
+        border-bottom-color: map-get($foreground, divider);
+
+        .tags {
+
+            .tag {
+                background-color: rgba(0, 0, 0, 0.08);
+            }
+        }
+
+        &.completed {
+            @if ($is-dark) {
+                background: map-get($background, background);
+            } @else {
+                background: #EFEFEF;
+            }
+
+            .title,
+            .notes {
+                color: map-get($foreground, secondary-text);
+            }
+        }
+
+        &.selected {
+            @if ($is-dark) {
+                background: map-get($background, background);
+            } @else {
+                background: map-get($accent, 50);
+            }
+        }
+    }
+
+    // Todo details
+    todo-details {
+
+        .todo-header {
+            background: map-get($background, background);
+            border-bottom-color: map-get($foreground, divider);
+        }
+
+        .todo-content {
+
+            .tag {
+                background-color: rgba(0, 0, 0, 0.08);
+            }
+        }
+    }
+}

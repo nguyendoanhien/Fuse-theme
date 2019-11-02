@@ -1,0 +1,93 @@
+<div id="fuse-config" class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="column" fxLayoutAlign="center start">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="secondary-text s-18">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Documentation</span>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Services</span>
+            </div>
+            <div class="h2 mt-16">Fuse Config</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p>
+            <code>Config</code> is a custom built Fuse service allows to have a granular control over the Fuse. It can
+            be used for changing theme options (layout, color etc.) by component basis.
+        </p>
+
+            <div class="section-title">Usage</div>
+            <p class="py-8">
+
+            <fuse-highlight lang="typescript">
+                <textarea #source>
+
+                    export class SomeComponent
+                    {
+                        config: any;
+
+                        constructor(
+                            private _fuseConfigService: FuseConfigService
+                        )
+                        {
+                            // Fully customizable surroundings for this particular component
+                            this._fuseConfigService.config = {
+                                colorTheme      : 'theme-default-dark',
+                                layout          : {
+                                    style    : 'vertical-layout-1',
+                                    width    : 'fullwidth',
+                                    navbar   : {
+                                        primaryBackground  : 'fuse-navy-700',
+                                        secondaryBackground: 'fuse-navy-900',
+                                        folded             : false,
+                                        hidden             : false,
+                                        position           : 'left',
+                                        variant            : 'vertical-style-1'
+                                    },
+                                    toolbar  : {
+                                        customBackgroundColor: false,
+                                        background           : 'fuse-white-500',
+                                        hidden               : false,
+                                        position             : 'below-static'
+                                    },
+                                    footer   : {
+                                        customBackgroundColor: true,
+                                        background           : 'fuse-navy-900',
+                                        hidden               : false,
+                                        position             : 'below-fixed'
+                                    },
+                                    sidepanel: {
+                                        hidden  : false,
+                                        position: 'right'
+                                    }
+                                },
+                                customScrollbars: true
+                            });
+                        }
+
+                        onInit()
+                        {
+                            // Subscribe to config change
+                            this._fuseConfigService.config
+                                .subscribe((config) => {
+                                    this.config = config;
+                                });
+                        }
+                    }
+
+                </textarea>
+            </fuse-highlight>
+
+        </p>
+
+    </div>
+
+</div>
+

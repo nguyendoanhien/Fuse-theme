@@ -1,0 +1,529 @@
+<div class="dialog-content-wrapper">
+
+    <mat-toolbar *ngIf="card" matDialogTitle class="accent m-0" fxFlex="1 0 auto" fxLayout="row">
+
+        <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+
+            <div fxFlex fxLayout="row" fxLayoutAlign="start center">
+
+                <!-- DUE DATE -->
+                <div class="due-date" fxFlex="0 1 auto">
+
+                    <button *ngIf="card.due" mat-icon-button [matMenuTriggerFor]="dueDateMenu">
+                        <mat-icon>today</mat-icon>
+                    </button>
+
+                    <mat-menu #dueDateMenu="matMenu" [overlapTrigger]="false">
+                        <button mat-menu-item (click)="removeDueDate()">Remove Due Date</button>
+                    </mat-menu>
+
+                    <mat-form-field *ngIf="!card.due">
+                        <input matInput [matDatepicker]="menuPicker" [(ngModel)]="card.due">
+                        <mat-datepicker-toggle matSuffix [for]="menuPicker"></mat-datepicker-toggle>
+                        <mat-datepicker #menuPicker></mat-datepicker>
+                    </mat-form-field>
+
+                </div>
+                <!-- / DUE DATE -->
+
+                <!-- LABELS -->
+                <div class="labels" fxFlex="0 1 auto">
+
+                    <button mat-icon-button [matMenuTriggerFor]="labelsMenu">
+                        <mat-icon>label</mat-icon>
+                    </button>
+
+                    <mat-menu #labelsMenu="matMenu" [overlapTrigger]="false" class="scrumboard-labels-menu">
+
+                        <scrumboard-label-selector [card]="card"
+                                                   (cardLabelsChanged)="updateCard()"></scrumboard-label-selector>
+
+                    </mat-menu>
+
+                </div>
+                <!-- / LABELS -->
+
+                <!-- MEMBERS -->
+                <div class="members" fxFlex="0 1 auto">
+
+                    <button mat-icon-button class="" [matMenuTriggerFor]="membersMenu">
+                        <mat-icon>account_circle</mat-icon>
+                    </button>
+
+                    <mat-menu #membersMenu="matMenu" [overlapTrigger]="false">
+                        <div fxFlex fxLayout="column" class="scrumboard-members-menu"
+                             (click)="$event.stopPropagation()">
+                            <mat-checkbox class="member px-16" [checked]="card.idMembers.indexOf(member.id) > -1"
+                                          *ngFor="let member of board.members"
+                                          (change)="toggleInArray(member.id, card.idMembers);updateCard()">
+                                <div fxLayout="row" fxLayoutAlign="start center">
+                                    <img [alt]="member.name" [src]=" member.avatar" class="avatar"/>
+                                    <p class="member-name">{{ member.name }}</p>
+                                </div>
+                            </mat-checkbox>
+                        </div>
+                    </mat-menu>
+
+                </div>
+                <!-- / MEMBERS -->
+
+                <!-- ATTACHMENT -->
+                <button mat-icon-button aria-label="Attachment">
+                    <mat-icon>attachment</mat-icon>
+                </button>
+                <!-- / ATTACHMENT -->
+
+                <!-- CHECKLIST -->
+                <div class="due-date " fxFlex="0 1 auto">
+
+                    <button mat-icon-button class="" [matMenuTriggerFor]="checklistMenu"
+                            #checklistMenuTrigger="matMenuTrigger" (menuOpened)="onChecklistMenuOpen()">
+                        <mat-icon>check_box</mat-icon>
+                    </button>
+
+                    <mat-menu #checklistMenu="matMenu" [overlapTrigger]="false">
+
+                        <form class="px-16 py-8" #newChecklistForm="ngForm" (submit)="addChecklist(newChecklistForm)"
+                              (click)="$event.stopPropagation()"
+                              fxLayout="column" fxLayoutAlign="start end">
+
+                            <mat-form-field appearance="outline" (click)="$event.stopPropagation()" fxFlex>
+                                <mat-label>Checklist title</mat-label>
+                                <input #newCheckListTitleField matInput ngModel #checklistTitle="ngModel"
+                                       name="checklistTitle" required>
+                            </mat-form-field>
+
+                            <button mat-raised-button class="mat-accent" aria-label="Add Checklist"
+                                    [disabled]="!newChecklistForm.valid">Add Checklist
+                            </button>
+
+                        </form>
+
+                    </mat-menu>
+
+                </div>
+                <!-- / CHECKLIST -->
+
+                <!-- SUBSCRIBE -->
+                <div class="subscribe " fxFlex="0 1 auto">
+
+                    <button mat-icon-button [matMenuTriggerFor]="subscribeMenu">
+                        <mat-icon *ngIf="card.subscribed">visibility</mat-icon>
+                        <mat-icon *ngIf="!card.subscribed">visibility_off</mat-icon>
+                    </button>
+
+                    <mat-menu #subscribeMenu="matMenu" [overlapTrigger]="false">
+                        <button *ngIf="card.subscribed" mat-menu-item (click)="toggleSubscribe()">
+                            Unsubscribe
+                        </button>
+                        <button *ngIf="!card.subscribed" mat-menu-item (click)="toggleSubscribe()">
+                            Subscribe
+                        </button>
+                    </mat-menu>
+
+                </div>
+                <!-- / SUBSCRIBE -->
+
+                <!-- OPTIONS -->
+                <div class="options " fxFlex="0 1 auto">
+
+                    <button mat-icon-button class="" [matMenuTriggerFor]="optionsMenu">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button>
+
+                    <mat-menu #optionsMenu="matMenu" [overlapTrigger]="false">
+                        <button mat-menu-item (click)="removeCard()">
+                            Remove Card
+                        </button>
+                    </mat-menu>
+
+                </div>
+                <!-- / OPTIONS -->
+
+            </div>
+
+            <!-- CLOSE DIALOG BUTTON -->
+            <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close Dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+            <!-- / CLOSE DIALOG BUTTON -->
+
+        </div>
+
+    </mat-toolbar>
+
+    <div *ngIf="card" mat-dialog-content class="py-24 px-0 m-0" fusePerfectScrollbar>
+
+        <!-- BREADCRUMB -->
+        <div class="card-breadcrumb mt-8 mb-32 px-24" fxLayout="row" fxLayoutAlign="start center">
+            <span>{{board.name}}</span>
+            <mat-icon class="s-20">chevron_right</mat-icon>
+            <span>{{list.name}}</span>
+        </div>
+        <!-- / BREADCRUMB -->
+
+        <div fxLayout="row" fxLayoutAlign="start center">
+
+            <!-- NAME -->
+            <div class="card-name px-24" fxLayout="row" fxLayoutAlign="start center">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Title</mat-label>
+                    <input matInput [(ngModel)]="card.name" required (change)="updateCard()">
+                </mat-form-field>
+            </div>
+            <!-- / NAME -->
+
+            <!-- DUE DATE -->
+            <div *ngIf="card.due" class="due-date px-24 pl-0" fxLayout="row" fxLayoutAlign="start center">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Due Date</mat-label>
+                    <input matInput [matDatepicker]="picker" [(ngModel)]="card.due">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <!-- / DUE DATE -->
+
+        </div>
+
+        <!-- DESCRIPTION -->
+        <div class="description px-24 mb-16">
+            <mat-form-field appearance="outline" class="w-100-p">
+                <mat-label>Description</mat-label>
+                <textarea matInput [(ngModel)]="card.description" columns="1"
+                          mat-maxlength="150" max-rows="4" (change)="updateCard()"></textarea>
+            </mat-form-field>
+        </div>
+        <!-- / DESCRIPTION -->
+
+        <!-- SECTIONS -->
+        <div class="sections">
+
+            <!-- LABELS & MEMBERS SECTION -->
+            <div *ngIf="card.idLabels[0] || card.idMembers[0]" class="section"
+                 fxLayout="column" fxLayout.gt-xs="row">
+
+                <div *ngIf="card.idLabels[0]" fxFlex class="labels">
+
+                    <div class="section-header" fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="mr-8">label</mat-icon>
+                        <span class="section-title">Labels</span>
+                    </div>
+
+                    <div class="section-content">
+                        <mat-chip-list class="label-chips">
+                            <mat-chip class="label-chip mb-4"
+                                      *ngFor="let labelId of card.idLabels"
+                                      [ngClass]="board.labels | getById:labelId:'color'"
+                                      fxLayout="row" fxLayoutAlign="start center">
+                                <span>{{board.labels|getById:labelId:'name'}}</span>
+                            </mat-chip>
+                        </mat-chip-list>
+                    </div>
+
+                </div>
+
+                <div *ngIf="card.idMembers[0]" fxFlex class="members">
+
+                    <div class="section-header" fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="mr-8">supervisor_account</mat-icon>
+                        <span class="section-title">Members</span>
+                    </div>
+
+                    <div class="section-content">
+                        <div class="member-chips" fxLayout="row" fxLayoutWrap>
+                            <div class="member-chip mb-4" *ngFor="let memberId of card.idMembers"
+                                 fxLayout="row" fxLayoutAlign="start center">
+                                <img class="member-chip-avatar" [src]="board.members | getById:memberId:'avatar'"
+                                     [matTooltip]="board.members | getById:memberId:'name'">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- / LABELS & MEMBERS SECTION -->
+
+            <!-- ATTACHMENTS SECTION -->
+            <div *ngIf="card.attachments[0]" class="section">
+
+                <div class="attachments">
+
+                    <div class="section-header" fxLayout="row" fxLayoutAlign="start">
+                        <mat-icon class="mr-8">attachment</mat-icon>
+                        <span class="section-title">Attachments</span>
+                    </div>
+
+                    <div class="section-content">
+
+                        <div fxLayout="column" fxLayoutAlign="start" fxLayoutWrap fxLayout.gt-sm="row">
+
+                            <div class="attachment" fxFlex="33" *ngFor="let item of card.attachments"
+                                 [ngSwitch]="item.type">
+
+                                <div fxLayout="column" fxLayoutAlign="start" *ngSwitchCase="'image'">
+
+                                    <div class="attachment-preview mat-elevation-z1">
+                                        <img [src]="item.src">
+                                    </div>
+
+                                    <div class="attachment-content mt-8" fxLayout="row"
+                                         fxLayoutAlign="start center">
+
+                                        <div fxFlex>
+
+                                            <div fxLayout="row" fxLayoutAlign="start start">
+                                                <span class="attachment-name">{{item.name}}</span>
+                                                <mat-icon *ngIf="card.idAttachmentCover === item.id"
+                                                          class="yellow-700-fg attachment-is-cover">
+                                                    star
+                                                </mat-icon>
+                                            </div>
+
+                                            <span class="attachment-time">{{item.time}}</span>
+
+                                        </div>
+
+                                        <button mat-icon-button class="attachment-actions-button"
+                                                [matMenuTriggerFor]="attachmentActionsMenu">
+                                            <mat-icon>more_vert</mat-icon>
+                                        </button>
+
+                                        <mat-menu #attachmentActionsMenu="matMenu">
+                                            <button mat-menu-item (click)="toggleCoverImage(item.id)">
+                                                <span *ngIf="card.idAttachmentCover !== item.id">Make Cover</span>
+                                                <span *ngIf="card.idAttachmentCover === item.id">Remove Cover</span>
+                                            </button>
+                                            <button mat-menu-item (click)="removeAttachment(item)">
+                                                Remove Attachment
+                                            </button>
+                                        </mat-menu>
+
+                                    </div>
+
+                                </div>
+
+                                <div *ngSwitchCase="'link'" fxLayout="row">
+                                    <div class="attachment-preview mat-elevation-z2" fxLayout="column"
+                                         fxLayoutAlign="center center">
+                                        <span>LINK</span>
+                                    </div>
+                                    <div class="attachment-content" fxLayout="column">
+                                        <span class="attachment-url">{{item.url}}</span>
+                                        <span class="attachment-time">{{item.time}}</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <button mat-stroked-button class="add-attachment-button" aria-label="add attachment">
+                            Add an attachment
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- / ATTACHMENTS SECTION -->
+
+            <!-- CHECKLISTS SECTION -->
+            <div class="section" *ngFor="let checklist of card.checklists">
+
+                <div class="checklist">
+
+                    <div class="section-header" fxLayout="row" fxLayoutAlign="start center">
+
+                        <mat-icon class="mr-8">check_box</mat-icon>
+                        <span fxFlex class="section-title">{{checklist.name}}</span>
+
+                        <div>
+
+                            <button mat-icon-button class="checklist-actions-button"
+                                    [matMenuTriggerFor]="checklistActionsMenu">
+                                <mat-icon class="s-20">more_vert</mat-icon>
+                            </button>
+
+                            <mat-menu #checklistActionsMenu="matMenu">
+                                <button mat-menu-item (click)="removeChecklist(checklist)">
+                                    <mat-icon>delete</mat-icon>
+                                    <span>Remove Checklist</span>
+                                </button>
+                            </mat-menu>
+
+                        </div>
+
+                    </div>
+
+                    <div class="section-content">
+
+                        <div class="checklist-progress" fxLayout="row" fxLayoutAlign="start center">
+
+                            <span class="checklist-progress-value">
+                                {{checklist.checkItemsChecked}} / {{checklist.checkItems.length}}
+                            </span>
+
+                            <mat-progress-bar color="accent" class="checklist-progressbar" mode="determinate"
+                                              value="{{100 * checklist.checkItemsChecked / checklist.checkItems.length}}">
+                            </mat-progress-bar>
+
+                        </div>
+
+                        <div class="check-items">
+
+                            <div class="check-item" *ngFor="let checkItem of checklist.checkItems" fxLayout="row"
+                                 fxLayoutAlign="space-between center">
+
+                                <div fxFlex fxLayout="row" fxLayoutAlign="start center">
+
+                                    <mat-form-field appearance="outline" fxFlex>
+                                        <input matInput [(ngModel)]="checkItem.name">
+                                        <mat-checkbox matPrefix [(ngModel)]="checkItem.checked"
+                                                      (change)="updateCheckedCount(checklist)"
+                                                      aria-label="{{checkItem.name}}">
+                                        </mat-checkbox>
+                                        <button mat-icon-button matSuffix class="checklist-actions-button"
+                                                (click)="removeChecklistItem(checkItem, checklist)">
+                                            <mat-icon class="secondary-text">delete</mat-icon>
+                                        </button>
+                                    </mat-form-field>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <form #newCheckItemForm="ngForm" (submit)="addCheckItem(newCheckItemForm,checklist)"
+                              name="newCheckItemForm" class="new-check-item-form"
+                              fxLayout="row" fxLayoutAlign="start center">
+
+                            <div fxLayout="row" fxLayoutAlign="start center" fxFlex>
+
+                                <mat-form-field appearance="outline" class="no-errors-spacer mr-16" fxFlex>
+                                    <input matInput ngModel #checkItem="ngModel" name="checkItem" autocomplete="off"
+                                           placeholder="New checklist item">
+                                </mat-form-field>
+
+                            </div>
+
+                            <button mat-mini-fab color="accent"
+                                    [disabled]="!newCheckItemForm.valid || newCheckItemForm.pristine"
+                                    aria-label="Add">
+                                <mat-icon>add</mat-icon>
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!-- / CHECKLISTS SECTION -->
+
+            <!-- COMMENTS SECTION -->
+            <div class="section">
+
+                <div class="comments">
+
+                    <div class="section-header" fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="mr-8">comment</mat-icon>
+                        <span class="section-title">Comments</span>
+                    </div>
+
+                    <div class="section-content">
+
+                        <form name="cardCommentForm"
+                              #newCommentForm="ngForm" (submit)="addNewComment(newCommentForm)"
+                              class="comment new-comment" fxLayout="column" fxLayoutAlign="start" no-validate>
+
+                            <div fxLayout="row" fxLayoutAlign="center center">
+
+                                <img class="comment-member-avatar" src="assets/images/avatars/profile.jpg">
+
+                                <mat-form-field class="mr-12" appearance="outline" fxFlex>
+                                    <mat-label>Comment</mat-label>
+                                    <input matInput name="newComment" ngModel #newComment="ngModel" required>
+                                </mat-form-field>
+
+                                <button mat-mini-fab class="mat-accent"
+                                        [disabled]="!newCommentForm.valid || newCommentForm.pristine"
+                                        aria-label="Add">
+                                    <mat-icon>add</mat-icon>
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                        <div class="comment" fxLayout="row" fxLayoutAlign="start center"
+                             *ngFor="let comment of card.comments">
+
+                            <img class="comment-member-avatar"
+                                 [src]="board.members | getById: comment.idMember:'avatar'">
+
+                            <div fxLayout="column">
+                                <div class="comment-member-name">
+                                    {{board.members | getById: comment.idMember:'name'}}
+                                </div>
+                                <div class="comment-bubble">{{comment.message}}</div>
+                                <div class="comment-time secondary-text">{{comment.time}}</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- / COMMENTS SECTION -->
+
+            <!-- ACTIVITIES SECTION -->
+            <div *ngIf="card.activities[0]" class="section">
+
+                <div class="activities">
+
+                    <div class="section-header" fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="mr-8">list</mat-icon>
+                        <span class="section-title">Activity</span>
+                    </div>
+
+                    <div class="section-content">
+
+                        <div class="activity" *ngFor="let activity of card.activities" fxLayout="row"
+                             fxLayoutAlign="start center">
+
+                            <img class="activity-member-avatar"
+                                 [src]="board.members | getById:activity.idMember:'avatar'">
+
+                            <div>
+
+                                <div fxLayout="row" fxLayoutAlign="start center">
+
+                                    <div class="activity-member-name">
+                                        {{board.members | getById:activity.idMember:'name'}}
+                                    </div>
+                                    <div class="activity-message">{{activity.message}}</div>
+
+                                </div>
+
+                                <div class="activity-time mt-4 secondary-text">{{activity.time}}</div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- / ACTIVITIES SECTION -->
+
+        </div>
+        <!-- / SECTIONS -->
+
+    </div>
+
+</div>

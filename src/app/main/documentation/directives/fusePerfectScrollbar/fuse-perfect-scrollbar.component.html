@@ -1,0 +1,65 @@
+<div class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24" fxLayout="column" fxLayoutAlign="center start">
+
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="secondary-text s-18">home</mat-icon>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Documentation</span>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Directives</span>
+        </div>
+
+        <div class="h2 mt-16">fusePerfectScrollbar</div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p>
+            <code>fusePerfectScrollbar</code> is an Angular directive for the <a
+            href="https://github.com/utatti/perfect-scrollbar" target="_blank">Perfect Scrollbar</a> library.
+        </p>
+
+        <div class="section-title">Usage</div>
+        <p class="py-8">
+            <fuse-highlight lang="html">
+                <textarea #source>
+                    <div fusePerfectScrollbar>
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <p class="py-8">
+            <fuse-highlight lang="html">
+                <textarea #source>
+                    <div [fusePerfectScrollbar]="false" [fusePerfectScrollbarOptions]="{'updateOnRouteChange': true}">
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <div class="section-title">Inputs</div>
+        <p class="py-8" fxLayout="row" fxLayoutAlign="start center">
+            <code class="mr-16">fusePerfectScrollbar</code>
+            <span>
+                Accepts an optional boolean which you can control the Perfect Scrollbar. If provided false, Perfect
+                Scrollbar will be destroyed or won't be initialized.
+            </span>
+        </p>
+        <p class="py-8" fxLayout="row" fxLayoutAlign="start center">
+            <code class="mr-16">fusePerfectScrollbarOptions</code>
+            <span>
+                Accepts the <a href="https://github.com/utatti/perfect-scrollbar#options" target="_blank">Perfect
+                Scrollbar options</a>. In addition to those options, there is also a custom <b>updateOnRouteChange</b>
+                option which updates the scrollbar on route changes. That's useful if your scrollbar wraps a
+                <b>router-outlet</b>.
+            </span>
+        </p>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

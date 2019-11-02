@@ -1,0 +1,143 @@
+<div class="dialog-content-wrapper">
+    <mat-toolbar class="mat-accent m-0">
+        <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">{{dialogTitle}}</span>
+            <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-16 pb-0 m-0" fusePerfectScrollbar>
+
+        <form name="eventForm" [formGroup]="eventForm" class="event-form w-100-p" fxLayout="column" fxFlex>
+
+            <mat-form-field appearance="outline" class="w-100-p">
+                <mat-label>Title</mat-label>
+                <input matInput
+                       name="title"
+                       formControlName="title"
+                       required>
+            </mat-form-field>
+
+            <div fxFlex="1 0 auto" fxLayout="column" fxLayout.gt-xs="row" formGroupName="color">
+
+                <mat-form-field appearance="outline" class="pr-sm-8" fxFlex="50">
+                    <mat-label>Primary color</mat-label>
+                    <input matInput
+                           class="primary-color-input border-radius-4"
+                           name="primary color"
+                           formControlName="primary"
+                           [(colorPicker)]="event.color.primary"
+                           cpWidth="290px"
+                           [cpPresetColors]="presetColors"
+                           [style.background]="event.color.primary"
+                           (colorPickerChange)="event.color.primary = $event; eventForm.patchValue({color:{primary:$event}})"/>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="pl-sm-8" fxFlex="50">
+                    <mat-label>Secondary color</mat-label>
+                    <input matInput
+                           class="secondary-color-input border-radius-4"
+                           name="secondary color"
+                           formControlName="secondary"
+                           [(colorPicker)]="event.color.secondary"
+                           cpWidth="290px"
+                           [cpPresetColors]="presetColors"
+                           [style.background]="event.color.secondary"
+                           (colorPickerChange)="event.color.secondary = $event; eventForm.patchValue({color:{secondary:$event}})"/>
+                </mat-form-field>
+
+            </div>
+
+            <div class="pb-32" fxFlex="1 0 auto" fxLayout="row">
+
+                <mat-slide-toggle name="allDay" formControlName="allDay" class="mr-24" aria-label="All day">
+                    All Day
+                </mat-slide-toggle>
+
+            </div>
+
+            <div fxFlex="1 0 auto" fxLayout="column" fxLayout.gt-xs="row">
+
+                <mat-form-field appearance="outline" class="pr-sm-8" fxFlex="50">
+                    <mat-label>Start date</mat-label>
+                    <input matInput [matDatepicker]="startDatePicker" name="start" formControlName="start">
+                    <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #startDatePicker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="pl-sm-8 no-errors-spacer" fxFlex="50">
+                    <mat-label>Start time</mat-label>
+                    <input matInput type="time">
+                </mat-form-field>
+
+            </div>
+
+            <div fxFlex="1 0 auto" fxLayout="column" fxLayout.gt-xs="row">
+
+                <mat-form-field appearance="outline" class="pr-sm-8" fxFlex="50">
+                    <mat-label>End date</mat-label>
+                    <input matInput [matDatepicker]="endDatePicker" name="end" formControlName="end">
+                    <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #endDatePicker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="pl-sm-8 no-errors-spacer" fxFlex="50">
+                    <mat-label>End time</mat-label>
+                    <input matInput type="time">
+                </mat-form-field>
+
+            </div>
+
+            <mat-form-field appearance="outline" formGroupName="meta" class="w-100-p">
+                <mat-label>Location</mat-label>
+                <input matInput
+                       name="location"
+                       formControlName="location">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" formGroupName="meta" class="w-100-p">
+                <mat-label>Notes</mat-label>
+                <textarea matInput
+                          formControlName="notes"
+                          mat-maxlength="250"
+                          max-rows="4">
+                </textarea>
+            </mat-form-field>
+
+        </form>
+
+    </div>
+
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+
+        <button *ngIf="action ==='edit'"
+                mat-button color="primary"
+                class="mr-8"
+                (click)="matDialogRef.close(['delete',eventForm])"
+                aria-label="Delete"
+                matTooltip="Delete">
+            DELETE
+        </button>
+
+        <button *ngIf="action !== 'edit'"
+                mat-button color="primary"
+                class="save-button"
+                (click)="matDialogRef.close(eventForm)"
+                [disabled]="eventForm.invalid"
+                aria-label="ADD">
+            ADD
+        </button>
+
+        <button *ngIf="action === 'edit'"
+                mat-button color="primary"
+                class="save-button"
+                (click)="matDialogRef.close(['save', eventForm])"
+                [disabled]="eventForm.invalid"
+                aria-label="SAVE">
+            SAVE
+        </button>
+
+    </div>
+</div>

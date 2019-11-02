@@ -1,0 +1,401 @@
+@import "src/@fuse/scss/fuse";
+
+.scrumboard-card-dialog {
+
+    @include media-breakpoint('xs') {
+        width: 100%;
+    }
+
+    @include media-breakpoint('gt-xs') {
+        width: 720px;
+    }
+
+    .mat-dialog-container {
+        padding: 0;
+
+        .mat-toolbar {
+
+            .due-date {
+
+                .mat-form-field {
+                    width: auto;
+                    margin: 0 8px;
+
+                    .mat-form-field-wrapper {
+                        padding: 0;
+
+                        .mat-form-field-flex {
+                            align-items: center;
+
+                            .mat-form-field-infix {
+                                display: none;
+                            }
+
+                            .mat-input-element {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+
+                .mat-form-field-prefix .mat-datepicker-toggle-default-icon,
+                .mat-form-field-suffix .mat-datepicker-toggle-default-icon {
+                    width: 24px;
+                }
+            }
+        }
+
+        .mat-dialog-content {
+            position: relative;
+
+            .card-breadcrumb {
+                font-weight: 600;
+                font-size: 16px;
+            }
+
+            .card-subscribe {
+                margin-right: 8px;
+            }
+
+            .picker {
+                width: 140px;
+                min-width: 140px;
+            }
+
+            .card-name {
+                width: 100%;
+                font-size: 22px;
+
+                @include media-breakpoint(xs) {
+                    font-size: 14px;
+                }
+            }
+
+            .sections {
+
+                .section {
+                    border-bottom: 1px solid;
+                    padding: 0 24px;
+                    margin-bottom: 32px;
+
+                    &:last-child {
+                        border-bottom: none;
+                        margin-bottom: 0;
+
+                        .section-content {
+                            padding-bottom: 0;
+                        }
+                    }
+
+                    .section-header {
+                        font-size: 16px;
+
+                        .section-title {
+                            font-weight: 600;
+                        }
+                    }
+
+                    .section-content {
+                        padding: 24px 16px 32px 32px;
+                    }
+
+                    .labels {
+
+                        .section-content {
+                            padding: 8px 0 32px 0;
+                        }
+
+                        .label-chips {
+                            box-shadow: none;
+                            padding: 0;
+
+                            .label-chip {
+                                display: block;
+
+                                .chip-remove {
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                    }
+
+                    .members {
+
+                        .section-content {
+                            padding: 8px 0 32px 0;
+                        }
+
+                        .member-chips {
+                            box-shadow: none;
+                            padding: 0;
+
+                            .member-chip {
+                                margin: 4px;
+
+                                .member-chip-avatar {
+                                    width: 32px;
+                                    border-radius: 50%;
+                                }
+
+                                .chip-remove {
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                    }
+
+                    .attachments {
+
+                        .attachment {
+                            padding: 0 24px 24px 0;
+
+                            .attachment-preview {
+                                font-weight: 600;
+                                border-radius: 4px;
+                                overflow: hidden;
+                            }
+
+                            .attachment-content {
+
+                                .attachment-url,
+                                .attachment-name {
+                                    font-weight: 600;
+                                    font-size: 16px;
+                                }
+
+                                .attachment-is-cover {
+                                    margin-left: 6px;
+                                }
+                            }
+                        }
+
+                        .add-attachment-button {
+                            margin: 0;
+
+                            mat-icon {
+                                margin-right: 8px;
+                            }
+                        }
+                    }
+
+                    .checklist {
+
+                        .checklist-progress {
+                            margin: 0 0 16px 0;
+
+                            .checklist-progress-value {
+                                margin-right: 12px;
+                                font-weight: 600;
+                                white-space: nowrap;
+                                font-size: 14px;
+                            }
+
+                            .checklist-progressbar {
+                            }
+                        }
+
+                        .editable-wrap {
+                            flex: 1
+                        }
+
+                        .check-items {
+
+                            .check-item {
+
+                                mat-checkbox {
+                                    position: relative;
+                                    top: -5px;
+                                    margin: 0 12px 0 3px;
+
+                                    .mat-label {
+                                        font-size: 14px;
+                                    }
+
+                                    &.mat-checked {
+
+                                        .mat-label {
+                                            text-decoration: line-through;
+                                        }
+                                    }
+                                }
+
+                                .checklist-actions-button {
+                                    position: relative;
+                                    top: 2px;
+                                }
+
+                                mat-form-field {
+
+                                    &.mat-form-field-appearance-outline {
+
+                                        .mat-form-field-outline {
+                                            top: 0;
+                                        }
+                                    }
+
+                                    .mat-form-field-wrapper {
+                                        padding: 0;
+
+                                        .mat-form-field-infix {
+                                            border-top: 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .new-check-item-form {
+                            margin: 32px 0 0 0;
+
+                            mat-form-field {
+
+                                &.mat-form-field-appearance-outline {
+
+                                    .mat-form-field-outline {
+                                        top: 0;
+                                    }
+                                }
+
+                                .mat-form-field-wrapper {
+                                    padding: 0;
+
+                                    .mat-form-field-infix {
+                                        border-top: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .comments {
+
+                        .comment {
+                            margin: 0 0 24px 0;
+
+                            .comment-member-avatar {
+                                width: 32px;
+                                height: 32px;
+                                border-radius: 50%;
+                                margin-right: 16px;
+                            }
+
+                            .comment-member-name {
+                                font-size: 14px;
+                                font-weight: 600;
+                            }
+
+                            .comment-time {
+                                font-size: 12px;
+                            }
+
+                            .comment-bubble {
+                                position: relative;
+                                padding: 8px 12px;
+                                border: 1px solid;
+                                font-size: 14px;
+                                margin: 6px 0;
+                                border-radius: 20px;
+                            }
+
+                            &.new-comment {
+                                margin: 0 0 24px 0;
+
+                                mat-form-field {
+
+                                    .mat-form-field-wrapper {
+                                        padding: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .activities {
+
+                        .activity {
+                            margin-bottom: 16px;
+
+                            .activity-member-avatar {
+                                width: 32px;
+                                height: 32px;
+                                border-radius: 50%;
+                                margin-right: 16px;
+                            }
+
+                            .activity-member-name {
+                                font-size: 14px;
+                                font-weight: 600;
+                                margin-right: 5px;
+                                white-space: nowrap;
+                            }
+
+                            .activity-message {
+                                font-size: 14px;
+                                margin-right: 8px;
+                                white-space: nowrap;
+                            }
+
+                            .activity-time {
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    .dialog-content-wrapper {
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.scrumboard-members-menu {
+    width: 240px;
+    .mat-checkbox-layout,
+    .mat-checkbox-label {
+        display: flex;
+        flex: 1;
+    }
+}
+
+.scrumboard-labels-menu {
+
+    .mat-menu-content {
+        padding-bottom: 0;
+
+        .mat-checkbox-layout,
+        .mat-checkbox-label {
+            display: flex;
+            flex: 1;
+        }
+
+        .views {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            width: 240px;
+            min-width: 240px;
+            max-width: 240px;
+            min-height: 240px;
+
+            .view {
+                position: absolute;
+                width: 240px;
+                height: 100%;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                top: 0;
+
+                > .header {
+                    border-bottom: 1px solid;
+                }
+            }
+        }
+    }
+}

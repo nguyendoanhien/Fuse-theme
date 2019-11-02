@@ -1,0 +1,75 @@
+<!-- SIDENAV HEADER -->
+<div class="sidenav-header">
+
+    <!-- USER TOOLBAR -->
+    <mat-toolbar class="accent">
+
+        <!-- TOOLBAR TOP -->
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+
+            <button mat-icon-button (click)="changeLeftSidenavView('chats')" aria-label="back">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+
+        </mat-toolbar-row>
+        <!-- / TOOLBAR TOP -->
+
+        <!-- TOOLBAR BOTTOM -->
+        <mat-toolbar-row class="toolbar-bottom" fxLayout="column" fxLayoutAlign="center center">
+
+            <img [src]="user.avatar" class="avatar user-avatar huge" alt="{{user.name}}"/>
+            <div class="user-name my-8">{{user.name}}</div>
+
+        </mat-toolbar-row>
+        <!-- / TOOLBAR BOTTOM -->
+
+    </mat-toolbar>
+    <!-- / USER TOOLBAR -->
+</div>
+
+<!-- SIDENAV CONTENT -->
+<div class="sidenav-content py-32 px-24" fxFlex>
+
+    <!-- USER MOOD -->
+    <form [formGroup]="userForm" fxLayout="column">
+
+        <mat-form-field appearance="outline" fxFlex="0 1 auto">
+            <mat-label>Mood</mat-label>
+            <textarea matInput name="mood" formControlName="mood" rows="3"></textarea>
+        </mat-form-field>
+
+        <mat-radio-group formControlName="status" fxLayout="column">
+
+            <mat-radio-button value="online" class="py-8">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="status online mr-8"></mat-icon>
+                    <span class="mat-h4 m-0">Online</span>
+                </div>
+            </mat-radio-button>
+
+            <mat-radio-button value="away" class="py-8">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="status away mr-8"></mat-icon>
+                    <span class="mat-h4 m-0">Away</span>
+                </div>
+            </mat-radio-button>
+
+            <mat-radio-button value="do-not-disturb" class="py-8">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="status do-not-disturb mr-8"></mat-icon>
+                    <span class="mat-h4 m-0">Do not disturb</span>
+                </div>
+            </mat-radio-button>
+
+            <mat-radio-button value="offline" class="py-8">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="status offline mr-8"></mat-icon>
+                    <span class="mat-h4 m-0">Offline</span>
+                </div>
+            </mat-radio-button>
+        </mat-radio-group>
+
+    </form>
+    <!-- / USER MOOD -->
+
+</div>

@@ -1,0 +1,125 @@
+<div id="material-colors" class="page-layout simple tabbed" fxLayout="column">
+
+    <!-- HEADER -->
+    <div class="header accent p-24 h-160" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row"
+         fxLayoutAlign.gt-xs="space-between center">
+
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="column" fxLayoutAlign.gt-xs="center start">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="secondary-text s-18">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">User Interface</span>
+            </div>
+            <div class="h1 mt-16">Colors</div>
+        </div>
+
+        <a mat-raised-button class="reference-button mt-16 mt-sm-0"
+           href="https://www.google.com/design/spec/style/color.html#color-color-palette"
+           target="_blank">
+            <mat-icon class="mr-8">link</mat-icon>
+            <span>Reference</span>
+        </a>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <mat-tab-group class="color-tabs" dynamicHeight="true" (selectedTabChange)="selectColor($event)">
+
+            <mat-tab *ngFor="let color of ['primary', 'accent', 'warn']" label="{{color}}">
+                <ng-template mat-tab-label>
+                    <span class="text-capitalize">{{color}}</span>
+                </ng-template>
+            </mat-tab>
+
+            <mat-tab *ngFor="let color of (colors | keys)" label="{{color.key}}">
+                <ng-template mat-tab-label>
+                    <span class="text-capitalize">{{color.key}}</span>
+                </ng-template>
+            </mat-tab>
+
+        </mat-tab-group>
+
+        <div class="color-tabs-content p-24" fxLayout="column">
+
+            <div class="h3 pb-16">Fuse has classes for every single color from
+                <a href="https://www.google.com/design/spec/style/color.html#color-color-palette"
+                   target="_blank">Material Design Color Palette</a> for your convenient. You can use them with pretty
+                much every element.
+            </div>
+
+            <div class="color-header colored-bg p-8"
+                 [ngClass]="selectedColor"
+                 fxLayout="column">
+
+                <div fxLayout="row">
+                    <h3 class="text-capitalize p-8" fxFlex="30">{{selectedColor}}</h3>
+                    <h4 class="p-8" fxFlex="30">Background and Color</h4>
+                    <h4 class="p-8" fxFlex="30">Background only</h4>
+                    <h4 class="p-8" fxFlex="128px">Color only</h4>
+                </div>
+
+            </div>
+
+            <div class="color" fxLayout="column" fxFlex="1 0 auto">
+
+                <div class="colored-bg p-8" fxLayout="row" [ngClass]="selectedColor">
+
+                    <div class="colored-bg p-8" fxFlex="30" fxLayoutAlign="start center">
+                        Default
+                    </div>
+
+                    <div class="colored-bg p-8" [ngClass]="selectedColor" fxFlex="30">
+                        <div class="pb-4">.{{selectedColor}}</div>
+                        <div class="secondary-text pb-4">.secondary-text</div>
+                        <div class="hint-text pb-4">.hint-text, .disabled-text</div>
+                        <div class="divider">.divider</div>
+                    </div>
+
+                    <div class="p-8" fxFlex="30" fxLayoutAlign="start center">
+                        .{{selectedColor + '-bg'}}
+                    </div>
+
+                    <div class="p-8"
+                         [ngClass]="selectedColor + '-' + '-fg'" fxFlex="128px" fxLayoutAlign="center center">
+                        .{{selectedColor + '-' + '-fg'}}
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="color" fxLayout="column" fxFlex="1 0 auto"
+                 *ngIf="selectedColor != 'black' && selectedColor != 'white'">
+
+                <div class="colored-bg p-8"
+                     *ngFor="let hue of ['50','100','200','300','400','500','600','700','800','900','A100','A200','A400','A700']"
+                     fxFlex="1 0 auto" fxLayout="row" fxLayout.sm="column"
+                     [ngClass]="selectedColor + '-' + hue">
+
+                    <div class="p-8" fxFlex="30" fxLayoutAlign="start center">{{hue}}</div>
+
+                    <div class="colored-bg p-8" [ngClass]="selectedColor + '-' + hue" fxFlex="30">
+                        <div class="pb-4">.{{selectedColor + '-' + hue}}</div>
+                        <div class="secondary-text pb-4">.secondary-text</div>
+                        <div class="hint-text pb-4">.hint-text, .disabled-text</div>
+                        <div class="divider">.divider</div>
+                    </div>
+
+                    <div class="p-8" fxFlex="30" fxLayoutAlign="start center">
+                        .{{selectedColor + '-' + hue + '-bg'}}
+                    </div>
+
+                    <div class="fg-box mat-elevation-z2 p-8"
+                         [ngClass]="selectedColor + '-' + hue + '-fg'" fxFlex="128px" fxLayoutAlign="center center">
+                        .{{selectedColor + '-' + hue + '-fg'}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- / CONTENT -->
+</div>

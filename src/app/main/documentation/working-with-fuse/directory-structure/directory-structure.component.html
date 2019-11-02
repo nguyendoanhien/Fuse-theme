@@ -1,0 +1,76 @@
+<div class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24" fxLayout="column" fxLayoutAlign="center start">
+
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="secondary-text s-18">home</mat-icon>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Documentation</span>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Working with Fuse</span>
+        </div>
+
+        <div class="h2 mt-16">Directory Structure</div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p>
+            Fuse has a fairly simple directory structure. All source code that you will need stays inside the
+            <b>/src</b> folder.
+        </p>
+
+        <p>
+            Once you build your app, a <b>/dist</b> folder will appear at the root which will contain the built app. You
+            can simply upload the contents of it to your server to start running your app.
+        </p>
+
+        <div class="main-title">Source directory (/src)</div>
+
+        <p>
+            The source folder has the general Angular CLI project structure along with an additional folder called
+            <b>/@fuse</b> which contains the core elements of the Fuse.
+        </p>
+
+        <p class="message-box warning">
+            We recommend you not to touch <b>/@fuse</b> directory to easily update Fuse in the future.
+        </p>
+
+        <div class="section-title">/app</div>
+
+        <p>
+            This folder contains the <b>AppComponent</b> along with the following directories. Everything that being
+            contained inside these folders are belong to your app and you can edit them however you like while
+            building your app:
+        </p>
+
+        <ul>
+            <li>
+                <b>/fake-db</b>: The fake database data files for Fuse apps.
+            </li>
+            <li>
+                <b>/fuse-config</b>: The main config file for configuring the Fuse template.
+            </li>
+            <li>
+                <b>/layout</b>: Contains the template layout components.
+            </li>
+            <li>
+                <b>/main</b>: Example Fuse apps and ready to use pages and page layouts.
+            </li>
+            <li>
+                <b>/navigation</b>: The main navigation data.
+            </li>
+            <li>
+                <b>/store</b>: Ngrx-Mail app related store files.
+            </li>
+
+        </ul>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

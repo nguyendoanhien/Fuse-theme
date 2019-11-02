@@ -1,0 +1,83 @@
+<div id="progress-bar" class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="column" fxLayoutAlign="center start">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="secondary-text s-18">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Documentation</span>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Components</span>
+            </div>
+            <div class="h2 mt-16">Progress Bar</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p>
+            <code>fuse-progress-bar</code> is a custom built Fuse component allows you to have a service controlled
+            progress bar. It internally uses <code>mat-progress-bar</code> and provides a global service to control it.
+        </p>
+
+        <p class="message-box info">
+            Due to the nature of global progress bars, <code>fuse-progress-bar</code> can only be used once in the
+            entire app and it's currently located at <code>app.component.html</code> file.
+        </p>
+
+        <div class="section-title">Usage</div>
+        <p class="py-8">
+            <fuse-highlight lang="html">
+                <textarea #source>
+                    <fuse-progress-bar></fuse-progress-bar>
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <div class="section-title">Service Usage</div>
+        <p class="py-8">
+
+            <fuse-highlight lang="typescript">
+                <textarea #source>
+                    export class SomeComponent implements OnInit
+                    {
+                        /**
+                        * Constructor
+                        */
+                        constructor(
+                            private _fuseProgressBarService: FuseProgressBarService
+                        ) {}
+
+                        showcase()
+                        {
+                            // Show the progress bar
+                            this._fuseProgressBarService.show();
+
+                            // Hide the progress bar
+                            this._fuseProgressBarService.hide();
+
+                            // Set the mode
+                            // mode: 'determinate' | 'indeterminate' | 'buffer' | 'query'
+                            this._fuseProgressBarService.setMode(mode);
+
+                            // Set the value
+                            // value: number
+                            this._fuseProgressBarService.setValue(value);
+
+                            // Set the buffer value
+                            // bufferValue: number
+                            this._fuseProgressBarService.setBufferValue(bufferValue);
+                        }
+                    }
+                </textarea>
+            </fuse-highlight>
+
+        </p>
+
+    </div>
+
+</div>
+

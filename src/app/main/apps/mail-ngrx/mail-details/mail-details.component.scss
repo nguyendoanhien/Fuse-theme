@@ -1,0 +1,113 @@
+@import 'src/@fuse/scss/fuse';
+
+mail-ngrx-details {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    .select-message-text {
+        font-size: 24px;
+        font-weight: 300;
+    }
+
+    .mail-header {
+        padding-bottom: 16px;
+        border-bottom: 1px solid;
+
+        .actions {
+            min-width: 88px;
+        }
+
+        .subject {
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .label {
+            font-size: 11px;
+            border-radius: 2px;
+            margin: 4px 4px 4px 0;
+            padding: 3px 8px;
+
+            .label-color {
+                width: 8px;
+                height: 8px;
+                margin-right: 8px;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    .mail-content {
+        padding: 24px 0;
+
+        .to {
+
+            .to-text {
+                margin-right: 4px;
+                text-transform: lowercase;
+            }
+        }
+
+        .info {
+            padding-bottom: 16px;
+
+            .avatar {
+                margin-right: 16px;
+            }
+
+            .name {
+                margin-right: 8px;
+                font-weight: 600;
+            }
+
+            .toggle-details {
+                user-select: none;
+                text-decoration: underline;
+                padding-top: 16px;
+                cursor: pointer;
+                font-weight: 600;
+            }
+
+            .details {
+                padding-top: 8px;
+
+                .title {
+                    font-weight: 600;
+                    margin-right: 6px;
+                }
+            }
+
+        }
+    }
+
+    .mail-attachments {
+        padding: 24px 0;
+        border-top: 1px solid;
+
+        .title {
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .attachment {
+
+            .preview {
+                width: 100px;
+                margin: 0 16px 8px 0;
+                border-radius: 4px;
+            }
+
+            .link {
+                margin-bottom: 2px;
+            }
+
+            .size {
+                font-size: 11px;
+            }
+        }
+    }
+}

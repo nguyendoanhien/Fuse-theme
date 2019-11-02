@@ -1,0 +1,111 @@
+<div *ngIf="!todo" fxLayout="column" fxLayoutAlign="center center" fxFlex>
+    <mat-icon class="s-120 mb-12 select-todo-icon hint-text"
+              [@animate]="{value:'*',params:{delay:'300ms',scale:'0.2'}}">check_box
+    </mat-icon>
+    <span class="hint-text mat-h1 select-todo-text" [@animate]="{value:'*',params:{delay:'400ms'}}">
+        Select a todo
+    </span>
+</div>
+
+<div *ngIf="todo">
+
+    <div class="todo-header" fxLayout="row" fxLayoutAlign="space-between center">
+
+        <button mat-button class="toggle-complete-button" (click)="toggleCompleted($event)"
+                aria-label="Toggle completed" fxFlex="0 1 auto">
+            <mat-icon *ngIf="todo.completed">check_box</mat-icon>
+            <mat-icon *ngIf="!todo.completed">check_box_outline_blank</mat-icon>
+            <span class="ml-8">Mark as Done</span>
+        </button>
+
+        <div class="actions" fxLayout="row" fxLayoutAlign="start center">
+
+            <button mat-icon-button (click)="toggleImportant($event)" aria-label="Toggle important">
+                <mat-icon class="red-fg" *ngIf="todo.important">error</mat-icon>
+                <mat-icon class="secondary-text" *ngIf="!todo.important">error_outline</mat-icon>
+            </button>
+
+            <button mat-icon-button (click)="toggleStar($event)" aria-label="Toggle star">
+                <mat-icon class="amber-fg" *ngIf="todo.starred">star</mat-icon>
+                <mat-icon class="secondary-text" *ngIf="!todo.starred">star_border</mat-icon>
+            </button>
+
+            <button mat-icon-button [matMenuTriggerFor]="labelMenu" fxFlex="0 1 auto">
+                <mat-icon class="secondary-text">label</mat-icon>
+            </button>
+
+            <mat-menu #labelMenu="matMenu">
+                <button mat-menu-item *ngFor="let tag of tags"
+                        (click)="toggleTagOnTodo(tag.id)">
+                    <mat-icon *ngIf="hasTag(tag.id)">check</mat-icon>
+                    <mat-icon *ngIf="!hasTag(tag.id)"></mat-icon>
+                    <span>{{tag.title}}</span>
+                </button>
+            </mat-menu>
+
+            <button mat-icon-button (click)="toggleDeleted($event)" aria-label="Toggle delete">
+                <mat-icon class="secondary-text" *ngIf="todo.deleted">delete_forever</mat-icon>
+                <mat-icon class="secondary-text" *ngIf="!todo.deleted">delete</mat-icon>
+            </button>
+
+        </div>
+    </div>
+
+    <div class="todo-content">
+
+        <form [formGroup]="todoForm" (submit)="addTodo()">
+
+            <div class="tags mb-24" fxFlexFill fxLayout="row wrap">
+                <div class="tag" fxLayout="row" fxLayoutAlign="start center" *ngFor="let tagId of todo.tags">
+                    <div class="tag-color" [ngStyle]="{'background-color': tags | getById:tagId:'color'}"></div>
+                    <div class="tag-label">{{tags | getById:tagId:'title'}}</div>
+                </div>
+            </div>
+
+            <mat-form-field appearance="outline" class="title mt-8" fxFill>
+                <mat-label>Title</mat-label>
+                <textarea matInput
+                          #titleInput
+                          name="title"
+                          formControlName="title"
+                          required>
+                </textarea>
+            </mat-form-field>
+
+            <div class="dates" fxFlexFill fxLayout="column" fxLayout.gt-xs="row">
+
+                <mat-form-field appearance="outline" class="mr-sm-12" fxFlex>
+                    <mat-label>Start Date</mat-label>
+                    <input matInput [matDatepicker]="startDatePicker">
+                    <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #startDatePicker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="ml-sm-12" fxFlex>
+                    <mat-label>Due Date</mat-label>
+                    <input matInput [matDatepicker]="dueDatePicker" placeholder="Due Date">
+                    <mat-datepicker-toggle matSuffix [for]="dueDatePicker"></mat-datepicker-toggle>
+                    <mat-datepicker #dueDatePicker></mat-datepicker>
+                </mat-form-field>
+
+            </div>
+
+            <mat-form-field appearance="outline" fxFill>
+                <mat-label>Notes</mat-label>
+                <textarea matInput #notes
+                          name="notes"
+                          formControlName="notes"
+                          maxlength="500">
+                </textarea>
+                <mat-hint align="end">{{notes.value.length}} / 500</mat-hint>
+            </mat-form-field>
+
+            <button *ngIf="formType === 'new'"
+                    mat-raised-button color="accent"
+                    [disabled]="todoForm.invalid">
+                SAVE
+            </button>
+        </form>
+
+    </div>
+</div>

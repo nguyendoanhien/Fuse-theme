@@ -1,0 +1,156 @@
+@mixin academy-theme($theme) {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $accent: map-get($theme, accent);
+    $is-dark: map-get($theme, is-dark);
+
+    #academy-courses {
+
+        .header {
+            background: #1A237E;
+            background: linear-gradient(to right, #0E2A3B 0%, #34306B 100%);
+
+            .hero-text {
+
+                h1 {
+                    color: white;
+                }
+
+                h3 {
+                    color: rgba(255, 255, 255, 0.75);
+                }
+            }
+        }
+
+        .content {
+
+            .courses {
+
+                .course {
+
+                    .course-content {
+                        background: map-get($background, card);
+
+                        .header {
+
+                            .category {
+                                color: rgba(0, 0, 0, 0.54);
+                            }
+
+                            .length {
+
+                                .length-icon {
+                                    color: rgba(0, 0, 0, 0.54) !important;
+                                }
+
+                                .min {
+                                    color: rgba(0, 0, 0, 0.54);
+                                }
+                            }
+                        }
+
+                        .content {
+
+                            .updated {
+                                color: map-get($foreground, hint-text);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #academy-course {
+
+        .sidebar {
+
+            .steps {
+
+                .step {
+                    color: map-get($foreground, secondary-text);
+
+                    &.current {
+                        @if ($is-dark) {
+                            background: map-get($background, app-bar);
+                            color: map-get($foreground, text);
+                        } @else {
+                            background: map-get($accent, 50);
+                            color: map-get($accent, '50-contrast');
+                        }
+
+                        .index {
+
+                            span {
+                                @if ($is-dark) {
+                                    background: map-get($background, app-bar);
+                                    border-color: map-get($accent, default);
+                                } @else {
+                                    background: map-get($background, background);
+                                    border-color: map-get($accent, default);
+                                }
+                            }
+                        }
+                    }
+
+                    &.completed {
+                        color: map-get($foreground, text);
+
+                        .index {
+
+                            span {
+                                border-color: map-get($accent, default);
+                            }
+
+                            &:after {
+                                border-left-color: map-get($accent, default);
+                            }
+                        }
+
+                        + .step {
+
+                            .index {
+
+                                &:before {
+                                    border-left-color: map-get($accent, default);
+                                }
+                            }
+                        }
+                    }
+
+                    .index {
+
+                        &:before,
+                        &:after {
+                            border-left-color: map-get($foreground, divider);
+                        }
+
+                        span {
+                            background: map-get($background, background);
+                            border-color: map-get($foreground, divider);
+                        }
+                    }
+                }
+            }
+        }
+
+        .center {
+
+            .content {
+                @if ($is-dark) {
+                    background: #353535;
+                } @else {
+                    background: mat-color($mat-grey, 200);
+                }
+
+                .course-step {
+
+                    .course-step-content {
+                        background: map-get($background, card);
+                    }
+                }
+            }
+        }
+    }
+}

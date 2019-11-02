@@ -1,0 +1,27 @@
+@mixin example-viewer-theme($theme) {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    example-viewer {
+
+        .example-viewer-header {
+            color: map-get($foreground, secondary-text);
+            background: map-get($background, app-bar);
+            border-bottom-color: map-get($foreground, divider);
+        }
+
+        .example-viewer-source {
+
+            .tab-content {
+
+                .tab {
+
+                    .example-source {
+                        border-bottom-color: map-get($foreground, divider);
+                    }
+                }
+            }
+        }
+    }
+}

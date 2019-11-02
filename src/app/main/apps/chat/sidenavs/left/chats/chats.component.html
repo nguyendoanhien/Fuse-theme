@@ -1,0 +1,190 @@
+<!-- SIDENAV HEADER -->
+<div class="sidenav-header">
+    <!-- CHATS TOOLBAR -->
+    <mat-toolbar>
+
+        <!-- TOOLBAR TOP -->
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- USER AVATAR WRAPPER -->
+            <div class="avatar-wrapper">
+
+                <!-- USER AVATAR -->
+                <img (click)="changeLeftSidenavView('user')"
+                     src="{{user.avatar}}"
+                     class="mat-avatar avatar"
+                     alt="{{user.name}}"/>
+                <!-- / USER AVATAR -->
+
+                <mat-icon class="s-16 status" [ngClass]="user.status"
+                          [matMenuTriggerFor]="userStatusMenu"></mat-icon>
+
+                <!-- USER STATUS -->
+                <mat-menu id="user-status-menu" #userStatusMenu="matMenu">
+
+                    <button mat-menu-item (click)="setUserStatus('online')">
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                            <mat-icon class="s-16 status online"></mat-icon>
+                            <span>Online</span>
+                        </div>
+                    </button>
+
+                    <button mat-menu-item (click)="setUserStatus('away')">
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                            <mat-icon class="s-16 status away"></mat-icon>
+                            <span>Away</span>
+                        </div>
+                    </button>
+
+                    <button mat-menu-item (click)="setUserStatus('do-not-disturb')">
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                            <mat-icon class="s-16 status do-not-disturb"></mat-icon>
+                            <span>Do not disturb</span>
+                        </div>
+                    </button>
+
+                    <button mat-menu-item (click)="setUserStatus('offline')">
+                        <div fxLayout="row" fxLayoutAlign="start center">
+                            <mat-icon class="s-16 status offline"></mat-icon>
+                            <span>Offline</span>
+                        </div>
+                    </button>
+                </mat-menu>
+                <!-- / USER STATUS -->
+
+            </div>
+            <!-- / USER AVATAR -->
+
+            <div>
+                <button mat-icon-button
+                        [matMenuTriggerFor]="userMenu"
+                        aria-label="more">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #userMenu="matMenu">
+                    <button mat-menu-item (click)="changeLeftSidenavView('user')">
+                        Profile
+                    </button>
+                    <button mat-menu-item (click)="logout()">
+                        Logout
+                    </button>
+                </mat-menu>
+            </div>
+
+        </mat-toolbar-row>
+        <!-- / TOOLBAR TOP -->
+
+        <!-- TOOLBAR BOTTOM -->
+        <mat-toolbar-row>
+
+            <!-- SEARCH -->
+            <div class="search-wrapper" fxFlex fxLayout="row" fxLayoutAlign="start center">
+
+                <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="s-16 secondary-text">search</mat-icon>
+                    <input [(ngModel)]="searchText" type="text" placeholder="Search or start new chat" fxFlex>
+                </div>
+
+            </div>
+            <!-- / SEARCH -->
+
+        </mat-toolbar-row>
+        <!-- / TOOLBAR BOTTOM -->
+
+    </mat-toolbar>
+    <!-- / CHATS TOOLBAR -->
+
+</div>
+<!-- / SIDENAV HEADER -->
+
+<!-- SIDENAV CONTENT -->
+<div class="sidenav-content" fusePerfectScrollbar fxFlex>
+
+    <!-- CHATS CONTENT -->
+    <div *fuseIfOnDom [@animateStagger]="{value:'50'}">
+
+        <!-- CHATS LIST-->
+        <div class="chat-list" fxLayout="column">
+
+            <div matSubheader *ngIf="(user.chatList | filter: searchText).length > 0">
+                Chats
+            </div>
+
+            <button mat-button class="contact"
+                    *ngFor="let chat of user.chatList | filter: searchText"
+                    (click)="getChat(chat.contactId)" ngClass="{'unread':contact.unread}"
+                    [@animate]="{value:'*',params:{y:'100%'}}">
+
+                <div fxLayout="row" fxLayoutAlign="start center">
+
+                    <div class="avatar-wrapper" fxFlex="0 1 auto" fxLayoutAlign="center center">
+                        <img class="avatar" [src]="contacts | getById:chat.contactId:'avatar'"
+                             alt="{{contacts | getById:chat.contactId:'name'}}"/>
+                        <mat-icon class="s-16 status" [ngClass]="contacts | getById:chat.contactId:'status'"></mat-icon>
+                    </div>
+
+                    <div fxLayout="row" fxFlex>
+
+                        <div class="pr-4" fxFlex fxLayout="column" fxLayoutAlign="center start">
+                            <div class="contact-name">{{contacts | getById:chat.contactId:'name'}}</div>
+                            <div class="contact-last-message">{{chat.lastMessage}}</div>
+                        </div>
+
+                        <div fxLayout="column" fxLayoutAlign="start end">
+                            <div class="contact-last-message-time">
+                                {{chat.lastMessageTime | date}}
+                            </div>
+                            <div *ngIf="chat.unread" class="mt-4 unread-message-count accent">{{chat.unread}}</div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </button>
+
+        </div>
+        <!-- / CHATS LIST-->
+
+        <!-- CONTACTS LIST-->
+        <div class="contact-list" fxLayout="column">
+
+            <div matSubheader *ngIf="(contacts | filter: searchText).length > 0">
+                Contacts
+            </div>
+
+            <button mat-button class="contact"
+                    *ngFor="let contact of contacts| filter: searchText"
+                    (click)="getChat(contact.id)"
+                    [@animate]="{value:'*',params:{y:'100%'}}">
+
+                <div fxLayout="row" fxLayoutAlign="start center">
+
+                    <div class="avatar-wrapper" fxFlex="0 1 auto">
+                        <img src="{{contact.avatar}}" class="mat-avatar avatar" alt="{{contact.name}}"/>
+                        <mat-icon class="s-16 status" [ngClass]="contact.status"></mat-icon>
+                    </div>
+
+                    <div fxLayout="column" fxLayoutAlign="start start">
+                        <div class="contact-name">{{contact.name}}</div>
+                        <p class="contact-mood">{{contact.mood}}</p>
+                    </div>
+
+                </div>
+
+            </button>
+
+        </div>
+        <!-- / CONTACTS LIST-->
+
+        <!-- NO RESULTS MESSAGE -->
+        <div *ngIf="(contacts | filter: searchText).length === 0" class="no-results-message">
+            No results..
+        </div>
+        <!-- NO RESULTS MESSAGE-->
+
+    </div>
+    <!-- / CHATS CONTENT -->
+
+</div>
+<!-- / SIDENAV CONTENT -->

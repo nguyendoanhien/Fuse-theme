@@ -1,0 +1,79 @@
+<div class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24" fxLayout="column" fxLayoutAlign="center start">
+
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="secondary-text s-18">home</mat-icon>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Documentation</span>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Working with Fuse</span>
+        </div>
+
+        <div class="h2 mt-16">Server</div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <!-- SERVER -->
+        <div class="section-title">Server</div>
+        <p>
+            While still in your work folder, run the following command in the console application:
+        </p>
+
+        <div>
+            <fuse-highlight lang="bash" class="source-code" fxFlex="100%">
+                <textarea #source hidden="hidden">
+                    ng serve
+                </textarea>
+            </fuse-highlight>
+        </div>
+
+        <p>
+            And that's it. Angular CLI will take care everything and start the Fuse.
+        </p>
+
+        <p>
+            You can check out your console application to get further information about the server. By default, it
+            will run on <b>http://localhost:4200</b> but it might change depending on your setup.
+        </p>
+
+        <p>
+            Also, there are other commands available in Fuse which may help you in your development. To see the complete
+            list of available npm commands, check the
+            <span class="text-boxed">package.json</span>
+            file.
+        </p>
+        <!-- / SERVER -->
+
+        <!-- RELOADING THE SERVER -->
+        <div class="section-title">Reloading the Server</div>
+        <p>
+            The
+            <span class="text-boxed">ng serve</span>
+            command will watch your files and reload the page for you as you make changes.
+            But for some reason, if you need to manually restart the server, you can do it by pressing <b>Ctrl +
+            C</b> on your keyboard while in the console application and then run the following command once again:
+        </p>
+        <div>
+            <fuse-highlight lang="bash" class="source-code" fxFlex="100%">
+                <textarea #source hidden="hidden">
+                    ng serve
+                </textarea>
+            </fuse-highlight>
+        </div>
+        <!-- / RELOADING THE SERVER -->
+
+        <p>
+            For more information about angular-cli commands, check the
+            <a href="https://github.com/angular/angular-cli" target="_blank">angular-cli</a>.
+        </p>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

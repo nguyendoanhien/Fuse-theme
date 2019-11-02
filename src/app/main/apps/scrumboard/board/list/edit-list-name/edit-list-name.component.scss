@@ -1,0 +1,10 @@
+scrumboard-board-edit-list-name {
+
+    .list-header-name {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+}

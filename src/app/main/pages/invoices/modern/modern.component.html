@@ -1,0 +1,202 @@
+<div id="invoice" class="modern page-layout blank" fxLayout="row">
+
+    <div class="invoice-container">
+
+        <!-- INVOICE -->
+        <div class="card">
+
+            <div class="header" fxLayout="row" fxLayoutAlign="space-between start">
+
+                <div class="ids" fxLayout="column">
+
+                    <div fxLayout="row" class="seller" fxLayoutAlign="start center">
+
+                        <div class="logo">
+                            <img src="assets/images/logos/fuse.svg">
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="detail">
+                            <div class="title">{{invoice.from.title}}</div>
+                            <div *ngIf="invoice?.from.address" class="address">
+                                {{invoice.from.address}}
+                            </div>
+                            <div *ngIf="invoice?.from.phone" class="phone">
+                                <span>Phone:</span>
+                                {{invoice.from.phone}}
+                            </div>
+                            <div *ngIf="invoice?.from.email" class="email">
+                                <span>Email:</span>
+                                {{invoice.from.email}}
+                            </div>
+                            <div *ngIf="invoice?.from.website" class="website">
+                                <span>Web:</span>
+                                {{invoice.from.website}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" class="client" fxLayoutAlign="start center">
+                        <div class="label" fxLayout="row" fxLayoutAlign="end center">
+                            <div>CLIENT</div>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="detail">
+                            <div class="title">{{invoice.client.title}}</div>
+                            <div *ngIf="invoice?.client.address" class="address">
+                                {{invoice.client.address}}
+                            </div>
+                            <div *ngIf="invoice?.client.phone" class="phone">
+                                <span>Phone:</span>
+                                {{invoice.client.phone}}
+                            </div>
+                            <div *ngIf="invoice?.client.email" class="email">
+                                <span>Email:</span>
+                                {{invoice.client.email}}
+                            </div>
+                            <div *ngIf="invoice?.client.website" class="website">
+                                <span>Web:</span>
+                                {{invoice.client.website}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="summary">
+                    <tr class="code">
+                        <td class="label">INVOICE</td>
+                        <td class="value">{{invoice.number}}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="label">INVOICE DATE</td>
+                        <td class="value">{{invoice.date}}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="label">DUE DATE</td>
+                        <td class="value">{{invoice.dueDate}}</td>
+                    </tr>
+
+                    <tr>
+                        <td class="label">TOTAL DUE</td>
+                        <td class="value">{{invoice.total | currency:'USD':'symbol'}}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="content">
+                <table class="simple invoice-table">
+                    <thead>
+                        <tr>
+                            <th>SERVICE</th>
+                            <th>UNIT</th>
+                            <th class="text-right">UNIT PRICE</th>
+                            <th class="text-right">QUANTITY</th>
+                            <th class="text-right">TOTAL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let service of invoice.services">
+                            <td>
+                                <div class="title">{{service.title}}</div>
+                                <div class="detail">{{service.detail}}</div>
+                            </td>
+                            <td>
+                                {{service.unit}}
+                            </td>
+                            <td class="text-right">
+                                {{service.unitPrice | currency:'USD':'symbol'}}
+                            </td>
+                            <td class="text-right">
+                                {{service.quantity}}
+                            </td>
+                            <td class="text-right">
+                                {{service.total | currency:'USD':'symbol'}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="simple invoice-table-footer">
+                    <tbody>
+                        <tr class="subtotal">
+                            <td>SUBTOTAL</td>
+                            <td>{{invoice.subtotal | currency:'USD':'symbol'}}</td>
+                        </tr>
+                        <tr class="tax">
+                            <td>TAX</td>
+                            <td>{{invoice.tax | currency:'USD':'symbol'}}</td>
+                        </tr>
+                        <tr class="discount">
+                            <td>DISCOUNT</td>
+                            <td>-{{invoice.discount | currency:'USD':'symbol'}}</td>
+                        </tr>
+                        <tr class="total">
+                            <td>TOTAL</td>
+                            <td>{{invoice.total | currency:'USD':'symbol'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="footer">
+                <div class="note">Please pay within 15 days. Thank you for your business.</div>
+                <div fxLayout="row" fxLayoutAlign="start start">
+                    <div class="logo">
+                        <img src="assets/images/logos/fuse.svg">
+                    </div>
+                    <div class="small-note">
+                        In condimentum malesuada efficitur. Mauris volutpat placerat auctor. Ut ac congue dolor. Quisque
+                        scelerisque lacus sed feugiat fermentum. Cras aliquet facilisis pellentesque. Nunc hendrerit
+                        quam at leo commodo, a suscipit tellus dapibus. Etiam at felis volutpat est mollis lacinia.
+                        Mauris placerat sem sit amet velit mollis, in porttitor ex finibus. Proin eu nibh id libero
+                        tincidunt lacinia et eget eros.
+                    </div>
+                </div>
+            </div>
+
+            <!--
+
+            Use the following elements to add breaks to your pages. This will make sure that the section in between
+            these elements will be printed on a new page. The following two elements must be used before and after the
+            page content that you want to show as a new page. So, you have to wrap your content with them.
+
+            Elements:
+            ---------
+            <div class="page-break-after"></div>
+            <div class="page-break-before"></div>
+
+            -->
+
+            <!--
+
+            Example:
+            --------
+
+            Initial page content!
+
+            <div class="page-break-after"></div>
+            <div class="page-break-before"></div>
+
+            This is the second page!
+
+            <div class="page-break-after"></div>
+            <div class="page-break-before"></div>
+
+            This is the third page!
+
+            <div class="page-break-after"></div>
+            <div class="page-break-before"></div>
+
+            -->
+
+        </div>
+        <!-- / INVOICE -->
+
+    </div>
+
+</div>

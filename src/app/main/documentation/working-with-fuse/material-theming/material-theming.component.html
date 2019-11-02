@@ -1,0 +1,113 @@
+<div class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24" fxLayout="column" fxLayoutAlign="center start">
+
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="secondary-text s-18">home</mat-icon>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Documentation</span>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Working with Fuse</span>
+        </div>
+
+        <div class="h2 mt-16">Material Theming</div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p>
+            Fuse fully takes advantage of <a href="https://material.angular.io/guide/theming" target="_blank">Angular
+            Material's theming</a>.
+        </p>
+
+        <p class="message-box info">
+            All Material theming related codes can be found in the <code>src/app/app.theme.scss</code> file. This file
+            is responsible for creating Material color themes as well as applying those themes to the individual
+            components.
+        </p>
+
+        <p>
+            To simply explain, every component that comes with Fuse has a separate <code>*.theme.scss</code> file
+            which has everything theming related. These files are separate from the component's scss files simply
+            because they have theming mixins and they need to be imported in <code>app.theme.scss</code>. Having those
+            mixins in the component's scss file would have caused duplicate content when imported.
+        </p>
+
+        <div class="section-title">Theming components</div>
+
+        <p>
+            Below, you can see an example theme (<code>calendar.theme.scss</code>) file. When you create a component, or
+            move one from the Demo app, you need to import this scss file in the <b>app.theme.scss</b> file and add it
+            to the <code>component-theme</code> mixin array.
+        </p>
+
+        <p class="py-8 mb-0">
+            <fuse-highlight lang="scss">
+                <textarea #source>
+                    @mixin calendar-theme($theme) {
+
+                        $background: map-get($theme, background);
+                        $foreground: map-get($theme, foreground);
+                        $primary: map-get($theme, primary);
+                        $accent: map-get($theme, accent);
+                        $warn: map-get($theme, warn);
+                        $is-dark: map-get($theme, is-dark);
+
+                        // ...
+                        // The content of the mixin
+                        // ...
+
+                    }
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <p class="mt-0">
+            <em>calendar.theme.scss</em>
+        </p>
+
+        <p class="py-8 mb-0">
+            <fuse-highlight lang="scss">
+                <textarea #source>
+                    // Import the .theme.scss file from its correct location
+                    @import "src/app/main/~/calendar.theme";
+
+                    // Define a mixin for easier access
+                    @mixin components-theme($theme) {
+
+                        // Include the imported calendar-theme mixin into the components-theme mixin
+                        @include calendar-theme($theme);
+
+                    }
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <p class="mt-0">
+            <em>app.theme.scss</em>
+        </p>
+
+        <p>
+            The <code>components-theme</code> mixin will be called when you define a new theme so that the components
+            can be styles according to that theme.
+        </p>
+
+        <p class="message-box info">
+            Too see more examples about multiple color themes you can see the <code>src/app/app.theme.scss</code> file
+            from the Demo project.
+        </p>
+
+        <p class="message-box info">
+            To learn more about the contents of the <code>$theme</code> map, check out the Demo project. There are
+            plenty of examples in there and you can also print out the contents of the map using the <code>@debug</code>
+            function of the sass.
+        </p>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

@@ -1,0 +1,28 @@
+@mixin search-classic-theme($theme) {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    // Search Classic
+    search-classic {
+
+        .header {
+
+            .search-wrapper {
+                background: map-get($background, card);
+
+                .search {
+
+                    mat-icon {
+                        color: map-get($foreground, secondary-text);
+                    }
+
+                    input {
+                        background: map-get($background, card);
+                        color: map-get($foreground, text);
+                    }
+                }
+            }
+        }
+    }
+}

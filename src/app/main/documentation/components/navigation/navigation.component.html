@@ -1,0 +1,381 @@
+<div id="navigation" class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="column" fxLayoutAlign="center start">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="secondary-text s-18">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Documentation</span>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Components</span>
+            </div>
+            <div class="h2 mt-16">Navigation</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p>
+            <code>fuse-navigation</code> is a custom built Fuse component allows you to create a multi-level collapsable
+            navigation. It has built-in support for translations using <b>ngx-translate</b> module.
+        </p>
+
+        <div class="section-title">Usage</div>
+        <p class="py-8">
+            <fuse-highlight lang="html">
+                <textarea #source>
+                    <fuse-navigation [navigation]="navigation" [layout]="'vertical'"></fuse-navigation>
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <div class="my-48">
+            <h2>[navigation]</h2>
+            <p class="py-8">
+                <code>&lt;fuse-navigation&gt;&lt;/fuse-navigation&gt;</code> uses a json file to populate
+                the entire navigation. It supports three different navigation items; <b>Group</b>,
+                <b>Collapsable</b> and <b>Item</b>. These items can be mixed and matched to create unique and complex
+                navigation layouts.
+            </p>
+            <p class="py-8">
+                Navigation data can be found in <code>src/app/navigation</code> folder along with its translation
+                files. Navigation data and its translation files are set in <b>app.component.ts</b> file. Check that
+                file for more detailed usage example.
+            </p>
+        </div>
+
+        <div class="my-48">
+            <h2>[layout]</h2>
+            <p class="py-8">
+                There are two different layout options for the component; <code>vertical</code> and
+                <code>horizontal</code>. You can set the layout using the <code>[layout]</code> input.
+            </p>
+        </div>
+
+        <div class="section-title">Alternative usage (preferred)</div>
+        <p class="py-8">
+            An alternative usage to the above one is to using the <b>Navigation Service</b>. Simply, you get your
+            navigation array, register that as a navigation using the service and then set it as the current
+            navigation. This allows for easier updating and swapping of the navigation:
+        </p>
+
+        <p class="py-8">
+            <fuse-highlight lang="ts">
+                <textarea #source>
+                    // Get your navigation array from database or file
+                    this.navigation = [...]
+
+                    // Register the navigation to the service
+                    this._fuseNavigationService.register('main', this.navigation);
+
+                    // Set the main navigation as our current navigation
+                    this._fuseNavigationService.setCurrentNavigation('main');
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <p class="py-8">
+            Once you register your navigation like this, you no longer need to provide the <b>[navigation]</b> input
+            while using the <code>fuse-navigation</code>:
+        </p>
+
+        <p class="py-8">
+            <fuse-highlight lang="html">
+                <textarea #source>
+                    <fuse-navigation [layout]="'vertical'"></fuse-navigation>
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <div class="main-title">Navigation item types</div>
+
+        <div class="section-title">Grouping</div>
+        <p class="py-8">
+            <fuse-highlight lang="json">
+                <textarea #source>
+                    {
+                        'id'       : 'components',
+                        'title'    : 'COMPONENTS',
+                        'translate': 'NAV.COMPONENTS',
+                        'type'     : 'group',
+                        'children' : [
+                            {
+                                'id'   : 'ngx-datatable',
+                                'title': 'ngx-datatable',
+                                'type' : 'item',
+                                'url'  : '/components/datatables/ngx-datatable'
+                            }
+                        ]
+                    }
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <div class="section-title">Collapsable</div>
+        <p class="py-8">
+            <fuse-highlight lang="json">
+                <textarea #source>
+                    {
+                        'id'       : 'datatables',
+                        'title'    : 'Datatables',
+                        'translate': 'NAV.DATATABLES',
+                        'type'     : 'collapsable',
+                        'icon'     : 'border_all',
+                        'children' : [
+                            {
+                                'id'   : 'ngx-datatable',
+                                'title': 'ngx-datatable',
+                                'type' : 'item',
+                                'url'  : '/components/datatables/ngx-datatable'
+                            }
+                        ]
+                    },
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <div class="section-title">Item</div>
+        <p class="py-8">
+            <fuse-highlight lang="json">
+                <textarea #source>
+                    {
+                        'id'       : 'countdown',
+                        'title'    : 'Countdown',
+                        'translate': 'NAV.COUNTDOWN',
+                        'type'     : 'item',
+                        'icon'     : 'settings_input_component',
+                        'url'      : '/components/countdown'
+                    },
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <div class="main-title">Vertical Navigation Default Folded Status</div>
+        <p>
+            It's possible to change the default folded status of the navigation.
+        </p>
+        <p>
+            Find the layout that you want to edit from <b>app/layout/vertical/</b> directory. Edit the layout's html
+            file and look for the <code>[folded]</code> attribute on <code>fuse-sidebar</code> components.
+        </p>
+        <p>
+            Assigning <code>true</code> to that attribute will make the vertical navigation folded by default.
+        </p>
+
+        <div class="main-title">Updating the navigation</div>
+
+        <p class="message-box warning">
+            In order to make the runtime modifications easier, it's strongly recommended that to give a unique id
+            to all of your navigation items.
+        </p>
+
+        <div class="section-title">Show / Hide certain navigation items</div>
+
+        <div class="my-24">
+            <button mat-button mat-raised-button color="accent" (click)="showHideCalendarMenuItem()">
+                Show / Hide calendar menu item
+            </button>
+        </div>
+
+        <p class="py-8 mb-48">
+            <fuse-highlight lang="typescript">
+                <textarea #source>
+                    hidden = false;
+
+                    showHideCalendarMenuItem(): void
+                    {
+                        // Toggle the visibility
+                        this.hidden = !this.hidden;
+
+                        // Update the calendar menu item
+                        this._fuseNavigationService.updateNavigationItem('calendar', {
+                            hidden: this.hidden
+                        });
+                    }
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <div class="section-title">Update navigation item on-the-fly</div>
+
+        <div class="my-24">
+            <button mat-button mat-raised-button color="accent" (click)="updateMailBadge()">
+                Update Mail app badge
+            </button>
+        </div>
+
+        <p class="py-8 mb-48">
+            <fuse-highlight lang="typescript">
+                <textarea #source>
+                    updateMailBadge()
+                    {
+                        // Update the badge title
+                        this._fuseNavigationService.updateNavigationItem('mail', {
+                            badge: {
+                                title: 35
+                            }
+                        });
+                    }
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <div class="section-title">Add a subitem to the Calendar nav item</div>
+
+        <div class="my-24">
+            <button mat-button mat-raised-button color="accent" (click)="addSubitemToCalendar()">
+                Add a subitem to the Calendar nav item
+            </button>
+        </div>
+
+        <p class="py-8 mb-48">
+            <fuse-highlight lang="typescript">
+                <textarea #source>
+                    addSubitemToCalendar()
+                    {
+                        // Prepare the new nav item
+                        const newNavItem = {
+                            id   : 'sub-item',
+                            title: 'Sub Item',
+                            type : 'item',
+                            url  : '/apps/calendar'
+                        };
+
+                        this._fuseNavigationService.updateNavigationItem('calendar', {
+                            type: 'collapsable',
+                            children: [
+                                newNavItem
+                            ]
+                        });
+                    }
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <div class="section-title">Add a nav item with custom function</div>
+
+        <div class="my-24">
+            <button mat-button mat-raised-button color="accent" (click)="addNavItemWithCustomFunction()">
+                Add a nav item with custom function
+            </button>
+        </div>
+
+        <p class="py-8 mb-48">
+            <fuse-highlight lang="typescript">
+                <textarea #source>
+                    addNavItemWithCustomFunction()
+                    {
+                        // Prepare the new nav item
+                        const newNavItem = {
+                            id      : 'custom-item',
+                            title   : 'Custom Item',
+                            type    : 'item',
+                            function: () => {
+                                alert('Custom function!');
+                            }
+                        };
+
+                        // Add the new nav item at the beginning of the navigation
+                        this._fuseNavigationService.addNavigationItem(newNavItem, 'start');
+                    }
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <div class="section-title">Remove the Dashboards menu item</div>
+
+        <div class="my-24">
+            <button mat-button mat-raised-button color="accent" (click)="removeDashboards()">
+                Remove Dashboards menu item
+            </button>
+        </div>
+
+        <p class="py-8 mb-48">
+            <fuse-highlight lang="typescript">
+                <textarea #source>
+                    removeDashboards(): void
+                    {
+                        this._fuseNavigationService.removeNavigationItem('dashboards');
+                    }
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <div class="section-title">Register a new navigation and toggle to it</div>
+
+        <div class="my-24">
+            <button mat-button mat-raised-button color="accent" (click)="registerNewNavigationAndToggle()">
+                Register a new navigation and toggle to it
+            </button>
+        </div>
+
+        <p class="py-8">
+            <fuse-highlight lang="typescript">
+                <textarea #source>
+                    registerNewNavigationAndToggle(): void
+                    {
+                        const adminNav = [
+                            {
+                                id      : 'admin',
+                                title   : 'Admin',
+                                type    : 'group',
+                                icon    : 'apps',
+                                children: [
+                                    {
+                                        id   : 'users',
+                                        title: 'Users',
+                                        type : 'item',
+                                        icon : 'person',
+                                        url  : '/apps/dashboards/analytics'
+                                    },
+                                    {
+                                        id   : 'payments',
+                                        title: 'Payments',
+                                        type : 'item',
+                                        icon : 'attach_money',
+                                        url  : '/apps/academy'
+                                    }
+                                ]
+                            },
+                            {
+                                id      : 'control-panel',
+                                title   : 'Control Panel',
+                                type    : 'group',
+                                icon    : 'apps',
+                                children: [
+                                    {
+                                        id   : 'cron-jobs',
+                                        title: 'Cron Jobs',
+                                        type : 'item',
+                                        icon : 'settings',
+                                        url  : '/apps/file-manager'
+                                    },
+                                    {
+                                        id   : 'maintenance-mode',
+                                        title: 'Maintenance Mode',
+                                        type : 'item',
+                                        icon : 'build',
+                                        url  : '/apps/todo'
+                                    }
+                                ]
+                            }
+                        ];
+
+                        // Register the new navigation
+                        this._fuseNavigationService.register('admin-nav', adminNav);
+
+                        // Set the current navigation
+                        this._fuseNavigationService.setCurrentNavigation('admin-nav');
+                    }
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+    </div>
+
+
+</div>
+

@@ -1,0 +1,150 @@
+<div id="installation" class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24" fxLayout="column" fxLayoutAlign="center start">
+
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="secondary-text s-18">home</mat-icon>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Documentation</span>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Getting Started</span>
+        </div>
+
+        <div class="h2 mt-16">Installation</div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <div class="main-title">Prerequisites</div>
+
+        <p class="message-box info">
+            This section will give you some information about what tools you will need. You can skip to the
+            <b>Installation</b> section to start installing the template. We already mentioned all the prerequisites and
+            how to install them in the <b>Installation</b> section.
+        </p>
+
+        <!-- ANGULAR CLI -->
+        <div class="section-title">Angular CLI</div>
+        <p>
+            Fuse uses <a href="https://github.com/angular/angular-cli" target="_blank">Angular CLI</a> for quickly
+            bootstrapping the application. You can check out the link for
+            more detailed information.
+        </p>
+
+        <p>
+            Simply, <em><b>Angular CLI</b></em> is a tool to initialize, develop, scaffold and maintain Angular
+            applications
+        </p>
+        <!-- / ANGULAR CLI -->
+
+        <!-- NODE.JS -->
+        <div class="section-title">Node.js</div>
+        <p>
+            To install and use Fuse, you will need <a href="https://nodejs.org/en/" target="_blank">Node.js</a>
+            installed to your computer. We won't get into too much detail about Node.js as it's out of the scope
+            of this documentation. Also you won't need to actually use Node.js, it's only required for the
+            development process.
+        </p>
+        <!-- / NODE.JS -->
+
+        <!-- GIT -->
+        <div class="section-title">Git</div>
+        <p>
+            To be able to install and use Fuse, you will also need
+            <a href="https://git-scm.com/" target="_blank">Git</a> installed to your computer. Git is required for
+            <b>npm</b> to work correctly.
+        </p>
+        <!-- / GIT -->
+
+        <!-- NPM -->
+        <div class="section-title">Npm - Package Manager</div>
+        <p>
+            Fuse uses <a href="https://www.npmjs.com/" target="_blank">npm</a> package manager to install and manage 3rd
+            party components and libraries.
+        </p>
+        <!-- / NPM -->
+
+        <div class="main-title">Installation</div>
+
+        <!-- INSTALLING PREREQUISITES -->
+        <div class="section-title">A. Installing Prerequisites</div>
+        <ol class="step-by-step">
+            <li>
+                Download and install the latest <a href="https://nodejs.org/en/" target="_blank">Node.js</a> from
+                its web site.
+            </li>
+
+            <li>
+                Download and install the latest <a href="https://git-scm.com/" target="_blank">Git</a> from its web
+                site.
+            </li>
+
+            <li>
+                To install the Angular CLI:
+
+                Open your favorite console application (Terminal, Command Prompt etc.), run the following command
+                and wait for it to finish:
+
+                <div class="mt-24">
+                    <fuse-highlight lang="bash" class="source-code" fxFlex="100%">
+                        <textarea #source hidden="hidden">
+                            npm install -g @angular/cli
+                        </textarea>
+                    </fuse-highlight>
+                </div>
+            </li>
+        </ol>
+        <p class="mt-24">
+            Now you are ready to install the Fuse.
+        </p>
+        <!-- / PREREQUISITES -->
+
+        <!-- / INSTALLING FUSE-->
+        <div class="section-title">B. Installing Fuse</div>
+        <ol class="step-by-step">
+            <li>
+                Unzip the zip file that you have downloaded from Themeforest. Inside the zip file, you will find the
+                Skeleton Project <b>(Fuse-x.x.x-skeleton.zip)</b> along with the Demo Project <b>(Fuse-x.x.x-demo.zip)</b>,
+                PSD designs and a readme file.
+            </li>
+            <li>
+                For this documentation, we will be using the Skeleton Project which is the exact same template minus
+                the demo content so you don't have to clean up the demo content.
+            </li>
+            <li>
+                Extract the contents of the zip file <b>(Fuse-x.x.x-skeleton.zip)</b> into a folder that you will
+                work within. For this documentation, we will refer that as "<em>your work folder</em>".
+            </li>
+            <li>
+                Open your favorite console application (Terminal, Command Prompt etc.), navigate into your work
+                folder, run the following command and wait for it to finish:
+
+                <div class="mt-24">
+                    <fuse-highlight lang="bash" class="source-code" fxFlex="100%">
+                        <textarea #source hidden="hidden">
+                            npm install
+                        </textarea>
+                    </fuse-highlight>
+                </div>
+
+                <p>
+                    This command will install all the required Node.js modules into the <b>node_modules</b>
+                    directory inside your work folder.
+                </p>
+            </li>
+
+            <p>
+                And now, you are ready to run the Fuse for the first time. Please continue to the
+                <a routerLink="/documentation/working-with-fuse/server">Working with Fuse</a> section.
+            </p>
+        </ol>
+        <!-- / INSTALLING FUSE-->
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

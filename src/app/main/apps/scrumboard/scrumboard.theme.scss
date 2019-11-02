@@ -1,0 +1,190 @@
+@mixin scrumboard-theme($theme) {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    $accent: map-get($theme, accent);
+
+    // List
+    scrumboard-board-list {
+
+        .list {
+
+            .list-header,
+            .list-content,
+            .list-footer {
+                background: map-get($background, app-bar);
+            }
+
+            .list-header {
+                border-bottom-color: map-get($foreground, divider);
+            }
+
+            .list-footer {
+                border-top-color: map-get($foreground, divider);
+            }
+
+        }
+    }
+
+    // Add list
+    scrumboard-board-add-list {
+
+        .new-list {
+            background: map-get($background, app-bar);
+
+            .new-list-form {
+
+                > input {
+                    background: map-get($background, app-bar);
+                    color: map-get($foreground, text);
+                }
+            }
+        }
+    }
+
+    // Board
+    scrumboard-board {
+
+        #board {
+
+            > .header {
+                background-color: map-get($accent, default);
+                color: map-get($accent, default-contrast);
+            }
+        }
+    }
+
+    // Add card directive
+    scrumboard-board-add-card {
+
+        .add-card-button {
+            background-color: map-get($background, app-bar);
+        }
+
+        .add-card-form-wrapper {
+            background-color: map-get($background, app-bar);
+        }
+    }
+
+    // Card
+    scrumboard-board-card {
+        background-color: map-get($background, card);
+        border-color: map-get($foreground, divider);
+
+        .list-card-details {
+
+            .list-card-badges {
+
+                .badge {
+                    background-color: rgba(0, 0, 0, 0.4);
+                    color: #FFFFFF;
+
+                    &.due-date {
+                        background-color: mat-color(mat-palette($mat-green));
+
+                        &.overdue {
+                            background-color: mat-color(mat-palette($mat-red));
+                        }
+                    }
+
+                    &.check-items {
+
+                        &.completed {
+                            background-color: mat-color(mat-palette($mat-green));
+                        }
+                    }
+                }
+            }
+        }
+
+        .list-card-footer {
+            border-top-color: map-get($foreground, divider);
+
+            .list-card-footer-item {
+                color: map-get($foreground, secondary-text);
+            }
+        }
+    }
+
+    // Card dialog
+    .scrumboard-card-dialog {
+
+        .mat-dialog-container {
+
+            .mat-dialog-content {
+
+                .sections {
+
+                    .section {
+                        border-bottom-color: map-get($foreground, divider);
+
+                        .attachments {
+
+                            .attachment {
+
+                                .attachment-preview {
+                                    background-color: map-get($background, card);
+                                }
+
+                                .attachment-content {
+
+                                    .attachment-time {
+                                        color: map-get($foreground, secondary-text);
+                                    }
+                                }
+                            }
+                        }
+
+                        .comments {
+
+                            .comment {
+
+                                .comment-bubble {
+                                    background-color: map-get($background, app-bar);
+                                    border-color: map-get($background, app-bar);
+
+                                    &:after,
+                                    &:before {
+                                        border-color: map-get($background, app-bar) transparent transparent transparent;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .scrumboard-labels-menu {
+
+        .mat-menu-content {
+
+            .views {
+
+                .view {
+
+                    > .header {
+                        border-bottom-color: map-get($foreground, divider);
+                    }
+                }
+            }
+        }
+    }
+
+    // Settings
+    scrumboard-board-settings {
+
+        .views {
+
+            .view {
+
+                > .header {
+                    border-bottom-color: map-get($foreground, divider);
+                    background: map-get($accent, default);
+                    color: map-get($accent, default-contrast);
+                }
+            }
+        }
+    }
+}

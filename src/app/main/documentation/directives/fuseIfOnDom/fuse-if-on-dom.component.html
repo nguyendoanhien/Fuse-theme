@@ -1,0 +1,40 @@
+<div class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24" fxLayout="column" fxLayoutAlign="center start">
+
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="secondary-text s-18">home</mat-icon>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Documentation</span>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Directives</span>
+        </div>
+
+        <div class="h2 mt-16">fuseIfOnDom</div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p>
+            <code>*fuseIfOnDom</code> is a helper directive that detaches and re-attaches the given element if it's
+            currently in the DOM. This will help in various cases such as charts that don't resize properly or
+            animations that don't wait to route to be loaded completely.
+        </p>
+
+        <div class="section-title">Usage</div>
+        <p class="py-8">
+            <fuse-highlight lang="html">
+                <textarea #source>
+                    <div *fuseIfOnDom></div>
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

@@ -1,0 +1,32 @@
+@mixin profile-photos-videos-theme($theme) {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    profile-photos-videos {
+
+        #photos-videos {
+
+            .period {
+
+                .period-title {
+
+                    .info {
+                        color: map-get($foreground, secondary-text);
+                    }
+                }
+
+                .period-media {
+
+                    .media {
+
+                        .title {
+                            background: rgba(0, 0, 0, 0.54);
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

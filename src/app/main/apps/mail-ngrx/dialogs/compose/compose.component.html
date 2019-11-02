@@ -1,0 +1,107 @@
+<div class="dialog-content-wrapper">
+    <mat-toolbar class="mat-accent m-0">
+        <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">New Message</span>
+            <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+
+        <form name="composeForm" [formGroup]="composeForm" class="compose-form" fxLayout="column" fxFlex>
+
+            <mat-form-field appearance="outline">
+                <mat-label>From</mat-label>
+                <input matInput name="from"
+                       formControlName="from"
+                       type="email">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>To</mat-label>
+                <input matInput name="to"
+                       formControlName="to"
+                       type="email" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Cc</mat-label>
+                <input matInput
+                       name="cc"
+                       formControlName="cc"
+                       type="email">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Bcc</mat-label>
+                <input matInput
+                       name="bcc"
+                       formControlName="bcc"
+                       type="email">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Subject</mat-label>
+                <input matInput name="subject"
+                       formControlName="subject">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Message</mat-label>
+                <textarea matInput name="message"
+                          formControlName="message"
+                          rows="6">
+                </textarea>
+            </mat-form-field>
+
+            <div class="attachment-list">
+
+                <div class="attachment" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div>
+                        <span class="filename">attachment-2.doc</span>
+                        <span class="size ml-4">(12 Kb)</span>
+                    </div>
+
+                    <button mat-icon-button aria-label="Delete attachment">
+                        <mat-icon class="s-16">close</mat-icon>
+                    </button>
+                </div>
+
+                <div class="attachment" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div>
+                        <span class="filename">attachment-1.jpg</span>
+                        <span class="size ml-4">(350 Kb)</span>
+                    </div>
+
+                    <button mat-icon-button aria-label="Delete attachment">
+                        <mat-icon class="s-16">close</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+        <div>
+            <button mat-raised-button
+                    color="accent"
+                    (click)="matDialogRef.close(['send',composeForm])"
+                    class="save-button"
+                    [disabled]="composeForm.invalid"
+                    aria-label="SAVE">
+                SEND
+            </button>
+
+            <button mat-icon-button matTooltip="Attach a file">
+                <mat-icon>attach_file</mat-icon>
+            </button>
+        </div>
+
+        <button mat-icon-button (click)="matDialogRef.close(['delete',composeForm])" aria-label="Delete"
+                matTooltip="Delete">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+</div>

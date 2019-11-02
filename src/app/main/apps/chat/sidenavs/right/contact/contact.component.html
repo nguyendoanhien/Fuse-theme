@@ -1,0 +1,38 @@
+<!-- SIDENAV HEADER -->
+<div class="sidenav-header" *ngIf="contact">
+
+    <!-- CONTACT TOOLBAR -->
+    <mat-toolbar class="accent">
+
+        <!-- TOOLBAR TOP -->
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+
+            <div>Contact Info</div>
+
+            <button mat-icon-button fuseMatSidenavToggler="chat-right-sidenav" aria-label="close">
+                <mat-icon>close</mat-icon>
+            </button>
+
+        </mat-toolbar-row>
+        <!-- / TOOLBAR TOP -->
+
+        <!-- TOOLBAR BOTTOM -->
+        <mat-toolbar-row class="toolbar-bottom" fxLayout="column" fxLayoutAlign="center center">
+            <img [src]="contact.avatar" class="avatar contact-avatar huge" alt="{{contact.name}}"/>
+            <div class="contact-name my-8">{{contact.name}}</div>
+        </mat-toolbar-row>
+        <!-- / TOOLBAR BOTTOM -->
+
+    </mat-toolbar>
+    <!-- / CONTACT TOOLBAR -->
+</div>
+
+<!-- SIDENAV CONTENT -->
+<div class="sidenav-content py-32 px-24" fxFlex fxLayout="column" *ngIf="contact">
+
+    <!-- CONTACT MOOD -->
+    <div class="secondary-text mb-8">Mood</div>
+    <div>{{contact.mood}}</div>
+    <!-- / CONTACT MOOD -->
+
+</div>

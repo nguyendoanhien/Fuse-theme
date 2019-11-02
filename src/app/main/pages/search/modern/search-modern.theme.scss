@@ -1,0 +1,38 @@
+@mixin search-modern-theme($theme) {
+
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+
+    // Search Modern
+    search-modern {
+
+        .header {
+
+            .search-wrapper {
+                background: map-get($background, card);
+
+                .search {
+
+                    mat-icon {
+                        color: map-get($foreground, secondary-text);
+                    }
+
+                    input {
+                        background: map-get($background, card);
+                        color: map-get($foreground, text);
+                    }
+                }
+            }
+        }
+
+        .content {
+
+            .results {
+
+                .result-item {
+                    background: map-get($background, card);
+                }
+            }
+        }
+    }
+}

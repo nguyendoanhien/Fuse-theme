@@ -1,0 +1,1449 @@
+<div id="changelog" class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24" fxLayout="column" fxLayoutAlign="center start">
+
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="secondary-text s-18">home</mat-icon>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Documentation</span>
+        </div>
+
+        <div class="h2 mt-16">Changelog</div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <div class="changelog">
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v8.0.0                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v8.0.0</span>
+                    <span class="date">2019.05.30</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Updated Angular to 8.0.0</li>
+                            <li>Updated Angular Material to 8.0.0</li>
+                            <li>Updated various other packages to latest versions</li>
+                            <li>Updated various AngularCLI related files</li>
+                            <li>Updated various project related files</li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>(Mail Ngrx) Responsive styles</li>
+                        </ul>
+                    </div>
+
+                    <div class="improved">
+                        <span class="title">Improved</span>
+                        <ul>
+                            <li>
+                                (Animations) Added *ngIf support to the FadeInOut animation
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v7.1.0                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v7.1.0</span>
+                    <span class="date">2019.01.09</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Updated Angular to 7.2.1</li>
+                            <li>Updated Angular Material to 7.2.1</li>
+                            <li>Updated ngrx to 7.0.0</li>
+                            <li>Updated typescript to 3.2.2</li>
+                            <li>Updated various other packages to latest versions</li>
+                            <li>Updated various AngularCLI related files</li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>(Calendar) Small style fix</li>
+                            <li>(ngx-datatable) Sort arrow icons are not showing correctly and they are not aligned</li>
+                            <li>(Flex Layout) ObservableMedia is depreciated - replaced with MediaObserver</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v7.0.1                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v7.0.1</span>
+                    <span class="date">(2018-11-16)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Updated Angular to 7.0.4</li>
+                            <li>Updated Angular Material to 7.0.4</li>
+                            <li>Updated various other packages to latest versions</li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>(Docs) Color picker input is wrong</li>
+                            <li>(FuseNavigation) Trigger observables on item add</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v7.0.0                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v7.0.0</span>
+                    <span class="date">(2018-10-19)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="breaking-changes">
+                        <span class="title">Breaking Changes</span>
+                        <ul>
+                            <li>
+                                Removed <code>media-breakpoint-up</code>, <code>media-breakpoint-down</code>,
+                                <code>media-breakpoint-only</code> and <code>media-breakpoint-between</code> scss
+                                mixins. Use Material design breakpoints with <code>media-breakpoint</code> mixin.
+                                Breakpoint definitions can be found in
+                                <code>@fuse/scss/partials/_breakpoints.scss</code>.
+
+                                <br><br>
+                                Example:
+                                <br>
+                                <code>media-breakpoint('sm')</code> // Only small
+                                <br>
+                                <code>media-breakpoint('lt-sm')</code> // Less than small
+                                <br>
+                                <code>media-breakpoint('gt-sm')</code> // Greater than small
+                                <br><br>
+                            </li>
+                            <li>
+                                Updating the navigation directly from the object no longer works since
+                                <code>FuseNavigation</code> now uses <code>OnPush</code> change detection strategy for
+                                performance reasons. Use <code>updateNavigationItem</code> method from
+                                <code>FuseNavigationService</code> to update the navigation items.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Updated Angular to 7.0.0</li>
+                            <li>Updated Angular Material to 7.0.0</li>
+                            <li>Updated Typescript to 3.1.3</li>
+                            <li>Updated various other libraries</li>
+                            <li>Modernization:
+                                <ul>
+                                    <li>Material Outline icons</li>
+                                    <li>'Muli' as the primary font face</li>
+                                    <li>Outline form fields</li>
+                                    <li>Modern navigation</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>(Calendar) _matDialogRef is not defined</li>
+                            <li>(Scrumboard) _matDialogRef is not defined</li>
+                            <li>(Contacts) birthday field ignored while saving</li>
+                        </ul>
+                    </div>
+
+                    <div class="improved">
+                        <span class="title">Improved</span>
+                        <ul>
+                            <li>
+                                (FuseNavigation) Use <code>ChangeDetection.OnPush</code> to increase the performance.
+                                Now you can load hundreds of thousands navigation item and it won't mind.
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v6.3.1                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v6.3.1</span>
+                    <span class="date">(2018-08-30)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Updated Angular to 6.1.6</li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>(Toolbar) Cannot use the custom toolbar background color</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v6.3.0                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v6.3.0</span>
+                    <span class="date">(2018-08-28)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="breaking-changes">
+                        <span class="title">Breaking Changes</span>
+                        <ul>
+                            <li>
+                                (Color Helpers) Removed 'mat-' prefix and '-bg' suffix from the color helpers that sets
+                                both background and foreground colors (i.e. mat-primary-bg -> primary , mat-red-bg ->
+                                red).
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Updated Angular to 6.1.4</li>
+                            <li>Updated Angular Material to 6.4.6</li>
+                            <li>Updated various other packages</li>
+                            <li>Dark color theme</li>
+                            <li>Easier way of working multiple Angular Material color themes</li>
+                            <li>Various performance optimizations</li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>(ECommerce) Order page custom scrollbar is not working</li>
+                            <li>(Quick Panel) Custom scrollbar is not working</li>
+                            <li>(Theme Options) Side panel settings are not resetting when layout changes</li>
+                            <li>
+                                (Progress Bar) Progress bar doesn't hide when NavigationCancel or NavigationError events
+                                happen
+                            </li>
+                            <li>(Layouts) "transform: translateZ(0)" causes "position: fixed" to break</li>
+                            <li>(Layouts) Some layouts are not working correctly on IE11</li>
+                            <li>(Contacts) _matDialogRef is not defined</li>
+                            <li>
+                                (FuseConfig) Resetting the config on lazily loaded routes causes the layout items to
+                                show/hide before the actual content loads
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v6.2.4                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v6.2.4</span>
+                    <span class="date">(2018-07-14)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="breaking-changes">
+                        <span class="title">Breaking Changes</span>
+                        <ul>
+                            <li>
+                                (FuseLoadingBarService) Removed in favor of the new FuseProgressBar component
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Updated Angular to 6.0.9</li>
+                            <li>Updated various other packages</li>
+                            <li>
+                                (FuseProgressBar) New component and its service for globally controlling a progress bar
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="improved">
+                        <span class="title">Improved</span>
+                        <ul>
+                            <li>(Navbar) Moved navbar styles to the variants for better granular control</li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>(Global) Scrolling is not smooth on iOS devices</li>
+                            <li>(Horizontal Layout) Navbar covers the entire screen</li>
+                            <li>(Boxed Layout) Boxed layout has alignment issues</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v6.2.3                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v6.2.3</span>
+                    <span class="date">(2018-07-13)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>(Navbar) Doesn't scroll on Firefox, IE & Edge</li>
+                            <li>(Navbar) IE11 style fixes</li>
+                            <li>(Chat Panel) IE11 style fixes</li>
+                        </ul>
+                    </div>
+
+                    <div class="improved">
+                        <span class="title">Improved</span>
+                        <ul>
+                            <li>(Chat Panel) Style and logic tweaks</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v6.2.2                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v6.2.2</span>
+                    <span class="date">(2018-07-12)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>Added the missing 'is-mobile' check back to the AppComponent</li>
+                            <li>Scrollbar styles are being modified in some mobile devices</li>
+                            <li>(Chat Panel) Mobile scrolling and layout issues</li>
+                            <li>
+                                (Navbar) Added classes to the Fuse Sidebar components that contains the navbar to
+                                prevent style leak
+                            </li>
+                            <li>(Toolbar) Removed unnecessary chat panel toggle method</li>
+                        </ul>
+                    </div>
+
+                    <div class="improved">
+                        <span class="title">Improved</span>
+                        <ul>
+                            <li>(Skeleton) Removed chat panel from skeleton as it's more like an app</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v6.2.1                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v6.2.1</span>
+                    <span class="date">(2018-07-12)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>
+                                (Layout) Added SidePanel position to the layout for controlling Chat Panel and possible
+                                other panels
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>(Chat Panel) Mobile width issues</li>
+                        </ul>
+                    </div>
+
+                    <div class="improved">
+                        <span class="title">Improved</span>
+                        <ul>
+                            <li>Removed chat panel from auth pages using layout options</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v6.2.0                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v6.2.0</span>
+                    <span class="date">(2018-07-11)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Updated Angular to 6.0.7</li>
+                            <li>Updated Angular Material to 6.3.3</li>
+                            <li>Updated various other packages</li>
+                            <li>Updated Angular material examples</li>
+                            <li>New Chat Panel sidebar</li>
+                            <li>(Navbar) New style variants for the Navbar</li>
+                            <li>(FuseSidebar) Added 'foldedChanged' & 'openedChanged' outputs</li>
+                            <li>(FuseNavigation) Ability to add custom classes to the navigation items</li>
+                            <li>(FuseLoadingBarService) New service for showing/hiding the loading bar easily</li>
+                        </ul>
+                    </div>
+
+                    <div class="improved">
+                        <span class="title">Improved</span>
+                        <ul>
+                            <li>Replaced cdkTable with matTable since Table is now a proper component in Material</li>
+                            <li>(E-Commerce) Added sticky headers to the tables</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v6.1.1                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v6.1.1</span>
+                    <span class="date">(2018-06-17)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>
+                                (Fuse Sidebar) Folded status doesn't work correctly when there are multiple instances
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v6.1.0                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v6.1.0</span>
+                    <span class="date">(2018-06-16)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="breaking-changes">
+                        <span class="title">Breaking Changes</span>
+                        <ul>
+                            <li>New layout system and layouts</li>
+                            <li>Replaced all mat-sidenav components with fuse-sidebar on apps and pages</li>
+                            <li>Navigation item type 'collapse' renamed to 'collapsable'</li>
+                        </ul>
+                    </div>
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Navigation service for easier modifications and for easier swapping</li>
+                            <li>fusePerfectScrollbar now accepts a boolean to control the scrollbar's status</li>
+                            <li>fusePerfectScrollbarOptions for Perfect Scrollbar options</li>
+                            <li>Added an extra Angular Material color theme to the styles.scss file as an example</li>
+                        </ul>
+                    </div>
+
+                    <div class="improved">
+                        <span class="title">Improved</span>
+                        <ul>
+                            <li>Updated Angular and Angular Material</li>
+                            <li>Updated various other packages</li>
+                            <li>Improved the codebase and added a lot code comments</li>
+                            <li>Improved the documentation and moved them into the Demo app</li>
+                            <li>Changed the fuse-sidebar "align" input to "position"</li>
+                            <li>Improved the page layouts</li>
+                            <li>Navbar toggle button and fold button alignment on right navbar</li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>Set the selected language in toolbar from the translation service</li>
+                            <li>Horizontal nav titles are collapsing on IE11</li>
+                            <li>Angular Material card images not showing correctly</li>
+                            <li>Other small fixes and improvements</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v6.0.1                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v6.0.1</span>
+                    <span class="date">(2018-05-10)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Updated ngRx to 6.0.0-beta.1</li>
+                            <li>Updated various other libraries to Angular 6 compatible versions</li>
+                            <li>Updated demo code to make it compatible with RxJS 6.0.0</li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>Fixed: Scrumboard "Add a list" button is draggable and causing an error</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v6.0.0                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v6.0.0</span>
+                    <span class="date">(2018-05-06)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Updated Angular to 6.0.0</li>
+                            <li>Updated Angular Material to 6.0.0</li>
+                            <li>Updated Angular CLI to 6.0.0</li>
+                            <li>Updated various other packages</li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>Fixed: Material icon button colors are being overwritten by Fuse</li>
+                            <li>Fixed: Contacts app edit dialog issues</li>
+                            <li>Fixed: Navigation sidebar doesn't scroll on mobile devices</li>
+                            <li>Fixed: Horizontal navigation doesn't have 'hidden' and 'custom function' features like
+                                the vertical
+                                navigation
+                            </li>
+                            <li>Fixed: Search bar close icon alignment</li>
+                            <li>Fixed: Profile page header background image doesn't cover the header</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v5.2.10                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v5.2.10</span>
+                    <span class="date">(2018-03-10)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>Fixed: Sidebar folded bugs</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v5.2.9                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v5.2.9</span>
+                    <span class="date">(2018-03-10)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>Fixed: Sidebar folded doesn't work correctly if activated programmatically</li>
+                            <li>Fixed: Skeleton AoT building issues</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v5.2.8                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v5.2.8</span>
+                    <span class="date">(2018-03-08)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="breaking-changes">
+                        <span class="title">Breaking changes</span>
+                        <ul>
+                            <li>
+                                <code>core</code> folder moved into the <code>@fuse</code> allowing project owners to
+                                have their own core folder inside the app directory. Also allows for better separation
+                                in between your app and core Fuse features.
+                            </li>
+                            <li>
+                                Removed Angular Material module that includes all Material components at once and added
+                                imports for all modules separately. From now on, you must include the Material
+                                components that you have used in your components manually in that component's module
+                                file. This was a required changed as it does increase the development performance as
+                                well as decrease the building and the AoT building times.
+                            </li>
+                            <li>
+                                Changed how navigation model works. Now it's just a simple const that being exported
+                                from the <code>navigation.ts</code> file. It allows for easier swapping and editing of
+                                the navigation.
+                            </li>
+                            <li>
+                                New sidebar component. Allows us to move main navigation sidebar logic out of your way.
+                                Check out the Demo app to see the full usage.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Updated Angular to 5.2.8</li>
+                            <li>Updated Angular Material to 5.2.4</li>
+                            <li>Updated Angular CLI to 1.7.3</li>
+                            <li>Matched the Fuse version number with the Angular</li>
+                            <li>No more Fuse2, the package name update to Fuse since the version number matched to
+                                Angular's.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>Fixed various issues with Fuse Angular Material Color Picker component.</li>
+                            <li>Fixed various other small layout and logic bugs.</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v1.3.6                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v1.3.6</span>
+                    <span class="date">(2018-02-06)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Updated Angular to 5.2.3</li>
+                            <li>Updated Angular Material to 5.1.1</li>
+                            <li>Updated Angular CLI to 1.6.7</li>
+                            <li>New Analytics dashboard design</li>
+                            <li>Added Chart.js examples through the new dashboard</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v1.3.5                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v1.3.5</span>
+                    <span class="date">(2018-01-24)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Updated ngRx to 5.0.0</li>
+                            <li>Updated Angular CLI to 1.6.5 to fix the wrong devkit version issue</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v1.3.4                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v1.3.4</span>
+                    <span class="date">(2018-01-18)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Updated Angular to 5.2.1</li>
+                            <li>Updated Angular Material to 5.1.0</li>
+                            <li>Updated various other packages to latest versions</li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>Quick Panel is too wide for smaller screens</li>
+                            <li>Academy App course step doesn't scroll on mobile</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v1.3.3                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v1.3.3</span>
+                    <span class="date">(2018-01-11)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Updated Angular to 5.2.0</li>
+                            <li>Updated Angular Material to 5.0.4</li>
+                            <li>Updated various other packages to latest versions</li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v1.3.2                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v1.3.2</span>
+                    <span class="date">(2018-01-09)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Updated Angular to 5.1.3</li>
+                            <li>Updated Angular Material to 5.0.3</li>
+                            <li>Updated various other packages to latest versions</li>
+                            <li>Added new card designs</li>
+                            <li>Added new fuse-highlight component</li>
+                            <li>Added lazy load to various other demo modules to make the demo project faster</li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>BREAKING CHANGE: Cards are moved to custom classes</li>
+                            <li>BREAKING CHANGE: Removed fuse-hljs (Use fuse-highlight instead)</li>
+                            <li>Various other small fixed and enhancements</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v1.3.1                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v1.3.1</span>
+                    <span class="date">(2018-01-02)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Updated Angular to 5.1.2</li>
+                            <li>Updated Angular Material to 5.0.2</li>
+                            <li>Updated various other packages to latest versions</li>
+                            <li>New Academy app</li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>Mail compose dialog responsive issues</li>
+                            <li>Fixed for various other bugs</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v1.3.0                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v1.3.0</span>
+                    <span class="date">(2017-12-15)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Updated Angular to 5.1.0</li>
+                            <li>Updated Angular Material to 5.0.1</li>
+                            <li>Updated various other packages to latest versions</li>
+                            <li>New NgRx Sample app (Mail-NgRx app)</li>
+                            <li>Form stepper examples</li>
+                            <li>Added support for translations in navigation items</li>
+                            <li>Moved the navigation.model.ts into its own folder</li>
+                            <li>Added badge support for collapsable navigation items</li>
+                            <li>Initialize the navigation from app.component rather then navigation.service</li>
+                            <li>Trigger expand/collapse of the navigation on ngOnInit to update the active item</li>
+                            <li>Replaced Calendar images</li>
+                            <li>Added custom validator for password matching in Auth forms</li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>Custom scrollbars are showing in print</li>
+                            <li>Various small issues in Auth pages</li>
+                            <li>ngx-color-picker various style issues</li>
+                            <li>Make sure the nav item has children before trying to get them</li>
+                            <li>Renamed the KnowledgeBase demo module</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v1.2.3                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v1.2.3</span>
+                    <span class="date">(2017-11-28)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>Sidenav helper causes issues in mobile media steps</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v1.2.2                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v1.2.2</span>
+                    <span class="date">(2017-11-27)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Updated Angular to 5.0.3</li>
+                            <li>Updated Angular Material to 5.0.0-rc.1</li>
+                            <li>Updated Flex Layout</li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>Contacts app various issues</li>
+                            <li>Duplicate content in Profile page tabs</li>
+                            <li>Folded status of the Navbar shouldn't brake the layout if Horizontal Navbar is active
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v1.2.1                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v1.2.1</span>
+                    <span class="date">(2017-11-13)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Updated Angular to 5.0.1</li>
+                            <li>Updated Angular Material to 5.0.0-rc0</li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>Compatibility fixed for Angular Material 5.0.0-rc0</li>
+                            <li>Scrumboard label selector not working properly</li>
+                            <li>Todo detail style refinements</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v1.2.0                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v1.2.0</span>
+                    <span class="date">(2017-11-06)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>BREAKING CHANGE: Updated Angular to 5.0.0 (clean installation recommended)</li>
+                            <li>Updated Angular Flex Layout to 2.0.0-beta.10</li>
+                            <li>E-Commerce App</li>
+                            <li>File based translation service and its implementation example</li>
+                            <li>Added Material Design cards</li>
+                            <li>New 'Knowledge Base' page design</li>
+                            <li>Added Tabbed versions of the Carded Sidenav layouts</li>
+                            <li>Added an ability to control the folded status of the vertical navigation via
+                                FuseConfig
+                            </li>
+                            <li>
+                                Added 'exactMatch' property to the Navigation Model for more control over the active
+                                item
+                                highlighting
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>Angular 5 Compatibility fixed</li>
+                            <li>Various iOS10 scrolling issues</li>
+                            <li>FAQ page header shrinks on small heights</li>
+                            <li>Stagger animation doesn't have 'optional' parameter</li>
+                            <li>Toolbar navigation toggle button doesn't actually toggle the navigation bar</li>
+                            <li>Nav items cannot be put on the root in Horizontal menu</li>
+                            <li>Vertical navbar puts out wrong classes when its toggled</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v1.1.2                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v1.1.2</span>
+                    <span class="date">(2017-10-16)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>BREAKING CHANGE: Updated Angular Material to 2.0.0-beta.12</li>
+                            <li>Updated Angular to 4.4.5</li>
+                            <li>New Reset and Forgot password page styles</li>
+                            <li>Added 'agm-map', Google Maps component library.</li>
+                            <li>New pricing page design</li>
+                            <li>New mail confirmation page</li>
+                            <li>New FAQ page design</li>
+                            <li>Added new methods for accessing and updating specific nav items</li>
+                            <li>Added the ability to add custom functions to the nav items</li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>Print styles and page breaks</li>
+                            <li>Inconsistent font sizes across elements</li>
+                            <li>Toolbar search bar button collapses on close</li>
+                            <li>iOS scrolling issues</li>
+                            <li>All 'mat-select' elements wrapped with 'mat-form-field' and fixed related issues</li>
+                            <li>Auth page v2 styles iOS height issues</li>
+                            <li>Chat view is not scrollable on mobile</li>
+                            <li>Terms & Conditions checkbox styling issues on Auth forms</li>
+                            <li>Some page layout header heights not correct on small devices</li>
+                            <li>Lock page layout issues</li>
+                            <li>Calendar & Scrumboard datepicker issues</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v1.1.1                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v1.1.1</span>
+                    <span class="date">(2017-09-28)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Updated Angular Material to 2.0.0-beta.11</li>
+                            <li>Nested grouping in navigation</li>
+                            <li>Added Angular Material elements showcase</li>
+                        </ul>
+                    </div>
+
+                    <div class="improved">
+                        <span class="title">Improved</span>
+                        <ul>
+                            <li>Replaced Http module with HttpClient</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v1.1.0                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v1.1.0</span>
+                    <span class="date">(2017-09-22)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Updated Angular to 4.4.3</li>
+                            <li>Added HMR config for starting the ng serve with HMR support</li>
+                            <li>Added a way to swap navigation models on the fly</li>
+                            <li>Enhanced animations for all apps and some pages</li>
+                            <li>Custom perfect scrollbar directive</li>
+                            <li>Navigation bar backdrop for closing the navigation easily on mobile</li>
+                        </ul>
+                    </div>
+
+                    <div class="improved">
+                        <span class="title">Improved</span>
+                        <ul>
+                            <li>BREAKING CHANGE: Completely re-structured the navigation model</li>
+                            <li>Locked dev dependency versions to prevent majority of the npm update errors</li>
+                            <li>Updated perfect scrollbar</li>
+                            <li>Calendar, Mail, ToDo and Chat app visual and structural Improved</li>
+                            <li>Disabled the perfect-scrollbar on mobile completely</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v1.0.5                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v1.0.5</span>
+                    <span class="date">(2017-09-12)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Horizontal Navigation</li>
+                            <li>Boxed Layout</li>
+                            <li>New fade-in-out animation to Animations service</li>
+                        </ul>
+                    </div>
+
+                    <div class="improved">
+                        <span class="title">Improved</span>
+                        <ul>
+                            <li>Scrumboard & Chat style Improved</li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>Removed unused md2 library from skeleton</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v1.0.4                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v1.0.4</span>
+                    <span class="date">(2017-08-31)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Scrumboard App</li>
+                        </ul>
+                    </div>
+
+                    <div class="improved">
+                        <span class="title">Improved</span>
+                        <ul>
+                            <li>Responsive Improved, many more will come</li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>Dashboard sidenav not correctly working on some mobile devices</li>
+                            <li>Couple MS Edge issues</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v1.0.3                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v1.0.3</span>
+                    <span class="date">(2017-08-30)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>Reverted to Angular 4.3.5 since animations are not correctly working on 4.3.6</li>
+                            <li>Firefox and Edge scroll issues</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v1.0.2                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v1.0.2</span>
+                    <span class="date">(2017-08-30)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="improved">
+                        <span class="title">Improved</span>
+                        <ul>
+                            <li>Angular Material v2.0.0-beta.10 Compatibility</li>
+                            <li>Upgraded to Angular 4.3.6</li>
+                            <li>Shortcuts component now stores the shortcuts in cookies</li>
+                            <li>Added print styles</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v1.0.1                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v1.0.1</span>
+                    <span class="date">(2017-08-24)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="improved">
+                        <span class="title">Improved</span>
+                        <ul>
+                            <li>New router animations</li>
+                        </ul>
+                    </div>
+
+                    <div class="fixed">
+                        <span class="title">Fixed</span>
+                        <ul>
+                            <li>Fixed AoT compiler issues</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <!-- @ v1.0.0                                                                                      -->
+            <!-- --------------------------------------------------------------------------------------------- -->
+            <div class="entry">
+
+                <div class="title">
+                    <span class="version">v1.0.0</span>
+                    <span class="date">(2017-08-23)</span>
+                </div>
+
+                <div class="groups">
+
+                    <div class="new">
+                        <span class="title">New</span>
+                        <ul>
+                            <li>Initial Release</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

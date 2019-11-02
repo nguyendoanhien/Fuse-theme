@@ -1,0 +1,72 @@
+<div class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24" fxLayout="column" fxLayoutAlign="center start">
+
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="secondary-text s-18">home</mat-icon>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Documentation</span>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Working with Fuse</span>
+        </div>
+
+        <div class="h2 mt-16">Theme Layouts</div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p>
+            Fuse comes with variety of different Theme Layouts which you can see and try them from the configuration
+            sidebar (Click on the animated, spinning cog button from the right side of your screen). These layouts are
+            accessible from <b>/src/app/layouts</b> directory and you can modify them however you like.
+        </p>
+
+        <p>
+            Each layout has its own options. Those options allow you to configure the layout elements such as Toolbar,
+            Footer and Navbar.
+        </p>
+
+        <div class="section-title">Directory Structure</div>
+
+        <p>
+            Inside the <b>/layouts</b> directory, you will find the following structure:
+        </p>
+
+        <ul>
+            <li>
+                <b>/components</b>: Contains the layout elements such as Toolbar, Footer and Navbar.
+            </li>
+            <li>
+                <b>/vertical</b>: Contains the layout styles with vertical navigation option.
+            </li>
+            <li>
+                <b>/horizontal</b>: Contains the layout styles with horizontal navigation option.
+            </li>
+        </ul>
+
+        <p class="message-box info">
+            Each layout loads the layout elements from <b>/components</b> directory. That means, any modifications
+            you will make to those elements, will be avilable acrosss the layouts.
+        </p>
+
+        <div class="section-title">Configuring the Layout</div>
+
+        <p>
+            Fuse has a powerful layout system which allows you to configure and use a different layout per route. Each
+            route can have its own layout configuration meaning that it's very easy to have pages like login page where
+            there isn't any toolbar or navbar showing, without leaving the Fuse.
+        </p>
+
+        <p>
+            You can get more information about the <b>Fuse Config Service</b> and its usage from
+            <a routerLink="/documentation/services/fuse-config">Config</a> documantation page.
+        </p>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

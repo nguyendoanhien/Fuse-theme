@@ -1,0 +1,43 @@
+<div class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24" fxLayout="column" fxLayoutAlign="center start">
+
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="secondary-text s-18">home</mat-icon>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Documentation</span>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Directives</span>
+        </div>
+
+        <div class="h2 mt-16">fuseInnerScroll</div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p>
+            <code>fuseInnerScroll</code> is a class directive that can be used in page layouts. It will lock the
+            container's scroll allowing for individual scroll such as sidebar and the content itself.
+        </p>
+
+        <p class="message-box warning">
+            This directive will only work with Fuse's pre-built page layouts and it's a class directive.
+        </p>
+
+        <div class="section-title">Usage</div>
+        <p class="py-8">
+            <fuse-highlight lang="html">
+                <textarea #source>
+                    <div class="page-layout carded left-sidebar inner-scroll">
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

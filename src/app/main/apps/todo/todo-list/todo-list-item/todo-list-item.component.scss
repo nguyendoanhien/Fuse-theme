@@ -1,0 +1,111 @@
+@import 'src/@fuse/scss/fuse';
+
+todo-list-item {
+    display: block;
+    position: relative;
+    padding: 16px 16px 16px 24px;
+    border-bottom: 1px solid;
+    text-transform: none;
+    cursor: pointer;
+    flex-shrink: 0;
+
+    .handle {
+        height: 48px;
+        line-height: 48px;
+        cursor: move;
+        user-select: none;
+    }
+
+    &.move-disabled {
+
+        .handle {
+            display: none;
+        }
+    }
+
+    .tags {
+
+        .tag {
+            font-size: 11px;
+            border-radius: 2px;
+            margin: 8px 4px 0 0;
+            padding: 3px 8px;
+
+            .tag-color {
+                width: 8px;
+                height: 8px;
+                margin-right: 8px;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    &.completed {
+
+        .title,
+        .notes {
+            text-decoration: line-through;
+        }
+    }
+
+    .info {
+        margin: 0 16px 0 8px;
+
+        .title {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .notes {
+            margin-top: 4px;
+        }
+    }
+
+    .buttons {
+
+        .is-starred {
+            margin: 0 0 0 16px;
+        }
+
+        .is-important {
+            margin: 0;
+        }
+    }
+
+    &:not(.has-handle):not(.move-disabled),
+    &.has-handle [ngxdraghandle],
+    &.has-handle [ngxDragHandle] {
+        cursor: move;
+    }
+
+    .ngx-dnd-content {
+        user-select: none;
+    }
+
+    &.gu-mirror {
+        position: fixed !important;
+        margin: 0 !important;
+        z-index: 9999 !important;
+        opacity: 0.8;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+        filter: alpha(opacity=80);
+        @include mat-elevation(7);
+    }
+
+    &.gu-hide {
+        display: none !important;
+    }
+
+    &.gu-unselectable {
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+    }
+
+    &.gu-transit {
+        opacity: 0.2;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+        filter: alpha(opacity=20);
+    }
+}

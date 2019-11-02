@@ -1,0 +1,10 @@
+<div *ngIf="mails.length === 0" fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+    <span class="no-messages-text hint-text">{{ 'MAIL.NO_MESSAGES' | translate }}</span>
+</div>
+
+<div class="mail-list" [@animateStagger]="{value:'50'}">
+    <mail-list-item matRipple *ngFor="let mail of mails" [mail]="mail" (click)="readMail(mail.id)"
+                    [ngClass]="{'current-mail':mail?.id == currentMail?.id}"
+                    [@animate]="{value:'*',params:{y:'100%'}}">
+    </mail-list-item>
+</div>

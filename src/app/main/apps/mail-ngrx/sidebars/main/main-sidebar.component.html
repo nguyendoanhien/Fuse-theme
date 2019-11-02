@@ -1,0 +1,72 @@
+<!-- SIDEBAR HEADER -->
+<div fxLayout="column" fxLayoutAlign="space-between start"
+     class="header accent p-24 pb-4">
+
+    <div class="logo" fxFlex fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon class="logo-icon s-32">mail</mat-icon>
+        <span class="logo-text">MailboxNgrx</span>
+    </div>
+
+    <div class="account" fxLayout="column">
+        <div class="title">John Doe</div>
+        <mat-form-field floatLabel="never">
+            <mat-select class="account-selection" placeholder="Mail Selection"
+                        [ngModel]="selectedAccount">
+                <mat-option *ngFor="let account of (accounts | keys)" [value]="account.key">
+                    {{account.value}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+</div>
+<!-- / SIDEBAR HEADER -->
+
+<!-- SIDEBAR CONTENT -->
+<div class="content" fusePerfectScrollbar>
+
+    <div class="px-24 pt-32 pb-12">
+        <button mat-raised-button
+                class="mat-accent compose-dialog-button w-100-p"
+                (click)="composeDialog()"
+                aria-label="Compose">
+            {{ 'MAIL.COMPOSE' | translate }}
+        </button>
+    </div>
+
+    <div class="nav material2">
+
+        <div class="nav-subheader">{{ 'MAIL.FOLDERS' | translate }}</div>
+
+        <div class="nav-item" *ngFor="let folder of (folders$ | async)">
+            <a class="nav-link" matRipple [routerLink]="'/apps/mail-ngrx/' + folder.handle"
+               [routerLinkActive]="['active', 'accent']">
+                <mat-icon class="nav-link-icon" *ngIf="folder.icon">{{folder.icon}}</mat-icon>
+                <span>{{folder.title}}</span>
+            </a>
+        </div>
+
+        <div class="nav-subheader">{{ 'MAIL.FILTERS' | translate }}</div>
+
+        <div class="nav-item" *ngFor="let filter of (filters$ | async)">
+            <a class="nav-link" matRipple [routerLink]="'/apps/mail-ngrx/filter/' + filter.handle"
+               [routerLinkActive]="['active', 'accent']">
+                <mat-icon class="nav-link-icon" [ngClass]="filter.color" *ngIf="filter.icon">{{filter.icon}}</mat-icon>
+                <span>{{filter.title}}</span>
+            </a>
+        </div>
+
+        <div class="nav-subheader">{{ 'MAIL.LABELS' | translate }}</div>
+
+        <div class="nav-item" *ngFor="let label of (labels$ | async)">
+            <a class="nav-link" matRipple [routerLink]="'/apps/mail-ngrx/label/' + label.handle"
+               [routerLinkActive]="['active', 'accent']">
+                <mat-icon class="nav-link-icon" [ngStyle]="{'color':label.color}">label</mat-icon>
+                <span>{{label.title}}</span>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+<!-- / SIDEBAR CONTENT -->

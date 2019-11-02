@@ -1,0 +1,94 @@
+<div id="todo" class="page-layout carded left-sidebar inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- SIDEBAR -->
+    <fuse-sidebar class="sidebar" name="todo-main-sidebar" position="left" lockedOpen="gt-md">
+        <todo-main-sidebar></todo-main-sidebar>
+    </fuse-sidebar>
+    <!-- / SIDEBAR -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- CONTENT HEADER -->
+        <div class="header" fxLayout="row" fxLayoutAlign="start center">
+
+            <div class="search-wrapper" fxFlex fxLayout="row" fxLayoutAlign="start center">
+
+                <button mat-icon-button class="sidebar-toggle" fxHide.gt-md
+                        (click)="toggleSidebar('todo-main-sidebar')">
+                    <mat-icon>menu</mat-icon>
+                </button>
+
+                <div class="search" fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon class="secondary-text">search</mat-icon>
+                    <input [formControl]="searchInput" placeholder="Search for a task" fxFlex>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card" [ngClass]="{'current-todo-selected':currentTodo}">
+
+            <!-- CONTENT TOOLBAR -->
+            <div class="toolbar px-24 py-8">
+
+                <div class="todo-selection" fxFlex="row" fxLayoutAlign="start center">
+                    <mat-checkbox (click)="toggleSelectAll()" [checked]="hasSelectedTodos"
+                                  [indeterminate]="isIndeterminate"></mat-checkbox>
+
+                    <button mat-icon-button [matMenuTriggerFor]="selectMenu">
+                        <mat-icon>arrow_drop_down</mat-icon>
+                    </button>
+                    <mat-menu #selectMenu="matMenu">
+                        <button mat-menu-item (click)="selectTodos()">All</button>
+                        <button mat-menu-item (click)="deselectTodos()">None</button>
+                        <button mat-menu-item (click)="selectTodos('read', true)">Read</button>
+                        <button mat-menu-item (click)="selectTodos('read', false)">Unread</button>
+                        <button mat-menu-item (click)="selectTodos('starred', true)">Starred</button>
+                        <button mat-menu-item (click)="selectTodos('starred', false)">Unstarred</button>
+                        <button mat-menu-item (click)="selectTodos('important', true)">Important</button>
+                        <button mat-menu-item (click)="selectTodos('important', false)">Unimportant</button>
+                    </mat-menu>
+
+                    <div class="toolbar-separator" *ngIf="hasSelectedTodos"></div>
+
+                    <button mat-icon-button [matMenuTriggerFor]="labelMenu" *ngIf="hasSelectedTodos">
+                        <mat-icon class="secondary-text">label</mat-icon>
+                    </button>
+                    <mat-menu #labelMenu="matMenu">
+                        <button mat-menu-item *ngFor="let tag of tags" (click)="toggleTagOnSelectedTodos(tag.id)">
+                            {{tag.title}}
+                        </button>
+                    </mat-menu>
+                </div>
+
+                <div *ngIf="currentTodo" fxHide.gt-lg>
+                    <button mat-icon-button (click)="deselectCurrentTodo()">
+                        <mat-icon class="secondary-text">arrow_back</mat-icon>
+                    </button>
+                </div>
+
+            </div>
+            <!-- / CONTENT TOOLBAR -->
+
+            <!-- CONTENT -->
+            <div class="content" fxFlexAlign="row">
+                <todo-list fusePerfectScrollbar fxFlex></todo-list>
+                <todo-details fusePerfectScrollbar fxFlex></todo-details>
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+
+</div>

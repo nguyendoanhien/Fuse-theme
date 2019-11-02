@@ -1,0 +1,57 @@
+@import "src/@fuse/scss/fuse";
+
+faq {
+
+    .header {
+        flex: 1 0 auto;
+        height: 360px;
+        max-height: 360px;
+        background: #1A237E;
+        background: linear-gradient(to right, #0E2A3B 0%, #34306B 100%);
+
+        @include media-breakpoint('xs') {
+            height: 240px;
+            padding: 16px;
+        }
+
+        .hero-text {
+
+            h1 {
+                color: white;
+                font-size: 48px;
+                font-weight: 400;
+                letter-spacing: 0.01em;
+                text-align: center;
+                margin-top: 0;
+                margin-bottom: 16px;
+
+                @include media-breakpoint('xs') {
+                    font-size: 24px;
+                }
+            }
+        }
+
+        .search {
+            width: 100%;
+            max-width: 640px;
+            height: 56px;
+            line-height: 56px;
+            padding: 18px;
+            border-radius: 28px;
+            overflow: hidden;
+
+            input {
+                height: 56px;
+                padding-left: 16px;
+                border: none;
+                outline: none;
+            }
+        }
+    }
+
+    .content {
+        max-width: 960px;
+        width: 100%;
+        margin: 0 auto;
+    }
+}

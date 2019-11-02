@@ -1,0 +1,129 @@
+<div class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
+        <div fxLayout="column" fxLayoutAlign="center start">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="secondary-text s-18">home</mat-icon>
+                <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+                <span class="secondary-text">Components</span>
+            </div>
+            <div class="h2 mt-16">Multi Language</div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p>
+            Fuse uses <a class="link" href="https://github.com/ngx-translate/core" target="_blank">ngx-translate</a>
+            module and supports multiple languages and translations.
+        </p>
+
+        <p class="message-box warning">
+            Since not everybody need multi-language setup for their apps, we decided NOT to put translations everywhere.
+            If you want to see the translations in action, visit <a class="link" [routerLink]="'/apps/mail'">
+            Mail</a> app and then change the language from the <b>Toolbar.</b>
+            <br><br>
+            Mail app is the only app that has translations for demonstration purposes. You can look at its source code
+            to see the usage.
+        </p>
+
+        <div class="section-title">Usage</div>
+        <p>In order to use the translations, create your translation file within the module you want to use
+            the translations. For example, for the Mail app, create <code>i18n/en.ts</code> file inside the
+            <code>apps/mail</code> folder.
+        </p>
+        <p>
+            The structure of the translation file is important and it must define the language id along with the
+            translation data:
+        </p>
+
+        <p class="py-8">
+            <fuse-highlight lang="typescript">
+                <textarea #source>
+                    // i18n/en.ts
+                    export const locale = {
+                        lang: 'en',
+                        data: {
+                            'MAIL': {
+                             'COMPOSE': 'COMPOSE'
+                            }
+                        }
+                    };
+
+                    // i18n/tr.ts
+                    export const locale = {
+                        lang: 'tr',
+                        data: {
+                            'MAIL': {
+                             'COMPOSE': 'YENİ E-POSTA'
+                            }
+                        }
+                    };
+                </textarea>
+            </fuse-highlight>
+        </p>
+
+        <p>
+            After you create your translation files, open the <code>*.component.ts</code> file for the module you
+            want to have translations, and register your translation file. For this example, we will use the
+            <code>mail.component.ts</code> file:
+        </p>
+
+        <fuse-highlight lang="typescript">
+            <textarea #source>
+                // Your imports
+                import { ... } from '..';
+
+                // Import the locale files
+                import { locale as english } from './i18n/en';
+                import { locale as turkish } from './i18n/tr';
+
+                @Component({
+                    selector : 'mail',
+                    templateUrl: './mail.component.html',
+                    styleUrls : ['./mail.component.scss']
+                })
+                export class MailComponent
+                {
+                    constructor(private translationLoader: FuseTranslationLoaderService)
+                {
+                    this.translationLoader.loadTranslations(english, turkish);
+                }
+
+                ...
+                }
+            </textarea>
+        </fuse-highlight>
+
+        <div class="section-title">Changing the language</div>
+
+        <p>
+            Changing the current language can happen instantly. Simply call the <code>use</code> method from the
+            translate service:
+        </p>
+
+        <fuse-highlight lang="typescript">
+            <textarea #source>
+                import { TranslateService } from '@ngx-translate/core';
+
+                constructor(private translate: TranslateService) {}
+
+                setLanguage()
+                {
+                    // Use the selected language for translations
+                    this.translate.use('tr');
+                }
+            </textarea>
+        </fuse-highlight>
+
+        <p>
+            More detailed usage of the translation service can be found in the <code>toolbar.component.ts</code>
+            file.
+        </p>
+
+    </div>
+
+</div>

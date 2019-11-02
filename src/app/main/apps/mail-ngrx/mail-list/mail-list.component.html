@@ -1,0 +1,9 @@
+<div *ngIf="mails.length === 0" fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+    <span class="no-messages-text hint-text">{{ 'MAIL.NO_MESSAGES' | translate }}</span>
+</div>
+
+<div class="mail-list">
+    <mail-ngrx-list-item matRipple *ngFor="let mail of mails" [mail]="mail" (click)="readMail(mail.id)"
+                    [ngClass]="{'current-mail':mail?.id == currentMail?.id}">
+    </mail-ngrx-list-item>
+</div>

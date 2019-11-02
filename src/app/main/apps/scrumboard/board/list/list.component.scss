@@ -1,0 +1,89 @@
+@import "src/@fuse/scss/fuse";
+
+scrumboard-board-list {
+    width: 344px;
+    min-width: 344px;
+    max-width: 344px;
+    padding-right: 24px !important;
+    height: 100%;
+
+    .list {
+        max-height: 100%;
+        border-radius: 2px;
+        transition: box-shadow 150ms ease;
+
+        .list-header {
+            height: 64px;
+            min-height: 64px;
+            padding: 0 8px 0 16px;
+            border-bottom: 1px solid;
+
+            @include media-breakpoint('lt-md') {
+                height: 48px;
+                min-height: 48px;
+            }
+        }
+
+        .list-content {
+            position: relative;
+            min-height: 0;
+            overflow: hidden;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+
+            .list-cards {
+                position: relative;
+                min-height: 32px;
+                padding: 0 16px;
+            }
+        }
+
+        .list-footer {
+            display: flex;
+            flex-direction: column;
+            flex: 1 0 auto;
+            border-top: 1px solid;
+            min-height: 48px;
+        }
+    }
+
+    &:not(.has-handle):not(.move-disabled),
+    &.has-handle [ngxdraghandle],
+    &.has-handle [ngxDragHandle] {
+        //cursor: move;
+    }
+
+    .ngx-dnd-content {
+        user-select: none;
+    }
+
+    &.gu-mirror {
+        position: fixed !important;
+        margin: 0 !important;
+        z-index: 9999 !important;
+        opacity: 0.8;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+        filter: alpha(opacity=80);
+
+        > .list {
+            @include mat-elevation(7);
+        }
+    }
+
+    &.gu-hide {
+        display: none !important;
+    }
+
+    &.gu-unselectable {
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+    }
+
+    &.gu-transit {
+        opacity: 0.2;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+        filter: alpha(opacity=20);
+    }
+}

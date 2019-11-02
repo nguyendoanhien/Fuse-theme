@@ -1,0 +1,52 @@
+@import "src/@fuse/scss/fuse";
+
+profile-photos-videos {
+
+    #photos-videos {
+
+        .period {
+
+            .period-title {
+                margin-bottom: 24px;
+
+                .name {
+                    font-size: 20px;
+                }
+
+                .info {
+                    margin-left: 16px;
+                    font-size: 15px;
+                }
+            }
+
+            .period-media {
+                margin-bottom: 16px;
+
+                .media {
+                    position: relative;
+                    margin: 0 16px 16px 0;
+                    border-radius: 4px;
+                    overflow: hidden;
+
+                    .preview {
+                        display: block;
+                        width: 256px;
+                        height: 256px;
+                    }
+
+                    .title {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        z-index: 10;
+                        padding: 0 16px;
+                        height: 48px;
+                        line-height: 48px;
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+    }
+}

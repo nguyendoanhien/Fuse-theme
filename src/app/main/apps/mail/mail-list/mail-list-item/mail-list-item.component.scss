@@ -1,0 +1,89 @@
+@import 'src/@fuse/scss/fuse';
+
+mail-list-item {
+    flex-shrink: 0;
+    position: relative;
+    padding: 16px 24px;
+    border-bottom: 1px solid;
+    cursor: pointer;
+
+    &.unread {
+
+        .info {
+
+            .name {
+                font-weight: 700;
+            }
+
+            .row-2 {
+
+                .subject {
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+
+    .info {
+        overflow: hidden;
+        width: 0;
+        margin-left: 16px;
+        position: relative;
+
+        .row-1 {
+            margin-bottom: 8px;
+
+            .name {
+                font-size: 15px;
+                font-weight: 600;
+
+                .avatar {
+                    min-width: 32px;
+                    width: 32px;
+                    height: 32px;
+                    line-height: 32px;
+                }
+            }
+
+            .actions {
+                margin-left: 4px;
+
+                .mat-icon-button {
+                    width: 32px;
+                    height: 32px;
+                    line-height: 1;
+                }
+            }
+        }
+
+        .row-2 {
+
+            .subject,
+            .message {
+                width: 100%;
+            }
+
+            .message {
+                position: relative;
+            }
+
+            .labels {
+                margin-top: 8px;
+
+                .label {
+                    font-size: 11px;
+                    border-radius: 4px;
+                    margin: 0 4px 0 0;
+                    padding: 3px 8px;
+
+                    .label-color {
+                        width: 8px;
+                        height: 8px;
+                        margin-right: 8px;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+    }
+}

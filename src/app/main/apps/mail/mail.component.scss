@@ -1,0 +1,92 @@
+@import "src/@fuse/scss/fuse";
+
+mail {
+    width: 100%;
+
+    .center {
+
+        .header {
+
+            .search-wrapper {
+                border-radius: 28px;
+                overflow: hidden;
+                @include mat-elevation(1);
+
+                .sidebar-toggle {
+                    margin: 0 0 0 6px;
+                    width: 56px;
+                    height: 56px;
+                    border-radius: 0;
+                    border-right: 1px solid;
+                }
+
+                .search {
+                    width: 100%;
+                    height: 56px;
+                    line-height: 56px;
+                    padding: 0 18px;
+
+                    input {
+                        height: 56px;
+                        min-height: 56px;
+                        max-height: 56px;
+                        padding: 0 16px;
+                        border: none;
+                        outline: none;
+                    }
+                }
+            }
+        }
+
+        .content-card {
+
+            .toolbar {
+
+                .toolbar-separator {
+                    height: 32px;
+                    width: 1px;
+                    margin: 0 12px;
+                }
+            }
+
+            @include media-breakpoint(xs) {
+
+                mail-list {
+                    border-right: none;
+                }
+
+                mail-list,
+                mail-details {
+                    flex: 1 0 100%;
+                }
+
+                mail-details {
+                    display: none !important;
+                }
+
+                &.current-mail-selected {
+
+                    .toolbar {
+                        padding-left: 16px !important;
+
+                        .mail-selection {
+                            display: none !important;
+                        }
+                    }
+
+                    .content {
+
+                        mail-list {
+                            display: none !important;
+                        }
+
+                        mail-details {
+                            display: flex !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

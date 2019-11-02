@@ -1,0 +1,62 @@
+<div class="page-layout simple fullwidth docs">
+
+    <!-- HEADER -->
+    <div class="header accent p-24" fxLayout="column" fxLayoutAlign="center start">
+
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="secondary-text s-18">home</mat-icon>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Documentation</span>
+            <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+            <span class="secondary-text">Working with Fuse</span>
+        </div>
+
+        <div class="h2 mt-16">Page Layouts</div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <p>
+            One of the strong sides of the Fuse is its Page layouts. Every single app, pre-built page and even this
+            documentation pages uses the Fuse's page layouts.
+        </p>
+
+        <p>
+            Simply, page layouts are pre-built layouts with a demo content which you can simply copy/paste and start
+            building your own page or app based on it. Because page layouts, it's very easy to replicate any page style
+            that you can find in Fuse, without needing to remove all the demo functionality from them.
+        </p>
+
+        <div class="section-title">Identifying a Page Layout</div>
+
+        <p>
+            You can easily identify the layout that particular page or app using by simply looking at its main html
+            file. The very top wrapper div will tell you everything you need to know:
+        </p>
+
+        <fuse-highlight lang="html" class="source-code">
+            <textarea #source hidden="hidden">
+                <div class="page-layout carded left-sidebar">
+                    ...
+                </div>
+            </textarea>
+        </fuse-highlight>
+
+        <p>
+            The above example is using the <b>carded</b> style page with a <b>left sidebar</b> setup which can be found
+            in <b>/ui/page-layouts/carded/left-sidebar-1</b> directory.
+        </p>
+
+        <p class="message-box info">
+            The numbers in the folder names represents the scrolling style of that particular page layout. For example,
+            <b>left-sidebar-1</b> has the exact same layout with <b>left-sidebar-2</b> but the former one uses
+            a single scrollbar while the latter one uses separate scrollbars for its content and its sidebar.
+        </p>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

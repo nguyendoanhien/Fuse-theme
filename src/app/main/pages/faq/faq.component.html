@@ -1,0 +1,36 @@
+<div id="faq" class="page-layout simple full-width">
+
+    <!-- HEADER -->
+    <div class="header accent p-16 p-sm-24" fxLayout="column" fxLayoutAlign="center center">
+
+        <div class="hero-text mb-16">
+            <h1>Frequently Asked Questions</h1>
+        </div>
+
+        <div class="search mat-elevation-z7" fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon>search</mat-icon>
+            <input [formControl]="searchInput" placeholder="Search in FAQs..." fxFlex>
+        </div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content px-16 py-24 px-sm-24 py-sm-32">
+
+        <mat-accordion class="faqs-accordion">
+
+            <mat-expansion-panel *ngFor="let faq of faqsFiltered; let i = index" [expanded]="step === i" (opened)="setStep(i)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon class="mr-12 s-20 secondary-text">help_outline</mat-icon>
+                        {{faq.question}}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                {{faq.answer}}
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+    <!-- / CONTENT -->
+
+</div>
