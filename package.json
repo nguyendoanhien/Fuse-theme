@@ -43,7 +43,7 @@
         "@types/prismjs": "1.16.0",
         "angular-calendar": "0.27.8",
         "angular-in-memory-web-api": "0.8.0",
-        "chart.js": "2.8.0",
+        "chart.js": "2.9.4",
         "classlist.js": "1.1.20150312",
         "d3": "5.9.2",
         "date-fns": "1.30.1",
